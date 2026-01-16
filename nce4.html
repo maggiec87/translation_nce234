@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中英互译</title> <!-- 标题改为“中英互译” -->
+    <style>
+        /* 
+         * ===============================================
+         * 优化后的新样式 (含图标)
+         * ===============================================
+        */
+
+        /* 1. 全局变量和基础样式 (Theme & Base) */
+        :root {
+            --primary-color: #007aff; /* 主题色 */
+            --primary-hover-color: #0056b3;
+            --success-color: #28a745;
+            --success-bg-color: #e9f7ef;
+            --error-color: #dc3545;
+            --error-bg-color: #fbebed;
+            --warning-color: #e74c3c;
+            --warning-hover-color: #c0392b;
+            --neutral-color: #6c757d;
+            --neutral-hover-color: #5a6268;
+            --text-color: #343a40;
+            --text-light-color: #6c757d;
+            --bg-color: #f8f9fa;
+            --container-bg-color: #ffffff;
+            --border-color: #dee2e6;
+            --border-radius: 8px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: var(--spacing-lg) auto;
+            background-color: var(--container-bg-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            width: 95%; /* 保证在小屏幕上不紧贴边缘 */
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-color);
+            margin-top: 0;
+        }
+        h1 { text-align: center; margin-bottom: var(--spacing-lg); }
+        h2 { text-align: center; margin-bottom: var(--spacing-md); }
+        h3 { 
+            text-align: center; /* 确保主标题居中 */
+            margin-bottom: var(--spacing-md); 
+            padding-bottom: var(--spacing-md); /* 添加底部填充 */
+            border-bottom: 1px dashed var(--border-color); /* 添加虚线分隔 */
+        }
+
+        /* 2. Tabs 样式 (已移除，但保留部分通用按钮样式) */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* 
+         * ===============================================
+         * 新增：图标样式
+         * ===============================================
+        */
+        .icon {
+            width: 1.1em;
+            height: 1.1em;
+            margin-right: 0.5em;
+            vertical-align: middle;
+            stroke-width: 2; /* SVG 线条粗细 */
+        }
+        button .icon {
+            margin-bottom: -2px; /* 微调按钮内图标位置 */
+        }
+        .toggle-button .icon {
+            margin-right: 0.3em;
+        }
+        .icon-hide {
+            display: none; /* 默认隐藏“隐藏”图标 */
+        }
+
+        /* 3. 表单元素和按钮 (Forms & Buttons) */
+        select, button, textarea, input[type="number"] {
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            font-size: 1em;
+            font-family: inherit;
+            box-sizing: border-box; /* 关键样式，防止padding撑大元素 */
+            width: 100%; /* 移动端优先，默认全宽 */
+            margin-bottom: var(--spacing-sm);
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+            font-weight: 600;
+            display: inline-flex; /* 使按钮内的图标和文字居中对齐 */
+            align-items: center;
+            justify-content: center;
+        }
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        button:disabled {
+            background-color: #bdc3c7; /* 禁用状态的按钮背景色 */
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* 按钮颜色分类 */
+        #submitTranslationBtn, 
+        #startTranslationPracticeBtn,
+        #nextTranslationSentenceBtn { 
+            background-color: var(--primary-color);
+        }
+        #submitTranslationBtn:hover:not(:disabled), 
+        #startTranslationPracticeBtn:hover:not(:disabled),
+        #nextTranslationSentenceBtn:hover:not(:disabled) { 
+            background-color: var(--primary-hover-color);
+        }
+
+        #exportTranslationBtn, 
+        #exportCorpusBtn { 
+            background-color: var(--success-color);
+        }
+        #exportTranslationBtn:hover:not(:disabled), 
+        #exportCorpusBtn:hover:not(:disabled) { 
+            background-color: #218838;
+        }
+
+        #translationEndPracticeBtn,
+        #practiceAgainTranslationBtn { 
+            background-color: var(--warning-color);
+        }
+        #translationEndPracticeBtn:hover:not(:disabled),
+        #practiceAgainTranslationBtn:hover:not(:disabled) { 
+            background-color: var(--warning-hover-color);
+        }
+        
+        #exportAllPracticedDataBtn,
+        #skipTranslationBtn { 
+            background-color: var(--neutral-color);
+        }
+        #exportAllPracticedDataBtn:hover:not(:disabled),
+        #skipTranslationBtn:hover:not(:disabled) { 
+            background-color: var(--neutral-hover-color);
+        }
+        
+        /* 导出历史按钮独占一行并居中 */
+        #exportAllPracticedDataBtn {
+            display: block;
+            width: fit-content;
+            margin: var(--spacing-lg) auto 0 auto; /* 放在最后，上方留白 */
+        }
+        /* 导出题库按钮的样式 */
+        #exportCorpusBtn {
+            width: auto; /* 确保按钮宽度自适应 */
+            margin-left: 0; /* 重置可能存在的外部margin */
+            margin-bottom: 0; /* 重置可能存在的外部margin */
+        }
+        /* 切换按钮 (查看原文) */
+        .toggle-button {
+            background-color: var(--neutral-color);
+            font-size: 0.9em;
+            padding: 5px 10px;
+            width: auto; 
+            margin-bottom: 0;
+            display: inline-flex; /* 保持与图标对齐 */
+        }
+        .toggle-button:hover { background-color: var(--neutral-hover-color); }
+
+
+        /* 4. 区域和卡片样式 (Sections & Cards) */
+        /* .section-header 样式已不再需要，因为结构改变 */
+        .full-text-display, .practice-area, .feedback-area, .results-summary, .practice-settings {
+            background-color: #fdfdfd;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .practice-settings {
+            background-color: var(--success-bg-color);
+            border-color: #c3e6cb;
+        }
+        .practice-settings label { font-weight: 600; color: var(--success-color); }
+        .practice-settings input[type="radio"] { width: auto; margin-right: 5px; }
+        .practice-settings input[type="number"] { width: 80px; text-align: center; display: inline-block; }
+
+        /* 新增：语料选择组的样式 */
+        .practice-settings .corpus-selection-group {
+            display: flex;
+            flex-wrap: wrap; /* 允许换行 */
+            align-items: center;
+            gap: var(--spacing-sm); /* 元素间距 */
+            margin-bottom: var(--spacing-md); /* 组底部间距 */
+        }
+        .practice-settings .corpus-selection-group label {
+            flex-basis: 100%; /* 标签独占一行 */
+            margin-bottom: 5px; /* 标签下方间距 */
+            color: var(--text-color); /* 标签颜色 */
+            font-weight: 600; /* 标签加粗 */
+        }
+        .practice-settings .corpus-selection-group select {
+            flex-grow: 1; /* 选择框占据剩余空间 */
+            width: auto; /* 覆盖默认的100%宽度 */
+            margin-bottom: 0; /* 重置底部间距 */
+        }
+        .practice-settings .corpus-selection-group button {
+            flex-shrink: 0; /* 按钮不收缩 */
+            width: auto; /* 按钮宽度自适应 */
+            margin-bottom: 0; /* 重置底部间距 */
+        }
+
+
+        .full-text-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        .hidden { display: none; }
+
+        .full-text-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: var(--spacing-sm);
+        }
+        .full-text-content p.chinese { color: var(--primary-color); }
+        .full-text-content p.practice-count-info {
+            font-size: 0.9em;
+            color: var(--text-light-color);
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        /* 5. 交互和反馈样式 (Interaction & Feedback) */
+        .sentence-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: var(--spacing-md);
+            background: #f1f3f5;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+        }
+        .feedback {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border: 1px solid transparent;
+            font-weight: bold;
+        }
+        .feedback.correct {
+            background-color: var(--success-bg-color);
+            color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        .feedback.incorrect {
+            background-color: var(--error-bg-color);
+            color: var(--error-color);
+            border-color: var(--error-color);
+        }
+        .original-text {
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+            color: var(--text-light-color);
+            font-weight: normal;
+        }
+        .controls, .action-buttons-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap; /* 允许按钮换行 */
+            margin-top: var(--spacing-md);
+        }
+        .controls button, .action-buttons-group button {
+            flex-grow: 1; /* 让按钮平均分配空间 */
+            margin-bottom: 0;
+        }
+
+        .results-summary ul { list-style: none; padding: 0; }
+        .results-summary li {
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-left: 4px solid;
+            background: #f8f9fa;
+        }
+        .results-summary .correct-item { border-color: var(--success-color); }
+        .results-summary .incorrect-item { border-color: var(--error-color); }
+
+        /* 
+         * ===============================================
+         * 响应式布局：针对桌面端 (Desktop Styles)
+         * ===============================================
+        */
+        @media (min-width: 768px) {
+            .container {
+                padding: 40px;
+            }
+            /* 移除 section-header 的桌面端样式，因为它已被移除 */
+            .practice-settings .corpus-selection-group label {
+                flex-basis: auto; /* 标签可以内联 */
+                margin-bottom: 0;
+                margin-right: var(--spacing-sm); /* 标签右侧间距 */
+            }
+            .practice-settings .corpus-selection-group select {
+                width: 250px; /* 特定宽度 */
+                margin-right: var(--spacing-sm); /* 选择框右侧间距 */
+            }
+            .practice-settings .corpus-selection-group button {
+                margin-left: 0; /* 重置可能存在的外部margin */
+            }
+
+            select, button, textarea, input[type="number"] {
+                width: auto; /* 在大屏幕上恢复自动宽度 */
+                margin-bottom: 0;
+            }
+            select { width: 250px; margin-right: var(--spacing-sm); }
+            textarea { width: 100%; margin-top: var(--spacing-md); margin-bottom: var(--spacing-md); }
+            .controls, .action-buttons-group {
+                justify-content: flex-start;
+            }
+            .action-buttons-group {
+                justify-content: center;
+            }
+            .action-buttons-group button {
+                min-width: 120px;
+                flex-grow: 0; /* 在大屏幕上不拉伸 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>New Concept English 4</h1>
+
+        <!-- 中英互译部分 -->
+        <div id="translation" class="tab-content active">
+            <h3>中英互译</h3> <!-- 标题改为“中英互译”，直接放在这里 -->
+
+            <div class="practice-settings" id="translationPracticeSettings">
+                <h4>练习设置</h4>
+                <!-- 语料选择和导出题库已移到这里 -->
+                <div class="corpus-selection-group">
+                    <label for="translationCorpusSelect">选择语料:</label>
+                    <select id="translationCorpusSelect" onchange="loadCorpus()"></select>
+                    <button id="exportCorpusBtn" class="export-button" disabled>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        导出题库
+                    </button>
+                </div>
+                <p>
+                    <label>练习模式:</label>
+                    <input type="radio" id="translationOrderSequential" name="translation-order" value="sequential" checked>
+                    <label for="translationOrderSequential">顺序</label>
+                    <input type="radio" id="translationOrderRandom" name="translation-order" value="random">
+                    <label for="translationOrderRandom">随机</label>
+                </p>
+                <p>
+                    <label>练习方向:</label>
+                    <input type="radio" id="practiceDirectionCE" name="practice-direction" value="ce" checked>
+                    <label for="practiceDirectionCE">中译英</label>
+                    <input type="radio" id="practiceDirectionEC" name="practice-direction" value="ec">
+                    <label for="practiceDirectionEC">英译中</label>
+                </p>
+                <p>
+                    <label for="translationPracticeCount">练习数量:</label>
+                    <input type="number" id="translationPracticeCount" value="10" min="0"> (0 表示全部)
+                </p>
+                <button id="startTranslationPracticeBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    开始练习
+                </button>
+            </div>
+
+            <!-- 查看原文已移到练习设置之后 -->
+            <div class="full-text-display">
+                <div class="full-text-header">
+                    <h4>查看原文</h4>
+                    <button class="toggle-button" onclick="toggleFullText(this)">
+                        <svg class="icon icon-hide" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
+                        <svg class="icon icon-show" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                        <span class="toggle-text">隐藏</span>
+                    </button>
+                </div>
+                <div id="translationFullText" class="full-text-content"><p>请选择语料。</p></div>
+            </div>
+
+            <div class="practice-area" id="translationPracticeArea" style="display: none;">
+                <h4>逐句翻译</h4>
+                <p class="practice-status">进度: <span id="translationPracticeProgress">0 / 0</span> | 已练习次数: <span id="translationTimesPracticed">0</span></p>
+                <p id="translationSourceSentence" class="sentence-display">源语言句子将显示在这里。</p>
+                <textarea id="translationInput" placeholder="在此输入您的翻译..."></textarea>
+                <div class="controls">
+                    <button id="submitTranslationBtn">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        提交
+                    </button>
+                    <button id="translationEndPracticeBtn">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 10h6v4H9v-4z" /></svg>
+                        结束本次练习
+                    </button>
+                </div>
+                <div class="action-buttons-group">
+                    <button id="nextTranslationSentenceBtn" style="display: none;">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        下一个
+                    </button>
+                    <button id="practiceAgainTranslationBtn" style="display: none;">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M4 4l5 5M20 20l-5-5" /></svg>
+                        再次练习
+                    </button>
+                    <button id="skipTranslationBtn" style="display: none;">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                        跳过
+                    </button>
+                </div>
+                <div id="translationFeedback" class="feedback"></div>
+            </div>
+
+            <div class="results-summary" id="translationSessionResults" style="display: none;">
+                <h4>此次练习结果</h4>
+                <ul id="translationResultsList"></ul>
+                <button id="exportTranslationBtn" class="export-button" onclick="exportResults()" disabled>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                    导出本次结果
+                </button>
+            </div>
+        </div>
+        
+        <!-- 导出历史已移到页面最底部 -->
+        <button id="exportAllPracticedDataBtn" disabled>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            导出历史
+        </button>
+    </div>
+
+    <!-- 引入外部的 data_nce4.js 文件。这个 <script> 标签必须在下面那个包含主要逻辑的 <script> 标签之前。 -->
+    <script src="data_nce4.js"></script>
+    
+    <script>
+        // ===============================================
+        // 全局变量和初始化
+        // ===============================================
+
+        // 翻译模式相关
+        let currentTranslationCorpus = null; // 当前选中的语料库对象
+        let translationPracticeSessionSentences = []; // 当前练习会话中的句子列表 [{corpusId, originalIndex, en, zh, sourceText, targetText, mode}]
+        let currentTranslationSessionIndex = 0; // 当前正在练习的句子在 translationPracticeSessionSentences 数组中的索引
+        let currentTranslationPracticeSentenceData = null; // 当前正在展示的句子数据 {en, zh, corpusId, originalIndex, sourceText, targetText, mode}
+        let translationResults = []; // 本次会话的翻译结果 [{sentenceNum, mode, sourceOriginal, targetOriginal, userAnswer, correct, en, zh}]
+        let currentPracticeDirection = 'ce'; // 'ce' for 中译英, 'ec' for 英译中
+
+        // DOM 元素引用
+        const translationCorpusSelect = document.getElementById('translationCorpusSelect');
+        const translationPracticeSettings = document.getElementById('translationPracticeSettings');
+        const startTranslationPracticeBtn = document.getElementById('startTranslationPracticeBtn');
+        const translationPracticeArea = document.getElementById('translationPracticeArea');
+        const translationPracticeProgress = document.getElementById('translationPracticeProgress');
+        const translationTimesPracticed = document.getElementById('translationTimesPracticed');
+        const translationSourceSentence = document.getElementById('translationSourceSentence');
+        const translationInput = document.getElementById('translationInput');
+        const submitTranslationBtn = document.getElementById('submitTranslationBtn');
+        const nextTranslationSentenceBtn = document.getElementById('nextTranslationSentenceBtn');
+        const practiceAgainTranslationBtn = document.getElementById('practiceAgainTranslationBtn');
+        const skipTranslationBtn = document.getElementById('skipTranslationBtn');
+        const translationEndPracticeBtn = document.getElementById('translationEndPracticeBtn');
+        const translationFeedback = document.getElementById('translationFeedback');
+        const translationSessionResults = document.getElementById('translationSessionResults'); // 本次会话结果区域
+        const exportAllPracticedDataBtn = document.getElementById('exportAllPracticedDataBtn'); // 全局导出按钮
+        const exportTranslationBtn = document.getElementById('exportTranslationBtn'); // 本次会话导出按钮
+        const exportCorpusBtn = document.getElementById('exportCorpusBtn'); // 导出题库按钮
+
+        // 练习方向单选按钮
+        const practiceDirectionCERadio = document.getElementById('practiceDirectionCE');
+        const practiceDirectionECRadio = document.getElementById('practiceDirectionEC');
+
+
+        // 进度存储键 (已修改，以避免与原页面冲突)
+        const PROGRESS_STORAGE_KEY = 'sentencePracticeProgressV3_translation'; 
+        let practiceProgress = {}; // 存储所有句子的练习进度 { 'corpusId-sentenceOriginalIndex': { count: N } }
+
+        // ===============================================
+        // 数据持久化 (localStorage)
+        // ===============================================
+
+        /**
+         * 从 localStorage 加载练习进度。
+         */
+        function loadProgress() {
+            const storedProgress = localStorage.getItem(PROGRESS_STORAGE_KEY);
+            if (storedProgress) {
+                practiceProgress = JSON.parse(storedProgress);
+            } else {
+                practiceProgress = {};
+            }
+            console.log('中英互译进度已加载:', practiceProgress);
+        }
+
+        /**
+         * 保存练习进度到 localStorage。
+         */
+        function saveProgress() {
+            localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(practiceProgress));
+            // console.log('中英互译进度已保存。'); // 避免频繁输出
+        }
+
+        /**
+         * 获取某个句子的练习次数。
+         * @param {string} corpusId - 语料库ID
+         * @param {number} sentenceOriginalIndex - 句子在语料库中的原始索引
+         * @returns {number} 练习次数
+         */
+        function getSentencePracticeCount(corpusId, sentenceOriginalIndex) {
+            const key = `${corpusId}-${sentenceOriginalIndex}`;
+            return practiceProgress[key] ? practiceProgress[key].count : 0;
+        }
+
+        /**
+         * 更新某个句子的练习次数。
+         * @param {string} corpusId - 语料库ID
+         * @param {number} sentenceOriginalIndex - 句子在语料库中的原始索引
+         */
+        function updateSentencePracticeCount(corpusId, sentenceOriginalIndex) {
+            const key = `${corpusId}-${sentenceOriginalIndex}`;
+            if (!practiceProgress[key]) {
+                practiceProgress[key] = { count: 0 };
+            }
+            practiceProgress[key].count++;
+            saveProgress();
+        }
+
+        // ===============================================
+        // UI 初始化和通用功能
+        // ===============================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            populateCorpusSelect();
+
+            // 尝试自动加载第一个语料库，如果存在的话
+            if (typeof corpuses !== 'undefined' && corpuses.length > 0) {
+                translationCorpusSelect.value = corpuses[0].id;
+                loadCorpus(); // 自动加载第一个语料
+            } else {
+                // 如果没有语料，禁用选择器和开始按钮
+                translationCorpusSelect.innerHTML = '<option value="">-- 未找到语料 --</option>';
+                translationCorpusSelect.disabled = true;
+                startTranslationPracticeBtn.disabled = true;
+            }
+            exportAllPracticedDataBtn.addEventListener('click', exportAllPracticedData);
+            exportCorpusBtn.addEventListener('click', exportCurrentCorpus); // 新增：导出题库按钮事件
+            
+            // 根据是否有语料来启用或禁用全局导出按钮和导出题库按钮
+            const hasCorpus = (typeof corpuses !== 'undefined' && corpuses.length > 0);
+            exportAllPracticedDataBtn.disabled = !hasCorpus;
+            // exportCorpusBtn.disabled 这一行会在 loadCorpus 中处理，确保初始状态正确
+            
+            // 监听练习方向变化
+            practiceDirectionCERadio.addEventListener('change', () => {
+                currentPracticeDirection = 'ce';
+                // 如果需要，可以在这里更新全文显示，但目前全文显示是双语的，无需改变
+            });
+            practiceDirectionECRadio.addEventListener('change', () => {
+                currentPracticeDirection = 'ec';
+            });
+        });
+
+        function populateCorpusSelect() {
+            translationCorpusSelect.innerHTML = '<option value="">-- 请选择语料 --</option>';
+            // 确保 corpuses 数组已从 data_nce4.js 加载
+            if (typeof corpuses !== 'undefined' && corpuses.length > 0) {
+                corpuses.forEach(corpus => {
+                    const option = document.createElement('option');
+                    option.value = corpus.id;
+                    option.textContent = corpus.name;
+                    translationCorpusSelect.appendChild(option);
+                });
+            } else {
+                console.warn("corpuses 数组未定义或为空，请检查 data_nce4.js 文件。");
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = '未找到语料数据';
+                option.disabled = true;
+                translationCorpusSelect.appendChild(option);
+            }
+        }
+
+        function loadCorpus() {
+            const corpusId = translationCorpusSelect.value;
+            const corpus = corpuses.find(c => c.id === corpusId);
+            const toggleBtn = document.querySelector(`#translation .toggle-button`); // 获取全文显示/隐藏按钮
+
+            if (!corpus) {
+                // Reset UI if no corpus selected
+                document.getElementById('translationFullText').innerHTML = '<p>请选择语料。</p>';
+                currentTranslationCorpus = null;
+                translationPracticeSessionSentences = [];
+                currentTranslationSessionIndex = 0;
+                currentTranslationPracticeSentenceData = null;
+                translationResults = [];
+                translationPracticeSettings.style.display = 'block'; // 显示设置区域
+                translationPracticeArea.style.display = 'none'; // 隐藏练习区域
+                translationSessionResults.style.display = 'none'; // 隐藏本次会话结果
+                translationSourceSentence.textContent = '源语言句子将显示在这里。';
+                translationInput.value = '';
+                translationInput.disabled = true;
+                translationFeedback.textContent = '';
+                document.getElementById('translationResultsList').innerHTML = '';
+                startTranslationPracticeBtn.disabled = true; // 禁用开始按钮直到有语料
+                
+                // 重置全文显示/隐藏按钮状态
+                const contentDiv = document.getElementById('translationFullText');
+                contentDiv.classList.remove('hidden'); // 确保显示
+                if (toggleBtn) {
+                    toggleBtn.querySelector('.toggle-text').textContent = '隐藏';
+                    toggleBtn.querySelector('.icon-show').style.display = 'none';
+                    toggleBtn.querySelector('.icon-hide').style.display = 'inline-block';
+                }
+                exportAllPracticedDataBtn.disabled = true; // 如果没有语料，禁用全局导出
+                exportCorpusBtn.disabled = true; // 禁用导出题库
+                return;
+            }
+
+            // Corpus selected
+            currentTranslationCorpus = corpus;
+            translationResults = []; // 重置本次练习结果
+            displayFullText();
+            translationPracticeSettings.style.display = 'block'; // 显示设置区域
+            translationPracticeArea.style.display = 'none'; // 隐藏练习区域
+            translationSessionResults.style.display = 'none'; // 隐藏本次会话结果
+            startTranslationPracticeBtn.disabled = false; // 启用开始按钮
+            exportTranslationBtn.disabled = true; // 每次加载新语料时禁用本次导出
+
+            // 每次加载新语料时，确保全文区域是可见的，并重置按钮文本
+            const contentDiv = document.getElementById('translationFullText');
+            contentDiv.classList.remove('hidden');
+            if (toggleBtn) {
+                toggleBtn.querySelector('.toggle-text').textContent = '隐藏';
+                toggleBtn.querySelector('.icon-show').style.display = 'none';
+                toggleBtn.querySelector('.icon-hide').style.display = 'inline-block';
+            }
+            exportAllPracticedDataBtn.disabled = false; // 只要有语料加载，就启用全局导出
+            exportCorpusBtn.disabled = false; // 启用导出题库
+        }
+
+        function displayFullText() {
+            const fullTextDiv = document.getElementById('translationFullText');
+            fullTextDiv.innerHTML = ''; // 清除之前的内容
+
+            if (currentTranslationCorpus) {
+                currentTranslationCorpus.sentences.forEach((s, index) => {
+                    const pEn = document.createElement('p');
+                    pEn.textContent = `${index + 1}. ${s.en}`;
+                    
+                    const count = getSentencePracticeCount(currentTranslationCorpus.id, index);
+                    const countSpan = document.createElement('span');
+                    countSpan.classList.add('practice-count-info');
+                    countSpan.textContent = ` (已练习: ${count} 次)`;
+                    if (count > 0) {
+                        countSpan.style.color = '#28a745'; // Green for practiced
+                    }
+                    pEn.appendChild(countSpan);
+
+                    fullTextDiv.appendChild(pEn);
+                    const pZh = document.createElement('p');
+                    pZh.textContent = `${index + 1}. ${s.zh}`;
+                    pZh.classList.add('chinese'); // Add class for styling Chinese text
+                    fullTextDiv.appendChild(pZh);
+                });
+            }
+        }
+
+        /**
+         * 切换全文内容的显示/隐藏状态，并同步切换图标
+         * @param {HTMLElement} button - 被点击的按钮元素
+         */
+        function toggleFullText(button) {
+            const contentDiv = document.getElementById(`translationFullText`); // 直接针对回译全文
+            if (!contentDiv) return;
+
+            const isHidden = contentDiv.classList.toggle('hidden');
+            
+            // 获取按钮内的元素
+            const textSpan = button.querySelector('.toggle-text');
+            const showIcon = button.querySelector('.icon-show');
+            const hideIcon = button.querySelector('.icon-hide');
+
+            // 根据当前状态更新按钮文本和图标
+            if (isHidden) {
+                textSpan.textContent = '显示';
+                showIcon.style.display = 'inline-block';
+                hideIcon.style.display = 'none';
+            } else {
+                textSpan.textContent = '隐藏';
+                showIcon.style.display = 'none';
+                hideIcon.style.display = 'inline-block';
+            }
+        }
+        
+        // --- 翻译功能 (增强版) ---
+
+        startTranslationPracticeBtn.addEventListener('click', startTranslationPractice);
+        submitTranslationBtn.addEventListener('click', submitTranslation);
+        nextTranslationSentenceBtn.addEventListener('click', nextTranslationPracticeSentence);
+        practiceAgainTranslationBtn.addEventListener('click', practiceAgainTranslation);
+        skipTranslationBtn.addEventListener('click', skipTranslation);
+        translationEndPracticeBtn.addEventListener('click', endTranslationPracticeSession);
+
+        // 允许在输入框中按 Enter 键检查答案
+        translationInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' && !event.shiftKey) { // 阻止 Shift+Enter 换行
+                event.preventDefault(); // 阻止默认的换行行为
+                if (submitTranslationBtn.style.display !== 'none' && !submitTranslationBtn.disabled) {
+                    submitTranslation();
+                } else if (nextTranslationSentenceBtn.style.display !== 'none' && !nextTranslationSentenceBtn.disabled) {
+                    nextTranslationPracticeSentence();
+                }
+            }
+        });
+
+
+        function startTranslationPractice() {
+            if (!currentTranslationCorpus) {
+                alert('请先选择一个语料库！');
+                return;
+            }
+
+            const practiceOrder = document.querySelector('input[name="translation-order"]:checked').value;
+            currentPracticeDirection = document.querySelector('input[name="practice-direction"]:checked').value; // 获取当前练习方向
+            let practiceCount = parseInt(document.getElementById('translationPracticeCount').value);
+
+            let sentencesToPractice = currentTranslationCorpus.sentences.map((s, index) => {
+                const baseData = {
+                    corpusId: currentTranslationCorpus.id,
+                    originalIndex: index,
+                    en: s.en,
+                    zh: s.zh
+                };
+                if (currentPracticeDirection === 'ce') { // Chinese to English (中译英)
+                    return { ...baseData, sourceText: s.zh, targetText: s.en, mode: 'ce' };
+                } else { // English to Chinese (英译中)
+                    return { ...baseData, sourceText: s.en, targetText: s.zh, mode: 'ec' };
+                }
+            });
+
+            if (sentencesToPractice.length === 0) {
+                alert('当前语料库中没有句子可供练习。');
+                return;
+            }
+
+            if (practiceOrder === 'random') {
+                // 随机打乱
+                for (let i = sentencesToPractice.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [sentencesToPractice[i], sentencesToPractice[j]] = [sentencesToPractice[j], sentencesToPractice[i]];
+                }
+            }
+
+            // 根据练习数量截取
+            if (practiceCount > 0 && practiceCount < sentencesToPractice.length) {
+                sentencesToPractice = sentencesToPractice.slice(0, practiceCount);
+            }
+
+            if (sentencesToPractice.length === 0) {
+                alert('根据您的设置，没有可供练习的句子。请调整练习数量或模式。');
+                return;
+            }
+
+            translationPracticeSessionSentences = sentencesToPractice;
+            currentTranslationSessionIndex = 0;
+            translationResults = []; // 重置本次会话结果
+
+            // 隐藏设置区，显示练习区
+            translationPracticeSettings.style.display = 'none';
+            translationPracticeArea.style.display = 'block';
+            translationSessionResults.style.display = 'none'; // 隐藏本次会话结果列表
+            
+            displayCurrentTranslationPracticeSentence();
+        }
+
+        function displayCurrentTranslationPracticeSentence() {
+            if (currentTranslationSessionIndex >= translationPracticeSessionSentences.length) {
+                endTranslationPracticeSession();
+                return;
+            }
+
+            currentTranslationPracticeSentenceData = translationPracticeSessionSentences[currentTranslationSessionIndex];
+
+            translationSourceSentence.textContent = currentTranslationPracticeSentenceData.sourceText; // 显示源语言原文
+            translationInput.value = ''; // 清空用户输入
+            translationInput.disabled = false; // 确保输入框可用
+
+            // 根据练习方向设置输入框的 placeholder
+            if (currentTranslationPracticeSentenceData.mode === 'ce') {
+                translationInput.placeholder = '在此输入您的英文翻译...';
+            } else { // 'ec'
+                translationInput.placeholder = '在此输入您的中文翻译...';
+            }
+
+            translationFeedback.innerHTML = ''; // 清空反馈
+            translationInput.focus(); // 聚焦输入框
+
+            const count = getSentencePracticeCount(currentTranslationPracticeSentenceData.corpusId, currentTranslationPracticeSentenceData.originalIndex);
+            translationTimesPracticed.textContent = count;
+            
+            translationPracticeProgress.textContent = `${currentTranslationSessionIndex + 1} / ${translationPracticeSessionSentences.length}`;
+
+            // 按钮状态
+            submitTranslationBtn.style.display = 'inline-flex';
+            submitTranslationBtn.disabled = false;
+            nextTranslationSentenceBtn.style.display = 'none';
+            practiceAgainTranslationBtn.style.display = 'none';
+            skipTranslationBtn.style.display = 'none';
+            translationEndPracticeBtn.style.display = 'inline-flex';
+        }
+
+        function submitTranslation() {
+            if (!currentTranslationCorpus || !currentTranslationPracticeSentenceData) return;
+
+            const userInput = translationInput.value.trim();
+            const originalSourceSentence = currentTranslationPracticeSentenceData.sourceText; // 用户看到的句子
+            const originalTargetSentence = currentTranslationPracticeSentenceData.targetText; // 正确答案
+
+            // 简单的比较，可以根据需要实现更复杂的模糊匹配
+            const isCorrect = normalizeText(userInput) === normalizeText(originalTargetSentence);
+
+            // 构造反馈信息
+            let feedbackHtml = `<p><strong>您的回答:</strong> ${userInput}</p>`;
+            if (currentTranslationPracticeSentenceData.mode === 'ce') {
+                feedbackHtml += `<p class="original-text"><strong>中文原文:</strong> ${currentTranslationPracticeSentenceData.zh}</p>`;
+                feedbackHtml += `<p class="original-text"><strong>英文正确答案:</strong> ${originalTargetSentence}</p>`;
+            } else { // 'ec'
+                feedbackHtml += `<p class="original-text"><strong>英文原文:</strong> ${currentTranslationPracticeSentenceData.en}</p>`;
+                feedbackHtml += `<p class="original-text"><strong>中文正确答案:</strong> ${originalTargetSentence}</p>`;
+            }
+            
+            translationFeedback.innerHTML = feedbackHtml;
+            
+            if (isCorrect) {
+                translationFeedback.classList.remove('incorrect');
+                translationFeedback.classList.add('correct');
+                translationFeedback.innerHTML += '<p><strong>结果:</strong> 正确！</p>';
+            } else {
+                translationFeedback.classList.remove('correct');
+                translationFeedback.classList.add('incorrect');
+                translationFeedback.innerHTML += '<p><strong>结果:</strong> 错误。</p>';
+            }
+            
+            // 更新该句子的全局练习次数
+            updateSentencePracticeCount(currentTranslationPracticeSentenceData.corpusId, currentTranslationPracticeSentenceData.originalIndex);
+            translationTimesPracticed.textContent = getSentencePracticeCount(currentTranslationPracticeSentenceData.corpusId, currentTranslationPracticeSentenceData.originalIndex);
+
+            // 记录本次会话结果
+            translationResults.push({
+                sentenceNum: currentTranslationSessionIndex + 1,
+                mode: currentTranslationPracticeSentenceData.mode, // 记录练习方向
+                sourceOriginal: originalSourceSentence, // 用户看到的句子
+                targetOriginal: originalTargetSentence, // 正确答案
+                userAnswer: userInput,
+                correct: isCorrect,
+                en: currentTranslationPracticeSentenceData.en, // 原始英文 (用于导出完整信息)
+                zh: currentTranslationPracticeSentenceData.zh  // 原始中文 (用于导出完整信息)
+            });
+
+            // 按钮状态
+            submitTranslationBtn.style.display = 'none';
+            nextTranslationSentenceBtn.style.display = 'inline-flex';
+            practiceAgainTranslationBtn.style.display = 'inline-flex';
+            skipTranslationBtn.style.display = 'inline-flex';
+        }
+
+        function nextTranslationPracticeSentence() {
+            currentTranslationSessionIndex++;
+            displayCurrentTranslationPracticeSentence();
+        }
+
+        function practiceAgainTranslation() {
+            // 将当前句子添加到本次练习队列的末尾
+            translationPracticeSessionSentences.push(currentTranslationPracticeSentenceData);
+            // 更新进度显示，因为总数增加了
+            translationPracticeProgress.textContent = `${currentTranslationSessionIndex + 1} / ${translationPracticeSessionSentences.length}`;
+            nextTranslationPracticeSentence();
+        }
+
+        function skipTranslation() {
+            nextTranslationPracticeSentence();
+        }
+
+        function endTranslationPracticeSession() {
+            if (translationPracticeArea.style.display === 'none') return; // 防止重复触发
+            alert('中英互译会话结束！');
+            translationPracticeArea.style.display = 'none'; // 隐藏练习区
+            translationPracticeSettings.style.display = 'block'; // 显示设置区
+            translationInput.disabled = true; // 禁用输入框
+
+            if (translationResults.length > 0) {
+                translationSessionResults.style.display = 'block'; // 显示本次会话结果
+                updateResultsList();
+                exportTranslationBtn.disabled = false; // 启用本次会话导出按钮
+            }
+            displayFullText(); // 刷新全文区域以显示最新的练习次数
+        }
+
+
+        // --- 共享功能 (已适配) ---
+        
+        function updateResultsList() {
+            const resultsList = document.getElementById(`translationResultsList`);
+            resultsList.innerHTML = ''; // 清除之前的结果
+
+            translationResults.forEach(res => {
+                const li = document.createElement('li');
+                li.classList.add(res.correct ? 'correct-item' : 'incorrect-item');
+                const directionText = res.mode === 'ce' ? '中译英' : '英译中';
+                // 更具体的标签，方便用户理解
+                const sourceLangLabel = res.mode === 'ce' ? '中文原文' : '英文原文';
+                const targetLangLabel = res.mode === 'ce' ? '英文答案' : '中文答案';
+
+                li.innerHTML = `<strong>句 ${res.sentenceNum}:</strong> (${directionText})<br>
+                                ${sourceLangLabel}: ${res.sourceOriginal}<br>
+                                您的回答: ${res.userAnswer}<br>
+                                ${targetLangLabel}: ${res.targetOriginal}<br>
+                                结果: ${res.correct ? '正确' : '错误'}`;
+                resultsList.appendChild(li);
+            });
+        }
+
+        function normalizeText(text) {
+            // 转换为小写，移除标点符号，并去除首尾空格
+            // 注意：对于中文，移除标点符号可能需要更复杂的逻辑，这里仅处理英文标点
+            return text.toLowerCase().replace(/[.,!?;:'"“”‘’\-—]/g, '').trim();
+        }
+
+        function exportResults() {
+            let csv = '';
+            let filename = '';
+            const corpusName = currentTranslationCorpus?.name || '未知语料';
+
+            if (translationResults.length === 0) {
+                alert('没有本次练习结果可导出。');
+                return;
+            }
+
+            filename = `${corpusName}_中英互译结果.csv`;
+            csv += '语料名称,句号,练习方向,中文原文,英文原文,您的回答,正确答案,是否正确\n';
+            translationResults.forEach(res => {
+                // 处理CSV中的逗号和双引号
+                const escapeCsv = (str) => `"${String(str).replace(/"/g, '""')}"`;
+                const direction = res.mode === 'ce' ? '中译英' : '英译中';
+                csv += `${escapeCsv(corpusName)},${res.sentenceNum},${escapeCsv(direction)},${escapeCsv(res.zh)},${escapeCsv(res.en)},${escapeCsv(res.userAnswer)},${escapeCsv(res.targetOriginal)},${res.correct ? '是' : '否'}\n`;
+            });
+
+            downloadCsv(csv, filename);
+            alert(`已导出本次练习结果到 ${filename}`);
+        }
+
+        /**
+         * 导出当前语料库的题库数据为 CSV 文件。
+         */
+        function exportCurrentCorpus() {
+            if (!currentTranslationCorpus) {
+                alert('请先选择一个语料库才能导出题库。');
+                return;
+            }
+
+            const corpusName = currentTranslationCorpus.name;
+            const sentences = currentTranslationCorpus.sentences;
+
+            if (sentences.length === 0) {
+                alert(`语料库 "${corpusName}" 中没有句子可导出。`);
+                return;
+            }
+
+            let csv = '句号,英文,中文\n';
+            sentences.forEach((s, index) => {
+                const escapeCsv = (str) => `"${String(str).replace(/"/g, '""')}"`;
+                csv += `${index + 1},${escapeCsv(s.en)},${escapeCsv(s.zh)}\n`;
+            });
+
+            downloadCsv(csv, `${corpusName}_题库.csv`);
+            alert(`已导出语料库 "${corpusName}" 的题库到 ${corpusName}_题库.csv`);
+        }
+
+        /**
+         * 导出所有已练习数据为 CSV 文件。
+         */
+        function exportAllPracticedData() {
+            const practicedSentences = [];
+            
+            if (typeof corpuses === 'undefined' || corpuses.length === 0) {
+                alert('没有语料数据可供导出。');
+                return;
+            }
+
+            corpuses.forEach(corpus => {
+                corpus.sentences.forEach((sentence, index) => {
+                    const count = getSentencePracticeCount(corpus.id, index);
+                    if (count > 0) {
+                        practicedSentences.push({
+                            corpus_id: corpus.id,
+                            corpus_name: corpus.name,
+                            en: sentence.en,
+                            zh: sentence.zh,
+                            practiced_count: count
+                        });
+                    }
+                });
+            });
+
+            if (practicedSentences.length === 0) {
+                alert('没有找到任何已练习的句子数据。');
+                return;
+            }
+
+            const headers = ['corpus_id', 'corpus_name', 'en', 'zh', 'practiced_count'];
+            const csvRows = [];
+            csvRows.push(headers.join(','));
+
+            practicedSentences.forEach(item => {
+                const values = headers.map(header => {
+                    let value = item[header];
+                    if (typeof value === 'string' && (value.includes(',') || value.includes('"') || value.includes('\n'))) {
+                        return `"${value.replace(/"/g, '""')}"`;
+                    }
+                    return value;
+                });
+                csvRows.push(values.join(','));
+            });
+
+            const csvString = csvRows.join('\n');
+            downloadCsv(csvString, '所有已练习句子数据_中英互译.csv'); // 更改文件名
+            alert(`已导出 ${practicedSentences.length} 条已练习数据到 所有已练习句子数据_中英互译.csv`);
+        }
+
+        /**
+         * 辅助函数：下载 CSV 文件
+         */
+        function downloadCsv(csvString, filename) {
+            const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvString], { type: 'text/csv;charset=utf-8;' }); // 添加 BOM 以确保中文显示正常
+            const link = document.createElement('a');
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    </script>
+</body>
+</html>

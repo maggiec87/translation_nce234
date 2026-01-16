@@ -1,353 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新概念英语回译练习</title>
-    <style>
-        :root {
-            --primary-color: #007aff;
-            --primary-hover-color: #0056b3;
-            --success-color: #28a745;
-            --success-bg-color: #e9f7ef;
-            --error-color: #dc3545;
-            --error-bg-color: #fbebed;
-            --warning-color: #e74c3c;
-            --text-color: #343a40;
-            --bg-color: #f8f9fa;
-            --container-bg-color: #ffffff;
-            --border-color: #dee2e6;
-            --border-radius: 12px;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCE 翻译练习册</title>
+<style>
+    /* 🌈 全局配色变量 */
+    :root {
+        --nce2: linear-gradient(135deg, #ff8000, #ffb347);
+        --nce3: linear-gradient(135deg, #0273fe, #599beb);
+        --nce4: linear-gradient(135deg, #009e60, #38d68d);
 
-        body {
-            font-family: -apple-system, system-ui, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
+        --text-dark: #2d3436;
+        --text-light: #ffffff;
+        --bg: #f6f7fb;
+        --radius: 18px;
+        --shadow: 0 4px 16px rgba(0,0,0,.08);
+        --shadow-hover: 0 8px 28px rgba(0,0,0,.15);
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--container-bg-color);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
+    body {
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        color: var(--text-dark);
+    }
 
-        h1 { text-align: center; color: var(--primary-color); margin-bottom: 30px; }
+    .wrapper {
+        max-width: 1000px;
+        width: 100%;
+        text-align: center;
+    }
 
-        /* 选择器区域 */
-        .selector-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
+    h1 {
+        font-size: 2.6rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
 
-        select, button, textarea, input {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 16px;
-        }
+    .intro {
+        color: #636e72;
+        margin-bottom: 40px;
+        font-size: 1.15rem;
+    }
 
-        select { flex: 1; min-width: 200px; }
+    /* 📚 Grid 布局 */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
 
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+    /* ✨ 卡片基础样式 */
+    .card {
+        padding: 30px;
+        border-radius: var(--radius);
+        color: var(--text-light);
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition: .25s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 200px;
+    }
 
-        button:hover:not(:disabled) { background-color: var(--primary-hover-color); transform: translateY(-1px); }
-        button:disabled { background-color: #ccc; cursor: not-allowed; }
+    .card svg {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+        stroke: #fff;
+    }
 
-        .btn-success { background-color: var(--success-color); }
-        .btn-warning { background-color: var(--warning-color); }
+    .card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: var(--shadow-hover);
+    }
 
-        /* 练习区域 */
-        .practice-card {
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-top: 20px;
-            background: #fff;
-        }
-
-        .zh-display {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f1f3f5;
-            border-radius: 8px;
-        }
-
-        textarea {
-            width: 100%;
-            height: 100px;
-            resize: none;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-        }
-
-        .feedback {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .feedback.correct { display: block; background: var(--success-bg-color); color: var(--success-color); border: 1px solid var(--success-color); }
-        .feedback.incorrect { display: block; background: var(--error-bg-color); color: var(--error-color); border: 1px solid var(--error-color); }
-
-        .stats {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .hidden { display: none; }
-
-        /* 进度显示 */
-        .full-text-view {
-            margin-top: 30px;
-            border-top: 2px dashed var(--border-color);
-            padding-top: 20px;
-        }
-
-        .lesson-title { font-weight: bold; font-size: 1.2em; margin-bottom: 10px; }
-        
-        .sentence-item {
-            margin-bottom: 10px;
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-        }
-        .sentence-item .count {
-            font-size: 0.8em;
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 10px;
-            margin-left: 10px;
-        }
-    </style>
+    /* 🍊💜💚独立配色 */
+    .nce2 { background: var(--nce2); }
+    .nce3 { background: var(--nce3); }
+    .nce4 { background: var(--nce4); }
+</style>
 </head>
+
 <body>
+<div class="wrapper">
+    <h1>NCE 翻译练习簿</h1>
+    <p class="intro">开启你的英语学习之旅 🚀</p>
 
-<div class="container">
-    <h1>NCE 回译训练营</h1>
+    <div class="grid">
+        <a href="nce2.html" class="card nce2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-6-9h12M4 7a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7z" />
+            </svg>
+            <h2>新概念英语第二册 NCE2</h2>
+        </a>
 
-    <!-- 顶部控制栏 -->
-    <div class="selector-group">
-        <select id="lessonSelect">
-            <option value="">-- 选择课文 --</option>
-        </select>
-        <button id="startBtn">开始练习</button>
-        <button id="exportBtn" class="btn-success">导出进度</button>
-    </div>
+        <a href="nce3.html" class="card nce3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-6-9h12M4 7a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7z" />
+            </svg>
+            <h2>新概念英语第三册 NCE3</h2>
+        </a>
 
-    <!-- 设置 -->
-    <div id="settingsArea" style="margin-bottom: 20px; text-align: center;">
-        <label><input type="radio" name="mode" value="seq" checked> 顺序</label>
-        <label style="margin-left: 15px;"><input type="radio" name="mode" value="rand"> 随机</label>
-    </div>
-
-    <!-- 练习区 -->
-    <div id="practiceArea" class="hidden">
-        <div class="stats">
-            <span id="progressText">进度: 0/0</span>
-            <span id="countText">本句已练: 0次</span>
-        </div>
-        <div class="practice-card">
-            <div id="zhSource" class="zh-display">请选择课文并点击开始</div>
-            <textarea id="enInput" placeholder="请输入对应的英文句子..."></textarea>
-            
-            <div id="actionBtns">
-                <button id="submitBtn" style="width: 100%;">提交检查 (Enter)</button>
-                <div style="display: flex; gap: 10px; margin-top: 10px;">
-                    <button id="nextBtn" class="hidden" style="flex: 1;">下一句</button>
-                    <button id="repeatBtn" class="hidden" style="flex: 1; background: #6c757d;">再练一遍</button>
-                </div>
-            </div>
-
-            <div id="feedbackArea" class="feedback"></div>
-        </div>
-        <button id="endBtn" class="btn-warning" style="margin-top: 20px; width: 100%;">结束本次练习</button>
-    </div>
-
-    <!-- 全文预览 -->
-    <div id="fullTextView" class="full-text-view hidden">
-        <div class="lesson-title" id="viewTitle"></div>
-        <div id="viewContent"></div>
+        <a href="nce4.html" class="card nce4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-6-9h12M4 7a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7z" />
+            </svg>
+            <h2>新概念英语第四册 NCE4</h2>
+        </a>
     </div>
 </div>
-
-<script src="data.js"></script>
-<script>
-    let currentLesson = null;
-    let practiceQueue = [];
-    let currentIndex = 0;
-    const STORAGE_KEY = 'nce_back_translation_progress';
-    let progressData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-
-    // 初始化下拉框
-    const lessonSelect = document.getElementById('lessonSelect');
-    if (typeof nceData !== 'undefined') {
-        nceData.forEach(lesson => {
-            const opt = document.createElement('option');
-            opt.value = lesson.id;
-            opt.textContent = `${lesson.book} - ${lesson.title}`;
-            lessonSelect.appendChild(opt);
-        });
-    }
-
-    // 开始练习
-    document.getElementById('startBtn').onclick = () => {
-        const lessonId = lessonSelect.value;
-        currentLesson = nceData.find(l => l.id === lessonId);
-        if (!currentLesson) return alert('请选择课文');
-
-        const mode = document.querySelector('input[name="mode"]:checked').value;
-        practiceQueue = currentLesson.sentences.map((s, i) => ({...s, index: i}));
-        
-        if (mode === 'rand') {
-            practiceQueue.sort(() => Math.random() - 0.5);
-        }
-
-        currentIndex = 0;
-        showPractice();
-        updateFullTextView();
-    };
-
-    function showPractice() {
-        document.getElementById('practiceArea').classList.remove('hidden');
-        document.getElementById('fullTextView').classList.remove('hidden');
-        loadSentence();
-    }
-
-    function loadSentence() {
-        const data = practiceQueue[currentIndex];
-        document.getElementById('zhSource').textContent = data.zh;
-        document.getElementById('enInput').value = '';
-        document.getElementById('enInput').disabled = false;
-        document.getElementById('enInput').focus();
-        document.getElementById('feedbackArea').className = 'feedback';
-        document.getElementById('submitBtn').classList.remove('hidden');
-        document.getElementById('nextBtn').classList.add('hidden');
-        document.getElementById('repeatBtn').classList.add('hidden');
-        
-        const count = progressData[`${currentLesson.id}_${data.index}`] || 0;
-        document.getElementById('countText').textContent = `本句已练: ${count}次`;
-        document.getElementById('progressText').textContent = `进度: ${currentIndex + 1}/${practiceQueue.length}`;
-    }
-
-    function checkAnswer() {
-        const userInput = document.getElementById('enInput').value.trim();
-        const correctAnwser = practiceQueue[currentIndex].en;
-        const feedbackArea = document.getElementById('feedbackArea');
-
-        const isCorrect = normalize(userInput) === normalize(correctAnwser);
-        
-        feedbackArea.innerHTML = `
-            <div><strong>您的回答:</strong> ${userInput || '(空)'}</div>
-            <div style="margin-top:5px;"><strong>标准答案:</strong> ${correctAnwser}</div>
-        `;
-        feedbackArea.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
-
-        // 更新进度
-        const key = `${currentLesson.id}_${practiceQueue[currentIndex].index}`;
-        progressData[key] = (progressData[key] || 0) + 1;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
-
-        document.getElementById('enInput').disabled = true;
-        document.getElementById('submitBtn').classList.add('hidden');
-        document.getElementById('nextBtn').classList.remove('hidden');
-        document.getElementById('repeatBtn').classList.remove('hidden');
-    }
-
-    function normalize(text) {
-        return text.toLowerCase().replace(/[.,!?;:'"“”‘’\-—]/g, '').replace(/\s+/g, ' ').trim();
-    }
-
-    document.getElementById('submitBtn').onclick = checkAnswer;
-
-    document.getElementById('nextBtn').onclick = () => {
-        currentIndex++;
-        if (currentIndex < practiceQueue.length) {
-            loadSentence();
-        } else {
-            alert('本课练习完成！');
-            document.getElementById('practiceArea').classList.add('hidden');
-        }
-        updateFullTextView();
-    };
-
-    document.getElementById('repeatBtn').onclick = () => {
-        // 将当前句加入队列末尾
-        practiceQueue.push(practiceQueue[currentIndex]);
-        document.getElementById('nextBtn').click();
-    };
-
-    document.getElementById('endBtn').onclick = () => {
-        if(confirm('确定要结束本次练习吗？')) {
-            document.getElementById('practiceArea').classList.add('hidden');
-        }
-    };
-
-    function updateFullTextView() {
-        const viewTitle = document.getElementById('viewTitle');
-        const viewContent = document.getElementById('viewContent');
-        viewTitle.textContent = currentLesson.book + " - " + currentLesson.title;
-        
-        viewContent.innerHTML = currentLesson.sentences.map((s, i) => {
-            const count = progressData[`${currentLesson.id}_${i}`] || 0;
-            return `<div class="sentence-item">
-                <div style="color:#007aff">${s.en}</div>
-                <div style="color:#666">${s.zh} <span class="count">练过 ${count} 次</span></div>
-            </div>`;
-        }).join('');
-    }
-
-    // 回车键支持
-    document.getElementById('enInput').onkeydown = (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            if (!document.getElementById('submitBtn').classList.contains('hidden')) {
-                checkAnswer();
-            } else {
-                document.getElementById('nextBtn').click();
-            }
-        }
-    };
-
-    // 导出功能
-    document.getElementById('exportBtn').onclick = () => {
-        let csv = "\ufeff课文ID,句子索引,练习次数\n";
-        for (let key in progressData) {
-            csv += `${key.replace('_', ',')},${progressData[key]}\n`;
-        }
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = "NCE_Progress.csv";
-        link.click();
-    };
-</script>
-
 </body>
 </html>
