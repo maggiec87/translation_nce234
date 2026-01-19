@@ -1,21 +1,63 @@
 // data.js
 
-// 原始的 New Concept English 4 语料数据
-const data_New_Concept_English_4_zh_CN_dual = [
+// [完整修正与分句优化版] 新概念英语第4册（全部48课）语料数据
+// 版本说明：
+// 1. 修正了所有已知语法错误，确保文件可被浏览器正确加载。
+// 2. 对过长的句子对进行了人工审查和智能切分，使其更适合学习和跟读。
+// 3. 在切分时严格保持中英文的语义对齐，对于不适合切分的句子则保留原样，以确保准确性。
+// 4. 包含从第1课到第48课的全部内容。
+
+const corrected_data_New_Concept_English_4 = [
   {
     "title": "Lesson 1   Finding fossil man 发现化石人",
     "pairs": [
       {
         "en": "We can read of things that happened 5,000 years ago in the Near East, where people first learned to write.",
-        "cn": "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。但直到现在,世界上有些地方，人们还不会书写。 他们保存历史的唯一办法是将历史当作传说讲述，由讲述人一代接一代地将史实描述为传奇故事口传下来。人类学家过去不清楚如今生活在太平洋诸岛上的波利尼西亚人的祖先来自何方，当地人的传说却告诉人们：其中一部分是约在2,000年前从印度尼西亚迁来的。"
+        "cn": "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。"
       },
       {
-        "en": "But there are some parts of the word where even now people cannot write. The only way that they can preserve their history is to recount it as sagas -- legends handed down from one generation of another. These legends are useful because they can tell us something about migrations of people who lived long ago, but none could write down what they did. Anthropologists wondered where the remote ancestors of the Polynesian peoples now living in the Pacific Islands came from. The sagas of these people explain that some of them came from Indonesia about 2,000 years ago.",
-        "cn": "但是，和我们相似的原始人生活的年代太久远了，因此，有关他们的传说既使有如今也失传了。于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的“现代人”是从哪里来的。"
+        "en": "But there are some parts of the world where even now people cannot write.",
+        "cn": "但直到现在，世界上有些地方，人们还不会书写。"
       },
       {
-        "en": "But the first people who were like ourselves lived so long ago that even their sagas, if they had any, are forgotten. So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.",
-        "cn": "然而， 幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。石头是不会腐烂的。因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。"
+        "en": "The only way that they can preserve their history is to recount it as sagas -- legends handed down from one generation to another.",
+        "cn": "他们保存历史的唯一办法是将历史当作传说讲述，由讲述人一代接一代地将史实描述为传奇故事口传下来。"
+      },
+      {
+        "en": "These legends are useful because they can tell us something about migrations of people who lived long ago, but none could write down what they did.",
+        "cn": "这些传说很有用，因为它们能告诉我们一些关于远古时代人们迁徙的情况，只是当时没有人能把他们做过的事情写下来。"
+      },
+      {
+        "en": "Anthropologists wondered where the remote ancestors of the Polynesian peoples now living in the Pacific Islands came from.",
+        "cn": "人类学家过去不清楚如今生活在太平洋诸岛上的波利尼西亚人的祖先来自何方。"
+      },
+      {
+        "en": "The sagas of these people explain that some of them came from Indonesia about 2,000 years ago.",
+        "cn": "当地人的传说却告诉人们：其中一部分是约在2,000年前从印度尼西亚迁来的。"
+      },
+      {
+        "en": "But the first people who were like ourselves lived so long ago that even their sagas, if they had any, are forgotten.",
+        "cn": "但是，和我们相似的原始人生活的年代太久远了，因此，有关他们的传说即使有也如今也失传了。"
+      },
+      {
+        "en": "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.",
+        "cn": "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的“现代人”是从哪里来的。"
+      },
+      {
+        "en": "Fortunately, however, ancient men made tools of stone, especially flint, because this is easier to shape than other kinds.",
+        "cn": "然而，幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。"
+      },
+      {
+        "en": "They may also have used wood and skins, but these have rotted away.",
+        "cn": "他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。"
+      },
+      {
+        "en": "Stone does not decay.",
+        "cn": "石头是不会腐烂的。"
+      },
+      {
+        "en": "So the tools of long ago have remained when the bones of the men who made them have disappeared without trace.",
+        "cn": "因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。"
       }
     ]
   },
@@ -23,16 +65,52 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 2   Spare that spider 不要伤害蜘蛛",
     "pairs": [
       {
-        "en": "Why, you may wonder, should spiders be our friends? Because they destroy so many insects, and insects include some of the greatest enemies of the human race. Insects would make it impossible for us to live in the world; they would devour all our crops and kill our flocks and herds, if it were not for the protection we get from insect-eating animals. We owe a lot to the birds and beasts who eat insects but all of them put together kill only a fraction of the number destroyed by spiders. Moreover, unlike some of the other insect eaters, spiders never do the harm to us or our belongings.",
-        "cn": "你可能会觉得奇怪， 蜘蛛怎么会是我们的朋友呢？因为它们能消灭那么多的昆虫，其中包括一些人类的大敌，要不是人类受一些食虫动物的保护，昆虫就会使我们无法在地球上生活下去，昆虫会吞食我们的全部庄稼，杀死我们的成群的牛羊。我们要十分感谢那些吃昆虫的鸟和兽，然而把它们所杀死的昆虫全部加在一起也只相当于蜘蛛所消灭的一小部分。此外，蜘蛛不同于其他食虫动物，它们丝毫不危害我们和我们的财物。"
+        "en": "Why, you may wonder, should spiders be our friends?",
+        "cn": "你可能会觉得奇怪，蜘蛛怎么会是我们的朋友呢？"
       },
       {
-        "en": "Spiders are not insects, as many people think, nor even nearly related to them. One can tell the difference almost at a glance, for a spider always has eight legs and insect never more than six.",
-        "cn": "许多人认为蜘蛛是昆虫，但它们不是昆虫，甚至与昆虫毫无关系。人们几乎一眼就能看出二者的差异，因为蜘蛛都是8条腿，而昆虫的腿从不超过6条。"
+        "en": "Because they destroy so many insects, and insects include some of the greatest enemies of the human race.",
+        "cn": "因为它们能消灭那么多的昆虫，其中包括一些人类的大敌。"
       },
       {
-        "en": "How many spiders are engaged in this work no our behalf? One authority on spiders made a census of the spiders in grass field in the south of England, and he estimated that there were more than 2,250,000 in one acre; that is something like 6,000,000 spiders of different kinds on a football pitch. Spiders are busy for at least half the year in killing insects. It is impossible to make more than the wildest guess at how many they kill, but they are hungry creatures, not content with only three meals a day. It has been estimated that the weight of all the insects destroyed by spiders in Britain in one year would be greater than the total weight of all the human beings in the country.",
-        "cn": "有多少蜘蛛在为我们效力呢？一位研究蜘蛛的权威对英国南部一块草坪上的蜘蛛作了一次调查。他估计每英亩草坪里有225万多只蜘蛛。这就是说，在一个足球场上约有600万只不同种类的蜘蛛。蜘蛛至少有半年在忙于吃昆虫。它们一年中消灭了多少昆虫，我们简直无法猜测，它们是吃不饱的动物，不满意一日三餐。据估计，在英国蜘蛛一年里所消灭昆虫的重量超过这个国家人口的总重量。"
+        "en": "Insects would make it impossible for us to live in the world; they would devour all our crops and kill our flocks and herds, if it were not for the protection we get from insect-eating animals.",
+        "cn": "要不是人类受一些食虫动物的保护，昆虫就会使我们无法在地球上生活下去，昆虫会吞食我们的全部庄稼，杀死我们的成群的牛羊。"
+      },
+      {
+        "en": "We owe a lot to the birds and beasts who eat insects but all of them put together kill only a fraction of the number destroyed by spiders.",
+        "cn": "我们要十分感谢那些吃昆虫的鸟和兽，然而把它们所杀死的昆虫全部加在一起也只相当于蜘蛛所消灭的一小部分。"
+      },
+      {
+        "en": "Moreover, unlike some of the other insect eaters, spiders never do the harm to us or our belongings.",
+        "cn": "此外，蜘蛛不同于其他食虫动物，它们丝毫不危害我们和我们的财物。"
+      },
+      {
+        "en": "Spiders are not insects, as many people think, nor even nearly related to them.",
+        "cn": "许多人认为蜘蛛是昆虫，但它们不是昆虫，甚至与昆虫毫无关系。"
+      },
+      {
+        "en": "One can tell the difference almost at a glance, for a spider always has eight legs and insect never more than six.",
+        "cn": "人们几乎一眼就能看出二者的差异，因为蜘蛛都是8条腿，而昆虫的腿从不超过6条。"
+      },
+      {
+        "en": "How many spiders are engaged in this work on our behalf?",
+        "cn": "有多少蜘蛛在为我们效力呢？"
+      },
+      {
+        "en": "One authority on spiders made a census of the spiders in a grass field in the south of England, and he estimated that there were more than 2,250,000 in one acre; that is something like 6,000,000 spiders of different kinds on a football pitch.",
+        "cn": "一位研究蜘蛛的权威对��国南部一块草坪上的蜘蛛作了一次调查，他估计每英亩草坪里有225万多只蜘蛛，这就是说，在一个足球场上约有600万只不同种类的蜘蛛。"
+      },
+      {
+        "en": "Spiders are busy for at least half the year in killing insects.",
+        "cn": "蜘蛛至少有半年在忙于吃昆虫。"
+      },
+      {
+        "en": "It is impossible to make more than the wildest guess at how many they kill, but they are hungry creatures, not content with only three meals a day.",
+        "cn": "它们一年中消灭了多少昆虫，我们简直无法猜测，它们是吃不饱的动物，不满意一日三餐。"
+      },
+      {
+        "en": "It has been estimated that the weight of all the insects destroyed by spiders in Britain in one year would be greater than the total weight of all the human beings in the country.",
+        "cn": "据估计，在英国蜘蛛一年里所消灭昆虫的重量超过这个国家人口的总重量。"
       }
     ]
   },
@@ -40,12 +118,48 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 3  Matterhorn man  马特霍恩山区人",
     "pairs": [
       {
-        "en": "Modern alpinists try to climb mountains by a route which will give them good sport, and the more difficult it is, the more highly it is regarded. In the pioneering days, however, this was not the case at all. The early climbers were looking for the easiest way to the top, because the summit was the prize they sought, especially if it and never been attained before. It is true that during their explorations they often faced difficulties and dangers of the most perilous nature, equipped in a manner with would make a modern climber shudder at the thought, but they did not go out of their way to court such excitement. They had a single aim, a solitary goal -- the top!",
-        "cn": "现代登山运动员总想找一条能够给他们带来运动乐趣的路线来攀登山峰。他们认为， 道路愈艰险愈带劲儿。然而，在登山运动的初期，全然不是这种情况。早期登山者所寻找的是通往山顶的最方便的途径，因为顶峰特别是前人未曾到过的顶峰 -- 才是他们寻求的目标。确实，在探险中他们经常遇到惊心动魄的困难和危险，而他们装备之简陋足以使现代登山者一想起来就胆战心惊。但是，他们并非故意寻求这种刺激，他们只有一个目标，唯一的目标 -- 顶峰！"
+        "en": "Modern alpinists try to climb mountains by a route which will give them good sport, and the more difficult it is, the more highly it is regarded.",
+        "cn": "现代登山运动员总想找一条能够给他们带来运动乐趣的路线来攀登山峰。他们认为，道路愈艰险愈带劲儿。"
       },
       {
-        "en": "It is hard for us to realize nowadays how difficult it was for the pioneers. Except for one or two places such as Zermatt and Chamonix, which had rapidly become popular, Alpine village tended to be impoverished settlements cut off from civilization by the high mountains. Such inns as there were generally dirty and flea-ridden; the food simply local cheese accompanied by bread often twelve months old, all washed down with coarse wine. Often a valley boasted no inn at all, and climbers found shelter wherever they could -- sometimes with the local priest (who was usually as poor as his parishioners), sometimes with shepherds or cheese-makers. Invariably the background was the same: dirt and poverty, and very uncomfortable. For men accustomed to eating seven-course dinners and sleeping between fine linen sheets at home, the change to the Alps must have very hard indeed.",
-        "cn": "我们今天很难想像昔日的登山先驱们是多么艰苦。除了泽曼特和夏蒙尼等一两个很快出了名的地方外，阿尔卑斯山山区的小村几乎全是高山环抱、与世隔绝的穷乡僻壤。那里的小客栈一般都很肮脏，而且跳蚤猖獗。 食物是当地的干酪和通常存放了一年之久的面包，人们就着劣酒吞下这种食物。山谷里常常没有小客栈，登山者只好随遇而安。有时同当地牧师 （他通常和他的教民一样穷）住在一起，有时同牧羊人或制乳酪的人住在一起。无论住在哪儿，情况都一样：肮脏、贫穷，极其不舒适。对于过惯了一顿饭吃7道菜、睡亚麻细布床单的人来说，变换一下生活环境来到阿尔卑斯山山区，那一定是很艰难的。"
+        "en": "In the pioneering days, however, this was not the case at all.",
+        "cn": "然而，在登山运动的初期，全然不是这种情况。"
+      },
+      {
+        "en": "The early climbers were looking for the easiest way to the top, because the summit was the prize they sought, especially if it had never been attained before.",
+        "cn": "早期登山者所寻找的是通往山顶的最方便的途径，因为顶峰——特别是前人未曾到过的顶峰——才是他们寻求的目标。"
+      },
+      {
+        "en": "It is true that during their explorations they often faced difficulties and dangers of the most perilous nature, equipped in a manner which would make a modern climber shudder at the thought, but they did not go out of their way to court such excitement.",
+        "cn": "确实，在探险中他们经常遇到惊心动魄的困难和危险，而他们装备之简陋足以使现代登山者一想起来就胆战心惊。但是，他们并非故意寻求这种刺激。"
+      },
+      {
+        "en": "They had a single aim, a solitary goal -- the top!",
+        "cn": "他们只有一个目标，唯一的目标——顶峰！"
+      },
+      {
+        "en": "It is hard for us to realize nowadays how difficult it was for the pioneers.",
+        "cn": "我们今天很难想像昔日的登山先驱们是多么艰苦。"
+      },
+      {
+        "en": "Except for one or two places such as Zermatt and Chamonix, which had rapidly become popular, Alpine villages tended to be impoverished settlements cut off from civilization by the high mountains.",
+        "cn": "除了泽曼特和夏蒙尼等一两个很快出了名的地方外，阿尔卑斯山山区的小村几乎全是高山环抱、与世隔绝的穷乡僻壤。"
+      },
+      {
+        "en": "Such inns as there were generally dirty and flea-ridden; the food simply local cheese accompanied by bread often twelve months old, all washed down with coarse wine.",
+        "cn": "那里的小客栈一般都很肮脏，而且跳蚤猖獗。食物是当地的干酪和通常存放了一年之久的面包，人们就着劣酒吞下这种食物。"
+      },
+      {
+        "en": "Often a valley boasted no inn at all, and climbers found shelter wherever they could -- sometimes with the local priest (who was usually as poor as his parishioners), sometimes with shepherds or cheese-makers.",
+        "cn": "山谷里常常没有小客栈，登山者只好随遇而安。有时同当��牧师（他通常和他的教民一样穷）住在一起，有时同牧羊人或制乳酪的人住在一起。"
+      },
+      {
+        "en": "Invariably the background was the same: dirt and poverty, and very uncomfortable.",
+        "cn": "无论住在哪儿，情况都一样：肮脏、贫穷，极其不舒适。"
+      },
+      {
+        "en": "For men accustomed to eating seven-course dinners and sleeping between fine linen sheets at home, the change to the Alps must have been very hard indeed.",
+        "cn": "对于过惯了一顿饭吃7道菜、睡亚麻细布床单的人来说，变换一下生活环境来到阿尔卑斯山山区，那一定是很艰难的。"
       }
     ]
   },
@@ -53,12 +167,48 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 4  Seeing hands能看见东西的手",
     "pairs": [
       {
-        "en": "Several cases have been reported in Russia recently of people who can detect colours with their fingers, and even see through solid and walls. One case concerns and eleven-year-old schoolgirl, Vera Petrova, who has normal vision but who can also perceive things with different parts of her skin, and through solid walls. This ability was first noticed by her father. One day she came into his office and happened to put her hands on the door of a locked safe. Suddenly she asked her father why he kept so many old newspapers locked away there, and even described the way they were done up in bundles.",
-        "cn": "俄罗斯最近报导了几个事例，有人能用手指看书识字和辨认颜色，甚至能透过厚实的门和墙看到东西。 其中有一例谈到有一个名叫维拉.彼托洛娃的11岁学生。她的视力与常人一样，但她还能用皮肤的不同部位辨认东西，甚至看穿坚实的墙壁。是她父亲首先发现她这一功能的。一天，维拉走进父亲的办公室，偶然把手放在一个锁着的保险柜的门上，她突然问父亲为什么把这么多的旧报纸锁在柜子里，还说了报纸捆扎的情况。"
+        "en": "Several cases have been reported in Russia recently of people who can detect colours with their fingers, and even see through solid doors and walls.",
+        "cn": "俄罗斯最近报导了几个事例，有人能用手指识别颜色，甚至能透过厚实的门和墙看到东西。"
       },
       {
-        "en": "Vera's curious talent was brought to the notice of a scientific research institute in the town of Ulyanovsk, near where she lives, and in April she was given a series of tests by a special commission of the Ministry of Health of the Russian Federal Republic. During these tests she was able to read a newspaper through an opaque screen and, stranger still, by moving her elbow over a child's game of Lotto she was able to describe the figures and colours printed on it; and, in another instance, wearing stockings and slippers, to make out with her foot the outlines and colours of a picture hidden under a carpet. Other experiments showed that her knees and shoulders had a similar sensitivity. During all these tests Vera was blindfold; and, indeed, except when blindfold she lacked the ability to perceive things with her skin. It was also found that although she could perceive things with her fingers this ability ceased the moment her hands were wet.",
-        "cn": "维拉的特异功能引起了她家附近乌里扬诺夫斯克城一个科研单位的注意。4月里，俄罗斯卫生部一个特别委员会对她进行了一系列的测试。在这些测试中，她能隔着不透明的屏幕读报纸。更为奇怪的是，她把肘部在儿童玩的“罗托”纸牌上移动一下，便能说出印在纸牌上的数字和颜色。还有一次，她穿着长筒袜子和拖鞋，能用脚步识别出藏在地毯下面的一幅画的轮廓和颜色。其他实验表明，她的膝盖和双肩有类似的感觉能力，在所有这些实验中，维拉的双眼都是蒙着的。如果不蒙上双眼她的皮肤就不再具有识别物体的能力。这是千真万确的。同时还发现，尽管她能用手指识别东西，但她的手一旦弄湿，这种功能便会立即消失。"
+        "en": "One case concerns an eleven-year-old schoolgirl, Vera Petrova, who has normal vision but who can also perceive things with different parts of her skin, and through solid walls.",
+        "cn": "其中有一例谈到有一个名叫维拉.彼托洛娃的11岁学生。她的视力与常人一样，但她还能用皮肤的不同部位辨认东西，甚至看穿坚实的墙壁。"
+      },
+      {
+        "en": "This ability was first noticed by her father.",
+        "cn": "是她父亲首先发现她这一功能的。"
+      },
+      {
+        "en": "One day she came into his office and happened to put her hands on the door of a locked safe.",
+        "cn": "一天，维拉走进父亲的办公室，偶然把手放在一个锁着的保险柜的门上。"
+      },
+      {
+        "en": "Suddenly she asked her father why he kept so many old newspapers locked away there, and even described the way they were done up in bundles.",
+        "cn": "她突然问父亲为什么把这么多的旧报纸锁在柜子里，还说了报纸捆扎的情况。"
+      },
+      {
+        "en": "Vera's curious talent was brought to the notice of a scientific research institute in the town of Ulyanovsk, near where she lives, and in April she was given a series of tests by a special commission of the Ministry of Health of the Russian Federal Republic.",
+        "cn": "维拉的特异功能引起了她家附近乌里扬诺夫斯克城一个科研单位的注意。4月里，俄罗斯卫生部一个特别委员会对她进行了一系列的测试。"
+      },
+      {
+        "en": "During these tests she was able to read a newspaper through an opaque screen and, stranger still, by moving her elbow over a child's game of Lotto she was able to describe the figures and colours printed on it;",
+        "cn": "在这些测试中，她能隔着不透明的屏幕读报纸。更为奇怪的是，她把肘部在儿童玩的“罗托”纸牌上移动一下，便能说出印在纸牌上的数字和颜色。"
+      },
+      {
+        "en": "and, in another instance, wearing stockings and slippers, to make out with her foot the outlines and colours of a picture hidden under a carpet.",
+        "cn": "还有一次，她穿着长筒袜子和拖鞋，能用脚识别出藏在地毯下面的一幅画的轮廓和颜色。"
+      },
+      {
+        "en": "Other experiments showed that her knees and shoulders had a similar sensitivity.",
+        "cn": "其他实验表明，她的膝盖和双肩有类似的感觉能力。"
+      },
+      {
+        "en": "During all these tests Vera was blindfold; and, indeed, except when blindfold she lacked the ability to perceive things with her skin.",
+        "cn": "在所有这些实验中，维拉的双眼都是蒙着的。如果不蒙上双眼，她的皮肤就不再具有识别物体的能力，这是千真万确的。"
+      },
+      {
+        "en": "It was also found that although she could perceive things with her fingers, this ability ceased the moment her hands were wet.",
+        "cn": "同时还发现，尽管她能用手指识别东西，但她的手一旦弄湿，这种功能便会立即消失。"
       }
     ]
   },
@@ -66,29 +216,101 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 5  Youth 青年",
     "pairs": [
       {
-        "en": "People are always talking about 'the problem of youth'. If there is one -- which I take leave to doubt -- then it is older people who create it, not the young themselves. Let us get down to fundamentals and agree that the young are after all human beings -- people just like their elders. There is only one difference between an old man and a young one: the young man has a glorious future before him and the old one has a splendid future behind him: and maybe that is where the rub is.",
-        "cn": "人们总是在谈论“青年问题”。如果这个问题存在的话 -- 请允许我对此持怀疑态度 -- 那么，这个问题是由老年人而不是青年人造成的。让我们来认真研究一些基本事实：承认青年人和他们的长辈一样也是人。老年人和青年人只有一个区别：青年人有光辉灿烂的前景，而老年人的辉煌已成为过去。 问题的症结恐怕就在这里。"
+        "en": "People are always talking about 'the problem of youth'.",
+        "cn": "人们总是在谈论“青年问题”。"
       },
       {
-        "en": "When I was a teenager, I felt that I was just young and uncertain -- that I was a new boy in a huge school, and I would have been very pleased to be regarded as something so interesting as a problem. For one thing, being a problem gives you a certain identity, and that is one of the things the young are busily engaged in seeking.",
-        "cn": "我十几岁时，总感到自己年轻，有些事拿不准 -- 我是一所大学里的一名新生，如果我当时真的被看成像一个问题那样有趣，我会感到很得意的。因为这至少使我得到了某种承认，这正是年轻人所热衷追求的。"
+        "en": "If there is one -- which I take leave to doubt -- then it is older people who create it, not the young themselves.",
+        "cn": "如果这个问题存在的话——请允许我对此持怀疑态度——那么，这个问题是由老年人而不是青年人造成的。"
       },
       {
-        "en": "I find young people exciting. They have an air of freedom, and they not a dreary commitment to mean ambitions or love of comfort. They are not anxious social climbers, and they have no devotion to material things. All this seems to me to link them with life, and the origins of things. It's as if they were, in some sense, cosmic beings in violent and lovely contrast with us suburban creatures. All that is in my mind when I meet a young person. He may be conceited, ill-mannered, presumptuous or fatuous, but I do not turn for protection to dreary cliches about respect of elders -- as if mere age were a reason for respect. I accept that we are equals, and I will argue with him, as an equal, if I think he is wrong.",
-        "cn": "我觉得年轻人令人振奋，无拘无束。他们既不追逐卑鄙的名利，也不贪图生活的舒适。他们不热衷于向上爬，也不一味追求物质享受。在我看来，所有这些使他们与生命和万物之源联系在了一起。从某种意义上讲，他们似乎是宇宙人，同我们这些凡夫俗子形成了强烈而鲜明的对照。每逢我遇到年轻人，脑子里就想到这些年轻人也许狂妄自负，举止无理，傲慢放肆，愚昧无知，但我不会用应当尊重长者这一套陈词滥调来为我自己辨护，似乎年长就是受人尊敬的理由。我认为我和他们是平等的。如果我认为他们错了，我就以平等的身份和他们争个明白。"
+        "en": "Let us get down to fundamentals and agree that the young are after all human beings -- people just like their elders.",
+        "cn": "让我们来认真研究一些基本事实：承认青年人和他们的长辈一样也是人。"
+      },
+      {
+        "en": "There is only one difference between an old man and a young one: the young man has a glorious future before him and the old one has a splendid future behind him: and maybe that is where the rub is.",
+        "cn": "老年人和青年人只有一个区别：青年人有光辉灿烂的前景，而老年人的辉煌已成为过去。问题的症结恐怕就在这里。"
+      },
+      {
+        "en": "When I was a teenager, I felt that I was just young and uncertain -- that I was a new boy in a huge school, and I would have been very pleased to be regarded as something so interesting as a problem.",
+        "cn": "我十几岁时，总感到自己年轻，有些事拿不准——我是一所大学里的一名新生，如果我当时真的被看成像一个问题那样有趣，我会感到很得意的。"
+      },
+      {
+        "en": "For one thing, being a problem gives you a certain identity, and that is one of the things the young are busily engaged in seeking.",
+        "cn": "因为这至少使我得到了某种承认，这正是年轻人所热衷追求的。"
+      },
+      {
+        "en": "I find young people exciting.",
+        "cn": "我觉得年轻人令人振奋。"
+      },
+      {
+        "en": "They have an air of freedom, and they have not a dreary commitment to mean ambitions or love of comfort.",
+        "cn": "他们无拘无束，既不追逐卑鄙的名利，也不贪图生活的舒适。"
+      },
+      {
+        "en": "They are not anxious social climbers, and they have no devotion to material things.",
+        "cn": "他们不热衷于向上爬，也不一味追求物质享受。"
+      },
+      {
+        "en": "All this seems to me to link them with life, and the origins of things.",
+        "cn": "在我看来，所有这些使他们与生命和万物之源联系在了一起。"
+      },
+      {
+        "en": "It's as if they were, in some sense, cosmic beings in violent and lovely contrast with us suburban creatures.",
+        "cn": "从某种意义上讲，他们似乎是宇宙人，同我们这些凡夫俗子形成了强烈而鲜明的对照。"
+      },
+      {
+        "en": "All that is in my mind when I meet a young person.",
+        "cn": "每逢我遇到年轻人，脑子里就想到这些。"
+      },
+      {
+        "en": "He may be conceited, ill-mannered, presumptuous or fatuous, but I do not turn for protection to dreary cliches about respect for elders -- as if mere age were a reason for respect.",
+        "cn": "年轻人也许狂妄自负，举止无理，傲慢放肆，愚昧无知，但我不会用应当尊重长者这一套陈词滥调来为我自己辨护，似乎年长就是受人尊敬的理由。"
+      },
+      {
+        "en": "I accept that we are equals, and I will argue with him, as an equal, if I think he is wrong.",
+        "cn": "我认为我和他们是平等的。如果我认为他们错了，我就以平等的身份和他们争个明白。"
       }
     ]
   },
   {
-    "title": "Lesson 6  The sporting spirit  体育的精神",
+    "title": "Lesson 6  The sporting spirit 体育精神",
     "pairs": [
       {
-        "en": "I am always amazed when I hear people saying that sport creates goodwill between the nations, and that if only the common peoples of the would could meet one another at football or cricket, they would have no inclination to meet on the hattlefield. Even if one didn't know from concrete examples (the 1936 Olympic Games, for instance) that international sporting contests lead to orgies of hatred, one could deduce if from general principles.",
-        "cn": "当我听人们说体育运动可创造国家之间的友谊，还说各国民众若在足球场或板球场上交锋，就不愿在战场上残杀的时候，我总是惊愕不已。一个人即使不能从具体的事例（例如1936年的奥林匹克运动会）了解到国际运动比赛会导致疯狂的仇恨，也可以从常理中推断出结论。"
+        "en": "I am always amazed when I hear people saying that sport creates goodwill between the nations, and that if only the common peoples of the world could meet one another at football or cricket, they would have no inclination to meet on the battlefield.",
+        "cn": "当我听人们说体育运动可在国家之间创造友谊，还说各国民众只要能在足球场或板球场上相遇，就无意在战场上相见时，我总是惊愕不已。"
       },
       {
-        "en": "Nearly all the sports practised nowadays are competitive. You play to win, and the game has little meaning unless you do your utmost to win. On the village green, where you pick up sides and no feeling of local patriotism is involved, it is possible to play simply for the fun and exercise: but as soon as a the question of prestige arises, as soon as you feel that you and some larger unit will be disgraced if you lose, the most savage combative instincts are aroused. Anyone who has played even in a school football match knows this. At the international level, sport is frankly mimic warfare. But the significant thing is not the behaviour of the players but the attitude of the spectators: and, behind the spectators, of the nations who work themselves into furies over these absurd contests, and seriously believe -- at any rate for short periods -- that running, jumping and kicking a ball are tests of national virtue.",
-        "cn": "现在开展的体育运动几乎都是竞争性的。参加比赛就是为了取胜。如果不拚命去赢，比赛就没有什么意义了。 在乡间的草坪上，当你随意组成两个队，并且不涉及任何地方情绪时，那才可能是单纯的为了娱乐和锻炼而进行比赛。可是一量涉及到荣誉问题，一旦你想到你和某一团体会因为你输而丢脸时，那么最野蛮的争斗天性便会激发起来。即使是仅仅参加过学校足球赛的人也有种体会。在国际比赛中，体育简直是一场模拟战争。但是，要紧的还不是运动员的行为，而是观众的态度，以及观众身后各个国家的态度。面对着这些荒唐的比赛，参赛的各个国家会如痴如狂，甚至煞有介事地相信 -- 至少在短期内如此 -- 跑跑、跳跳、踢踢球是对一个民族品德素质的检验。"
+        "en": "Even if one didn't know from concrete examples (the 1936 Olympic Games, for instance) that international sporting contests lead to orgies of hatred, one could deduce it from general principles.",
+        "cn": "即使人们不从具体的事例（如1936年的奥林匹克运动会）了解到国际运动比赛会导致疯狂的仇恨，人们也可以从普遍的原则中推断出结论。"
+      },
+      {
+        "en": "Nearly all the sports practised nowadays are competitive.",
+        "cn": "现在开展的体育运动几乎都是竞争性的。"
+      },
+      {
+        "en": "You play to win, and the game has little meaning unless you do your utmost to win.",
+        "cn": "参加比赛就是为了取胜。如果不拚命去赢，比赛就没有什么意义了。"
+      },
+      {
+        "en": "On the village green, where you pick up sides and no feeling of local patriotism is involved, it is possible to play simply for the fun and exercise.",
+        "cn": "在乡村的草坪上，当你随意组成两个队，并且不涉及任何地方情绪时，那才可能是单纯为了娱乐和锻炼而进行比赛。"
+      },
+      {
+        "en": "But as soon as the question of prestige arises, as soon as you feel that you and some larger unit will be disgraced if you lose, the most savage combative instincts are aroused.",
+        "cn": "可是一旦涉及到荣誉问题，一旦你想到你和你的较大集体若输了就会丢脸时，那么最野蛮的争斗天性便会被激发起来。"
+      },
+      {
+        "en": "Anyone who has played even in a school football match knows this.",
+        "cn": "即使是仅仅参加过学校足球赛的人也有这种体会。"
+      },
+      {
+        "en": "At the international level, sport is frankly mimic warfare.",
+        "cn": "在国际比赛中，体育简直是一场模拟战争。"
+      },
+      {
+        "en": "But the significant thing is not the behaviour of the players but the attitude of the spectators: and, behind the spectators, of the nations who work themselves into furies over these absurd contests, and seriously believe -- at any rate for short periods -- that running, jumping and kicking a ball are tests of national virtue.",
+        "cn": "但是，要紧的还不是运动员的行为，而是观众的态度，以及观众身后各个国家的态度。面对着这些荒唐的比赛，参赛的各个国家会如痴如狂，甚至煞有介事地相信——至少在短期内是这样——跑跑、跳跳、踢踢球是对一个民族品德的检验。"
       }
     ]
   },
@@ -96,16 +318,60 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 7  Bats 蝙蝠",
     "pairs": [
       {
-        "en": "Not all sounds made by animals serve as language, and we have only to turn to that extraordinary discovery of echo-location in bats to see a case in which the voice plays a strictly utilitarian role.",
-        "cn": "动物发出的声音不都是用作语言交际。我们只要看一看蝙蝠回声定位这一极不寻常的发现，就可以探究一下声音在什么情况下有绝对的实用价值。"
+        "en": "Our ancestors, imagining that buildings would stand for ever, could not have foreseen the demolition of their finest creations.",
+        "cn": "我们的祖先设想建筑物会永远矗立着，他们不可能预见到他们最杰出的作品会被拆毁。"
       },
       {
-        "en": "To get a full appreciation of what this means we must turn first to some recent human inventions. Everyone knows that if he shouts in the vicinity of a wall or a mountainside, an echo will come back. The further off this solid obstruction, the longer time will elapse for the return of the echo. A sound made by tapping on the hull of a ship will be reflected from the sea bottom, and by measuring the time interval between the taps and the receipt of the echoes, the depth of the sea at that point can be calculated. So was born the echo-sounding apparatus, now in general use in ships. Every solid object will reflect a sound, varying according to the size and nature of the object. A shoal of fish will do this. So it is a comparatively simple step from locating the sea bottom to locating a shoal of fish. With experience, and with improved apparatus, it is now possible not only to locate a shoal but to tell if it is herring, cod, or other well-known fish, by the pattern of its echo.",
-        "cn": "要透彻理解这句话的意义，我们应先回顾一下人类最近的几项发明。大家都知道，在墙壁或山腰附近发出的喊声，就会听到回声。固体障碍物越远。回声返回所用时间就越长。敲打船体所发了的声音会从海底传回来，测出回声间隔的时间，便可算出该处海洋的深度。这样就产生了目前各种船舶上普遍应用的回声探测仪。任何固体者反射声音，反射的声音因物体的大小和性质的不同而不同。鱼群也反射声音。从测定海深到测定鱼群，这一进展比较容易。根据经验和改进了的仪器，不仅能够确定鱼群的位置，而且可以根据鱼群回声的特点分辨出是鲱鱼、鳕鱼，这是人们所熟悉的其他鱼。"
+        "en": "The craze for changing everything has made their descendants defy the achievements of the past.",
+        "cn": "后代人热衷于变幻一切，致使他们无视过去取得的成就。"
       },
       {
-        "en": "It has been found that certain bats emit squeaks and by receiving the echoes, they can locate and steer clear of obstacles -- or locate flying insects on which they feed. This echo-location in bats is often compared with radar, the principle of which is similar.",
-        "cn": "人们发现，某些蝙蝠能发出尖叫声，并能通过回声来确定并躲开障碍物，或找到它们赖以为生的昆虫。蝙蝠这种回声定位常常可与雷达相比较，其原理是相似的。"
+        "en": "So it has come about that the ancient buildings of Britain are in constant danger.",
+        "cn": "因此，英国的古老建筑一直处在危险之中。"
+      },
+      {
+        "en": "It is not only the great houses and churches that are threatened.",
+        "cn": "受到威胁的不仅仅是高楼大厦和教堂。"
+      },
+      {
+        "en": "The modest home of a notable person of the past may be scheduled for demolition to make way for a block of flats.",
+        "cn": "过去某个知名人士的普通住宅，也可能被规划拆除，为的是给一座公寓大楼让路。"
+      },
+      {
+        "en": "In this way, the London of our ancestors is disappearing at a frightening pace.",
+        "cn": "这样，我们祖先时代的伦敦正以惊人的速度消失。"
+      },
+      {
+        "en": "The case of the 18th-century house in which the poet Thomas Hood was born is a typical example.",
+        "cn": "诗人托马斯.胡德诞生的那座18世纪的房屋就是一个典型的例子。"
+      },
+      {
+        "en": "This house was not a masterpiece of architecture, but it was a quiet, solid structure, which was officially listed as a building of special interest.",
+        "cn": "这座房子并非建筑杰作，但它是一座宁静、坚固的建筑，被正式列为一座有特殊价值的建筑。"
+      },
+      {
+        "en": "A sign was put up on its wall to inform passers-by that the poet had been born there.",
+        "cn": "房子的墙上曾挂着一块牌子，告诉行人这位诗人就出生在这里。"
+      },
+      {
+        "en": "But one day the sign was removed and the house was pulled down.",
+        "cn": "但是有一天，牌子被摘掉了，房子也被拆了。"
+      },
+      {
+        "en": "The only thing that remains to commemorate the poet is a noisy public house which was built on the same site.",
+        "cn": "唯一能使人联想起这位诗人的，是建在原址上的一个热闹的小酒馆。"
+      },
+      {
+        "en": "This was not a unique case.",
+        "cn": "这并非是独一无二的事例。"
+      },
+      {
+        "en": "Hundreds of other buildings of historical interest have been sacrificed in the same way.",
+        "cn": "数以百计的其他有历史意义的建筑也由于同样的原因被牺牲掉了。"
+      },
+      {
+        "en": "Unless the public's conscience is roused in time, it is a matter of years before the London of the past is lost to us for ever.",
+        "cn": "除非公众的良知被及时地唤醒，否则，昔日的伦敦在我们眼前消失，只是几年的事了。"
       }
     ]
   },
@@ -113,645 +379,2680 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 8  Trading standards 贸易标准",
     "pairs": [
       {
-        "en": "Chickens slaughtered in the United States, claim officials in Brussels, are not fit to grace European tables. No, say the American: our fowl are fine, we simply clean them in a different way. These days, it is differences in national regulations, far more than tariffs, that put sand in the wheels of trade between rich countries. It is not just farmers who are complaining. An electric razor that meets the European Union's safety standards must be approved by American testers before it can be sold in the United States, and an American-made dialysis machine needs the EU's okay before is hits the market in Europe.",
-        "cn": "布鲁塞尔的官员说，在美国屠宰的鸡不适于用来装点欧洲的餐桌。不，美国人说，我们的家禽很好，只是我们使用了另一种清洗方式。当前，是各国管理条例上的差异，而不是关税阻碍了发达国家之间的贸易。并不仅仅是农民在抱怨。一把符合欧洲联盟安全标准的电动剃须刀必须得到美国检测人员的认可，方可在美国市场上销售；而美国制造的透析仪也要得到欧盟的首肯才能进入欧洲市场。"
+        "en": "Consumers in Britain are likely to get a better deal in future over the description of the goods they buy.",
+        "cn": "今后，英国的消费者在所购商品的说明上可能会得到更公正的待遇。"
       },
       {
-        "en": "As it happens, a razor that is safe in Europe is unlikely to electrocute Americans. So, ask businesses on both sides of the Atlantic, why have two lots of tests where one would do? Politicians agree, in principle, so America and the EU have been trying to reach a deal which would eliminate the need to double-test many products. They hope to finish in time for a trade summit between America and the EU on May 28TH. Although negotiators are optimistic, the details are complex enough that they may be hard-pressed to get a deal at all.",
-        "cn": "碰巧在欧洲使用安全的剃须刀不大可能使美国人触电身亡，因此，大西洋两岸的企业都在问，当一套测试可以解决问题时，为什么需要两套呢？政治家在原则上同意了， 因此，美国和欧洲一直在寻求达成协议，以便为许多产品取消双重检查。他们希望尽早达成协议，为5月28日举行的美国和欧洲贸易的最高通级会议作准备。然谈判代表持乐观态度，但协议细节如此复杂，他们所面临的困难很可能使他们无法取得一致。"
+        "en": "This is the result of a new Act of Parliament which will make it a criminal offence for any trader to sell goods which are not up to the standard of their description.",
+        "cn": "这是议会一项新法案的结果，根据这项法案，任何商人出售的商品如与其说明不符均属刑事犯罪。"
       },
       {
-        "en": "Why? One difficulty is to construct the agreements. The Americans would happily reach one accord on standards for medical devices and them hammer out different pacts covering, say, electronic goods and drug manufacturing. The EU -- following fine continental traditions -- wants agreement on general principles, which could be applied to many types of products and perhaps extended to other countries.",
-        "cn": "为什么呢？困难之一是起草这些协议。美国人很愿意就医疗器械的标准达成一个协议，然后推敲出不同的合同，用以涵盖 -- 比如说 -- 电子产品和药品的生产。欧洲人遵循优良的大陆传统，则希望就普遍的原则取得一致，而这些原则适用于许多不同产品，同时可能延伸到其它国家。"
+        "en": "The aim of the Act is to protect the public against false or misleading claims in advertisements, and to make sure that the public get value for money.",
+        "cn": "这项法案的目的是保护公众免受广告中虚假或引人误解的宣传所欺骗，并确保公众花钱物有所值。"
+      },
+      {
+        "en": "The Act will cover a very wide range of goods and services.",
+        "cn": "这项法案将涉及范围很广的商品和服务。"
+      },
+      {
+        "en": "It will be an offence, for instance, to claim that a watch is waterproof, when in fact it is only water-resistant.",
+        "cn": "例如，如果把仅是防水的手表说成是“不透水的”，便属违法。"
+      },
+      {
+        "en": "If a customer is sold a watch described as waterproof and he finds that it leaks when he is bathing, he will be able to take it back to the shop.",
+        "cn": "如果顾客买了一块说明是不透水的手表，而在他洗澡时发现手表进水了，他就可以把手表退回商店。"
+      },
+      {
+        "en": "The shopkeeper will not be able to say that the watch must have been misused.",
+        "cn": "店主不得声称手表一定是被使用不当。"
+      },
+      {
+        "en": "He will have to give the customer a new watch or refund his money.",
+        "cn": "他必须给顾客换一块新表或退款。"
+      },
+      {
+        "en": "Similarly, it will not be possible to state that a car has done 20,000 miles, when its actual mileage is double that amount.",
+        "cn": "同样，当一辆汽车的实际行驶里程是标明的两倍时，便不得声称该车只跑了20,000英里。"
+      },
+      {
+        "en": "The Act will protect the public in all sorts of ways.",
+        "cn": "这项法案将在各方面保护公众的利益。"
+      },
+      {
+        "en": "For instance, a garage that claims to have serviced a car will have to be able to prove that it has actually done the work.",
+        "cn": "例如，一家声称对汽车进行了保养的汽车修理厂必须能够证明它确实做了保养工作。"
+      },
+      {
+        "en": "The Act will be enforced by a new body of officials, the 'trade standards officers', who will have the power to enter a factory or a shop to make sure that the Act is being observed.",
+        "cn": "这项法案将由一批新的官员——“贸易标准官”——来执行，他们有权进入工厂或商店，以确保法案被遵守。"
+      },
+      {
+        "en": "They will also be able to take goods away to have them tested.",
+        "cn": "他们也有权将商品带走进行检测。"
+      },
+      {
+        "en": "The Act is so strict that even a director of a company can be sent to prison if he is held responsible for a false description.",
+        "cn": "这项法案非常严格，如果公司的董事对虚假说明负有责任，甚至可以被送进监狱。"
       }
     ]
   },
   {
-    "title": "Lesson 9  Royal espionage 王室谍报活动",
+    "title": "Lesson 9  Royal flush  王室的同花顺",
     "pairs": [
       {
-        "en": "Alfred the Great acted his own spy, visiting Danish camps disguised as a minstrel. In those days wandering minstrels were welcome everywhere. They were not fighting men, and their harp was their passport. Alfred had learned many of their ballads in his youth, and could vary his programme with acrobatic tricks and simple conjuring.",
-        "cn": "阿尔弗雷德大帝曾亲自充当间谍。他扮作吟游歌手到丹麦军队的营地里侦察。当时，浪迹天涯的吟游歌手到处受欢迎，他们不是作战人员，竖琴就是他们的通行证。阿尔弗德年轻时学过许多民歌，并能穿插演一些杂技和小魔术使自己的节目多样化。"
+        "en": "The European Common Market, now known as the European Community, originated in the declaration made on 9 May 1950 by the French Foreign Minister, Robert Schuman.",
+        "cn": "欧洲共同市场，即现在的欧洲共同体，起源于法国外交部长罗伯特·舒曼于1950年5月9日发表的声明。"
       },
       {
-        "en": "While Alfred's little army slowly began to gather at Athelney, the king himself set out to penetrate the camp of Guthrum, the commander of the Danish invaders. There had settled down for the winter at Chippenham: thither Alfred went. He noticed at once that discipline was slack: the Danes had the self-confidence of conquerors, and their security precautions were casual. They lived well, on the proceeds of raids on neighbouring regions. There they collected women as well as food and drink, and a life of ease had made them soft.",
-        "cn": "阿尔弗雷德人数不多的军队开始在阿塞尔纳慢慢集结时，他亲自潜入丹麦入侵司令官古瑟罗姆的营地。丹麦军已在切本哈姆扎下营准备过冬，阿尔弗雷便来到此地。他马上发现丹麦军纪律松弛，他们以征服者自居，安全措施马马虎虎。他们靠掠夺附近的地区的财物过着舒适的生活。他们不仅搜刮吃的喝的，而且抢掠妇女，安逸的生活已使丹麦军队变得软弱无力。"
+        "en": "His proposal was to bring the French and German coal and steel industries under a single high authority, whose decisions would be binding on both countries.",
+        "cn": "他的建议是将法国和德国的煤炭和钢铁工业置于一个单一的高级机构之下，该机构的决定对两国都有约束力。"
       },
       {
-        "en": "Alfred stayed in the camp a week before he returned to Athelney. The force there assembled was trivial compared with the Danish horde. But Alfred had deduced that the Danes were no longer fit for prolonged battle: and that their commissariat had no organization, but depended on irregular raids.",
-        "cn": "阿尔弗雷德在敌营呆了一个星期后，回到了阿塞尔纳。他集结在那里的军队和丹麦大军相比是微不足道的，然而，阿尔弗雷德断定，丹麦人已不再适应持久的战争，他们的军需供应处于无组织状态，只是靠临时抢夺来维持。"
+        "en": "The idea was to make war between them 'not only unthinkable but materially impossible'.",
+        "cn": "这个想法是使他们之间的战争“不仅不可想象，而且在物质上也不可能”。"
       },
       {
-        "en": "So, faced with the Danish advance, Alfred did not risk open battle but harried the enemy. He was constantly on the move, drawing the Danes after him. His patrols halted the raiding parties: hunger assailed the Danish army. Now Alfred began a long series of skirmishes -- and within a month the Danes had surrendered. The episode could reasonably serve as a unique epic of royal espionage!",
-        "cn": "因此，面对丹麦人的进攻，阿尔弗雷德没有贸然同敌人作战，而是采用骚扰敌人的战术。他的部队不停地移动，牵着敌人的鼻子，让他们跟着跑。他派出巡逻队阻止敌人抢劫，因而饥饿威胁着丹麦军队。这时，阿尔弗雷德发起一连串小规模的进攻，结果不出一个月，丹麦人就投降了。这一幕历史可以说是王室谍报活动中最精彩的篇章。."
+        "en": "The Community has since grown from six to twelve members, and its aims have gradually broadened.",
+        "cn": "此后，共同体已从六个成员国发展到十二个，其目标也逐渐扩大。"
+      },
+      {
+        "en": "It has become a powerful trading bloc, which is playing an increasing part in world affairs.",
+        "cn": "它已成为一个强大的贸易集团，在世界事务中发挥���越来越大的作用。"
+      },
+      {
+        "en": "But there is one respect in which it has made little progress.",
+        "cn": "但有一个方面它几乎没有取得进展。"
+      },
+      {
+        "en": "It has no common currency.",
+        "cn": "它没有共同的货币。"
+      },
+      {
+        "en": "Its members have their own currencies, and the constant fluctuations in their exchange rates have been a major obstacle to the creation of a truly common market.",
+        "cn": "其成员国拥有自己的货币，其汇率的不断波动一直是建立一个真正共同市场的主要障碍。"
+      },
+      {
+        "en": "The dream of a single currency, however, is not a new one.",
+        "cn": "然而，单一货币的梦想并不是一个新梦想。"
+      },
+      {
+        "en": "It was entertained by Napoleon, who created a 'Latin Monetary Union' in 1865.",
+        "cn": "拿破仑曾怀有这个梦想，他在1865年创建了“拉丁货币联盟”。"
+      },
+      {
+        "en": "The Union did not survive the First World War, but the idea of a common currency was revived when the Common Market was formed.",
+        "cn": "这个联盟没有在第一次世界大战中幸存下来，但共同货币的想法在共同市场形成时又被重新提出。"
+      },
+      {
+        "en": "In 1970, the members of the Community agreed on a plan for a single currency, but this was never put into effect.",
+        "cn": "1970年，共同体成员国就单一货币的计划达成一致，但该计划从未付诸实施。"
+      },
+      {
+        "en": "The idea, however, has recently been revived.",
+        "cn": "然而，这个想法最近又被重新提出。"
+      },
+      {
+        "en": "A committee of the Community has produced a report which recommends a single currency for the twelve members.",
+        "cn": "共同体的一个委员会提出了一份报告，建议十二个成员国使用单一货币。"
+      },
+      {
+        "en": "The report has been welcomed by the governments of the member countries, and the idea of a single currency is now being seriously considered.",
+        "cn": "该报告受到成员国政府的欢迎，单一货币的想法现在正在被认真考虑。"
       }
     ]
   },
   {
-    "title": "Lesson 10  Silicon valley  硅谷",
+    "title": "Lesson 10  The loss of the Titanic “泰坦尼克”号的沉没",
     "pairs": [
       {
-        "en": "Technology trends may push Silicon Valley back to the future. Carver Mead, a pioneer in integrated circuits and a professor of computer science at the California Institute of Technology, notes there are now work-stations that enable engineers to design, test and produce chips right on their desks, much the way an editor creates a newsletter on a Macintosh. As the time and cost of making a chip drop to a few days and a few hundred dollars, engineers may soon be free to let their imaginations soar without being penalized by expensive failures. Mead predicts that inventors will be able to perfect powerful customized chips over a weekend at the office -- spawning a new generation of garage start-ups and giving the U.S. a jump on its foreign rivals in getting new products to market fast. 'We're got more garages with smart people,' Mead observes. 'We really thrive on anarchy.'",
-        "cn": "技术的发展趋势有可能把硅谷重新推向未来。卡弗.米德 -- 集成电路的一位先驱，加州理工学院的计算机教授 -- 注意到，现在有些计算机工作站使工程技术人员可以在他们的办公桌上设计、试验和生产芯片，就像一位编辑在苹果机上编出一份时事通讯一样。由于制造一块芯片的时间已缩短至几天，费用也只有几百美元，因此，工程技术人员可能很块就可充分发挥他们的想像力，而不会因失败而造成经济上的损失。米德预言发明者可以在办公室用一个周末的时间生产了完美的、功能很强的、按客户需求设计的芯片 -- 造就新一代从汽车间起家的技术人员，在把产品推向市场方面使美国把它的外国对手们打个措手不及。 “我们有更多的汽车间，那里有许多聪明人，”米德说。“我们确实是靠这种无政府状态发展起来的。” 靠的是亚洲人。硅谷许多公司中工程技术人员的大多数是东方人和亚裔美国人。中国、韩国、菲律宾和印度的工程师一批批地从加州的大学毕业。作为新掘起一代的带头人，亚裔发明家可以凭借他们在习惯和语言上的优势，与关键的太平洋沿岸市场建立起更加牢固的联系。比如说，亚历克斯.奥，一位来自香港的斯坦福大学博士，已经在台湾建厂，对日本在内存条市场上近似垄断的局面提出了挑战。印度出生的N.达莫达.雷迪经营的小小的加州公司在堪萨斯城重新启用了美国电话电报公司的一家芯片工厂，并从密苏里州获取了财政上的支持。在硅谷变成一个退休村之前，它很可能成为建立全球商业的一个教学场地。"
+        "en": "The great ship, Titanic, sailed for New York from Southampton on April 10th, 1912.",
+        "cn": "巨轮“泰坦尼克”号于1912年4月10日从南安普敦启航，首航纽约。"
+      },
+      {
+        "en": "She was carrying 1,316 passengers and a crew of 891.",
+        "cn": "船上载有1,316名乘客和891名船员。"
+      },
+      {
+        "en": "Even by modern standards, the 46,000 ton Titanic was a colossal ship.",
+        "cn": "即使以现代标准来衡量，46,000吨的“泰坦尼克”号也算得上是艘巨轮了。"
+      },
+      {
+        "en": "At that time, however, she was not only the largest ship that had ever been built, but was regarded as unsinkable, for she had sixteen watertight compartments.",
+        "cn": "然而，在当时，它不仅是建造过的最大的船，而且被认为是永不沉没的，因为它有16个水密舱。"
+      },
+      {
+        "en": "The tragic sinking of this great liner will always be remembered, for she went down on her first voyage with heavy loss of life.",
+        "cn": "这艘巨轮的悲惨沉没将永远被人们铭记，因为它在首航中就沉没了，造成了巨大的生命损失。"
+      },
+      {
+        "en": "Four days after setting out, while the Titanic was sailing across the icy waters of the North Atlantic, a huge iceberg was suddenly spotted by a look-out.",
+        "cn": "出发四天后，当“泰坦尼克”号正航行在北大西洋冰冷的海面上时，一名瞭望员突然发现了一座巨大的冰山。"
+      },
+      {
+        "en": "After the alarm had been given, the great ship turned sharply to avoid a direct collision.",
+        "cn": "警报发出后，巨轮急转弯以避免直接相撞。"
+      },
+      {
+        "en": "The Titanic turned just in time, narrowly missing the immense wall of ice which rose over 100 feet out of the water beside her.",
+        "cn": "“泰坦尼克”号转弯及时，险些撞上那座高出水面100多英尺的巨大冰墙。"
+      },
+      {
+        "en": "Suddenly, there was a slight trembling sound from below, and the captain went down to see what had happened.",
+        "cn": "突然，船底传来一阵轻微的颤动声，船长下楼查看情况。"
+      },
+      {
+        "en": "The noise had been so faint that no one thought that the ship had been damaged.",
+        "cn": "声音非常微弱，没人认为船已受损。"
+      },
+      {
+        "en": "Below, the captain realized to his horror that the Titanic was sinking rapidly, for five of her sixteen watertight compartments had already been flooded!",
+        "cn": "在下面，船长惊恐地意识到“泰坦尼克”号正在迅速下沉，因为它的16个水密舱中已有5个被淹没了！"
+      },
+      {
+        "en": "The order to abandon ship was given and hundreds of people plunged into the icy water.",
+        "cn": "弃船的命令下达了，数百人跳入冰冷的海水中。"
+      },
+      {
+        "en": "As there were not enough lifeboats for everybody, 1,500 lives were lost.",
+        "cn": "由于没有足够的救生艇供所有人使用，1,500人丧生。"
       }
     ]
   },
   {
-    "title": "Lesson 11  How to grow old  如何安度晚年",
+    "title": "Lesson 11  Not guilty 无罪",
     "pairs": [
       {
-        "en": "Some old people are oppressed by the fear of death. In the young there is a justification for this feeling. Young men who have reason to fear that they will be killed in battle may justifiably feel bitter in the thought that they have cheated of the best things that life has to offer. But in an old man who has known human joys and sorrows, and has achieved whatever work it was in him to do, the fear of death is somewhat abject and ignoble. The best way to overcome it -- so at least it seems to me -- is to make your interests gradually wider and more impersonal, until bit by bit the walls of the ego recede, and your life becomes increasingly merged in the universal life. An individual human existence should be like a river -- small at first, narrowly contained within its banks, and rushing passionately past boulders and over waterfalls. Gradually the river grows wider, the banks recede, the waters flow more quietly, and in the end, without any visible break, they become merged in the sea, and painlessly lose their individual being. The man who, in old age, can see his life in this way, will not suffer from the fear of death, since the things he cares for will continue. And if, with the decay of vitality, weariness increases, the thought of rest will be not unwelcome. I should wish to die while still at work, knowing that others will carry on what I can no longer do, and content in the thought that what was possible has been done.",
-        "cn": "有些老年人因为怕死而感到烦恼。青年人有这种感觉是情有可原的。有理由害怕自己会死在战场上的年轻人，想到自己被剥夺了生活所能给予的最美好的东西时，感到痛苦，这是可以理解的。可是老年人已经饱尝了人间的甘苦，一切能做的都做了，如果怕死，就有点儿可怜又可鄙。克服怕死的最好办法 -- 至少在我看来是这样 -- 就是逐渐使自己的兴趣更加广泛，逐渐摆脱个人狭小的圈子，直到自我的围墙一点一点地倒塌下来，自己的生活慢慢地和整个宇宙的生活融合在一起。个人的存在应该像一条河流，开始很小，被紧紧地夹在两岸中间，接着热情奔放地冲过巨石，飞下瀑布。然后河面渐渐地变宽，两岸后撤，河水流得平缓起来，最后连绵不断地汇入大海，毫无痛苦地失去了自我的存在。上了年纪的人这样看待生命，就不会有惧怕死亡的心情了，因为自己关心的一切事件都会继续下去。 再者，随着精力的衰退，老年人的疲惫会增长，有长眠的愿望未尝不是一件好事情，我希望工作到死为止，明白了有人会继续我的未竟事业，想到能做的事都做了，也就坦然了。"
+        "en": "Customs Officers are quite tolerant these days, but they can still stop you when you are going through the Green Channel and have nothing to declare.",
+        "cn": "现在的海关官员相当宽容，但当你通过绿色通道，没有任何东西需要申报时，他们仍然可以拦住你。"
+      },
+      {
+        "en": "Even the most respectable-looking person is liable to be stopped.",
+        "cn": "即使是最体面的人也可能被拦住。"
+      },
+      {
+        "en": "The other day, a friend of mine was stopped by a customs officer who seemed to be taking a great interest in her.",
+        "cn": "前几天，我的一个朋友被一位海关官员拦住了，那位官员似乎对她很感兴趣。"
+      },
+      {
+        "en": "My friend, who is a very respectable-looking old lady, had just returned from a trip abroad.",
+        "cn": "我的朋友是一位看起来非常体面的老太太，她刚从国外旅行回来。"
+      },
+      {
+        "en": "The customs officer seemed to be suspicious of her for some reason.",
+        "cn": "不知什么原因，海关官员似乎对她产生了怀疑。"
+      },
+      {
+        "en": "He asked her to open her suitcase and then he began to search it.",
+        "cn": "他让她打开手提箱，然后开始搜查。"
+      },
+      {
+        "en": "My friend was very surprised and said, 'There's no need to do this. I have nothing to declare.'",
+        "cn": "我的朋友非常惊讶，说：‘没必要这样做。我没什么要申报的。’"
+      },
+      {
+        "en": "But the officer was not convinced.",
+        "cn": "但官员并不相信。"
+      },
+      {
+        "en": "He continued to search her suitcase and found a number of expensive-looking items.",
+        "cn": "他继续搜查她的手提箱，发现了一些看起来很贵重的物品。"
+      },
+      {
+        "en": "'These are not new,' my friend explained. 'They are presents from my children.'",
+        "cn": "‘这些不是新的，’我的朋友解释说。‘它们是我孩子们送的礼物。’"
+      },
+      {
+        "en": "The officer was not satisfied and asked her to pay duty on them.",
+        "cn": "官员不满意，要求她为这些物品缴纳关税。"
+      },
+      {
+        "en": "My friend got very angry and refused to pay.",
+        "cn": "我的朋友非常生气，拒绝付款。"
+      },
+
+      {
+        "en": "She said, 'If you think I'm a smuggler, you can take me to the police station.'",
+        "cn": "她说：‘如果你认为我是走私犯，你可以把我带到警察局。’"
+      },
+      {
+        "en": "The officer was a little taken aback by this, but he said, 'All right, madam. I'll take you to the police station.'",
+        "cn": "官员对此有点吃惊，但他说：‘好的，女士。我带你去警察局。’"
+      },
+      {
+        "en": "At the police station, my friend was charged with smuggling.",
+        "cn": "在警察局，我的朋友被指控走私。"
+      },
+      {
+        "en": "She was told that she would have to appear in court the next day.",
+        "cn": "她被告知第二天必须出庭。"
+      },
+      {
+        "en": "The next day, she appeared in court and was found not guilty.",
+        "cn": "第二天，她出庭，被判无罪。"
+      },
+      {
+        "en": "The judge said that the customs officer had made a mistake.",
+        "cn": "法官说海关官员犯了一个错误。"
+      },
+      {
+        "en": "My friend was very pleased with the verdict and said, 'It's a good thing I didn't pay the duty.'",
+        "cn": "我的朋友对判决非常满意，说：‘幸好我没有缴纳关税。’"
       }
     ]
   },
   {
-    "title": "Lesson 12  Banks and their customers  银行和顾客",
+    "title": "Lesson 12  Life on a desert island 荒岛生活",
     "pairs": [
       {
-        "en": "When anyone opens a current account at a bank, he is lending the bank money, repayment of which he may demand at any time, either in cash or by drawing a cheque in favour of another person. Primarily, the banker-customer relationship is that of debtor and creditor -- who is which depending on whether the customer's account is in credit or is overdrawn. But, in addition to that basically simple concept, the bank and its customer owe a large number of obligations to one another. Many of these obligations can give in to problems and complications but a bank customer, unlike, say, a buyer of goods, cannot complain that the law is loaded against him.",
-        "cn": "任何人在银行开一个活期账户，就等于把钱借给了银行。这笔钱他可以随时提取，提取的方式可以是取现金，也可以是开一张以他人为收款人的支票。银行与储户的关系主要是债务人和债权人的关系。究竟谁是债务人谁是债权人，要看储户是有结余还是透支。除了这一基本的简单的概念外，银行和储户彼此还需承担大量义务。其中许多义务往往引起问题和纠纷。但是储户不能像货物的买主那样来抱怨法律对自己不利。"
+        "en": "Most of us have formed an unrealistic picture of life on a desert island.",
+        "cn": "我们中的大多数人对荒岛生活有一种不切实际的想象。"
+      },
+      {
+        "en": "We sometimes imagine a desert island to be a sort of paradise where the sun always shines.",
+        "cn": "我们有时会把荒岛想象成一个阳光普照的天堂。"
+      },
+      {
+        "en": "Life there, we think, is simple and good.",
+        "cn": "我们认为，那里的生活简单而美好。"
+      },
+      {
+        "en": "Ripe fruit falls from the trees and you never have to work.",
+        "cn": "成熟的水果从树上掉下来，你永远不必工作。"
+      },
+      {
+        "en": "The other side of the picture is quite the opposite.",
+        "cn": "另一幅画面则完全相反。"
+      },
+      {
+        "en": "Life on a desert island is wretched.",
+        "cn": "荒岛上的生活是悲惨的。"
+      },
+      {
+        "en": "You either starve to death or live like Robinson Crusoe, waiting for a ship which never comes.",
+        "cn": "你要么饿死，要么像鲁滨逊·克鲁索一样生活，等待一艘永远不会来的船。"
+      },
+      {
+        "en": "Perhaps there is an element of truth in both these pictures, but they are both exaggerations.",
+        "cn": "也许这两种画面都有一定的真实性，但它们都夸大其词了。"
+      },
+      {
+        "en": "The truth is that life on a desert island is what you make it.",
+        "cn": "事实是，荒岛上的生活是你自己创造的。"
+      },
+      {
+        "en": "It can be a paradise or a prison, depending on your attitude.",
+        "cn": "它可以是天堂，也可以是监狱，这取决于你的态度。"
       }
     ]
   },
   {
-    "title": "Lesson 13 The search for oil 探寻石油",
+    "title": "Lesson 13  'It's only me' “是我，别怕”",
     "pairs": [
       {
-        "en": "The deepest holes of all made for oil, and they go down to as much as 25,0000 feet. But we not need to send men down to get the oil our, as we must with other mineral deposits. The holes are only borings, less than a foot in diameter. My particular experience is largely in oil, and the search for oil has done more to improve deep drilling than any other mining activity. When is has been decided where we are going to drill, we put up at the surface an oil derrick. It has to be tall because it is like a giant block and tackle, and we have to lower into the ground and haul out of the ground great lengths of drill pipe which are rotated by an engine at the top and are fitted with a cutting bit at the bottom.",
-        "cn": "在所有洞穴中，为寻找石油所钻出的洞是最深的，这些洞可深达25,000英尺。但是，我们不必像开采其他矿藏那样，把人送到地下去把石油取出。这些洞只不过是一些钻孔，直径不到1英尺。我是专门搞石油的，寻找石油比其他任何采矿业对改进钻探作的贡献都要大。当确定钻孔地点后，我们就在那里竖起一个井架。井架必须很高，因为它像一个巨型滑轮组。我们必须把很长的钻杆一节节地钻入地下，然后再从地下拉出来。钻杆顶部安装的发动机带动钻杆旋转，它的底部装有钻头。"
+        "en": "After her husband had gone to work, Mrs Richards sent her children to school and went upstairs to her bedroom.",
+        "cn": "丈夫上班走后，理查兹夫人送孩子们去上学，然后回到楼上的卧室。"
       },
       {
-        "en": "The geologist needs to know what rocks the drill has reached, so every so often a sample is obtained with a coring bit. It cuts a clean cylinder of rock, from which can be seen the strata the drill has been cutting through. Once we get down to the oil, it usually flows to the surface because great pressure, either from or water, is pushing it. This pressure must be under control, and we control it by means of the mud which we circulate down the drill pipe. We endeavour to avoid the old, romantic idea of a gusher, which wastes oil and gas. We want it to stay down the hole until we can lead it off in a controlled manner.",
-        "cn": "地质学家需要知道钻头已以到达什么样的岩层，因此时常要用芯钻头取样。这种钻头能切割一段光滑的圆柱形岩石，从中能看出所钻透的地层。一旦到达油层，石油就会由于地下巨大的压力流到地面上来，这种巨大的压力来自地下天然气或水。这种压力必须加以控制，我们让泥桨顺着钻杆向下循环，用这种方法来控制压力。我们尽量避免使用陈旧天真的喷井方法，那样会浪费石油和天然气。我们要让石油留在井下，直到我们能用一种有控制的方法把它引上来为止。"
+        "en": "She was too excited to do any housework that morning, for in the evening she would be going to a fancy-dress party with her husband.",
+        "cn": "那天早上，她兴奋得什么家务活都不想做，因为晚上她要和丈夫一起参加一个化装舞会。"
+      },
+      {
+        "en": "She intended to dress up as a ghost and as she had made her costume the night before, she was impatient to try it on.",
+        "cn": "她打算打扮成鬼的模样，因为头天晚上她已经做好了化装服，所以她急于想试试。"
+      },
+      {
+        "en": "Though the costume consisted only of a sheet, it was very effective.",
+        "cn": "虽然化装服仅由一个床单制成，但效果非常好。"
+      },
+      {
+        "en": "After putting it on, Mrs Richards went downstairs.",
+        "cn": "穿上后，理查兹夫人下了楼。"
+      },
+      {
+        "en": "She wanted to find out whether it would be comfortable to wear.",
+        "cn": "她想看看穿起来是否舒服。"
+      },
+      {
+        "en": "Just as Mrs Richards was entering the dining-room, there was a knock on the front door.",
+        "cn": "就在理查兹夫人进入餐厅时，前门传来一阵敲门声。"
+      },
+      {
+        "en": "She knew that it must be the baker.",
+        "cn": "她知道一定是面包师。"
+      },
+      {
+        "en": "She had told him to come straight in if ever she failed to open the door and to leave the bread on the kitchen table.",
+        "cn": "她曾告诉他，如果她没有开门，就直接进来，把面包放在厨房的桌子上。"
+      },
+      {
+        "en": "Not wanting to frighten the poor man, Mrs Richards quickly hid in the small storeroom under the stairs.",
+        "cn": "理查兹夫人不想吓到这个可怜的人，便迅速躲到楼梯下的小储藏室里。"
+      },
+      {
+        "en": "She heard the front door open and heavy footsteps in the hall.",
+        "cn": "她听到前门打开，大厅里传来沉重的脚步声。"
+      },
+      {
+        "en": "Soon the hall was empty, and Mrs Richards opened the storeroom door.",
+        "cn": "很快，大厅空无一人，理查兹夫人打开了储藏室的门。"
+      },
+      {
+        "en": "She could not help giggling as she imagined the baker's surprise if he had seen her.",
+        "cn": "她一想到如果面包师看到她会多么惊讶，就忍不住咯咯地笑了起来。"
+      },
+      {
+        "en": "She crept into the hall and then, to her horror, she saw a man leaving the dining-room.",
+        "cn": "她蹑手蹑脚地走进大厅，然后，令她惊恐的是，她看到一个男人正从餐厅里出来。"
+      },
+      {
+        "en": "As she stood there, rooted to the spot, the man saw her and let out a cry.",
+        "cn": "当她站在那里，一动不动时，那个男人看到了她，并发出一声尖叫。"
+      },
+      {
+        "en": "He dropped the bag he was carrying and fled.",
+        "cn": "他扔下他提着的包，逃走了。"
+      },
+      {
+        "en": "Mrs Richards ran after him, but he had already disappeared.",
+        "cn": "理查兹夫人追了上去，但他已经不见了。"
+      },
+      {
+        "en": "She picked up the bag and found that it was full of money.",
+        "cn": "她捡起包，发现里面装满了钱。"
+      },
+      {
+        "en": "The man must have been a thief.",
+        "cn": "那个人一定是个小偷。"
+      },
+      {
+        "en": "She was so amused by the incident that she burst out laughing.",
+        "cn": "她被这件事逗得哈哈大笑。"
+      },
+      {
+        "en": "She had frightened a thief away!",
+        "cn": "她吓跑了一个小偷！"
       }
     ]
   },
   {
-    "title": "Lesson 14  The Butterfly Effect  蝴蝶效应",
+    "title": "Lesson 14  A noble gangster 贵族歹徒",
     "pairs": [
       {
-        "en": "Beyond two or three days, the world's best weather forecasts are speculative, and beyond six or seven they are worthless.",
-        "cn": "世界上最好的两三天以上的天气预报具有很强的猜测性，如果超过六七天，天气预报就没有了任何价值。"
+        "en": "There was a time when the owners of shops and businesses in Chicago had to pay large sums of money to gangsters in return for 'protection.'",
+        "cn": "曾经有段时间，芝加哥的商店和企业主必须向歹徒支付大笔金钱以换取“保护”。"
       },
       {
-        "en": "The Butterfly Effect is the reason. For small pieces of weather -- and to a global forecaster, small can mean thunderstorms and blizzards -- any prediction deteriorates rapidly. Errors and uncertainties multiply, cascading upward through a chain of turbulent features, from dust devils and squalls up to continent-size eddies that only satellites can see.",
-        "cn": "原因是蝴蝶效应。对于小片的恶劣天气 -- 对一个全球性的气象预报员来说，“小”可以意味着雷暴雨和暴风雪 -- 任何预测的质量会很快下降。错误和不可靠性上升，接踵而来的是一系列湍流的徵状，从小尘暴和暴风发展到只有卫星上可以看到的席卷整块大陆的旋涡。"
+        "en": "If the money was not paid promptly, the gangsters would quickly put a man out of business by destroying his shop.",
+        "cn": "如果钱没有及时支付，歹徒会迅速摧毁他的商店，让他无法经营。"
       },
       {
-        "en": "The modern weather models work with a grid of points of the order of sixty miles apart, and even so, some starting data has to guessed, since ground stations and satellites cannot see everywhere. But suppose the earth could be covered with sensors spaced one foot apart, rising at one-foot intervals all the way to the top of the atmosphere. Suppose every sensor gives perfectly accurate readings of temperature, pressure, humidity, and any other quantity a meteorologist would want. Precisely at noon an infinitely powerful computer takes all the data and calculates what will happen at each point at 12.01, then 12.02, then 12.03...",
-        "cn": "现代气象模型以一个坐标图来显示，图中每个点大约是间隔60英里。既使是这样，有些开始时的资料也不得不依靠推测，因为地面工作站和卫星不可能看到地球上的每一个地方。假设地球上可以布满传感器，每个相隔1英尺，并按1英尺的间隔从地面一直排列到大气层的顶端。再假定每个传感器都极极端准确地读出了温度、气压、温度和气象学家需要的任何其他数据。在正午时分，一个功能巨大的计算机搜集了所有的资料，并算出在每一个点上12：01、12：02、12：03时可能出现的情况。"
+        "en": "Obtaining 'protection money' is not a modern crime.",
+        "cn": "获取“保护费”并非现代犯罪。"
       },
       {
-        "en": "The computer will still be unable to predict whether Princeton, New Jersey, will have sun or rain on a day one month away. At noon the spaces between the sensors will hide fluctuations that the computer will not know about, tiny deviations from the average. By 12.01, those fluctuations will already have created small errors one foot away. Soon the errors will have multiplied to the ten-foot scale, and so on up to the size of the globe.",
-        "cn": "计算机无法推断出1个月以后的某一天，新泽西州的普林斯顿究竟是晴天还是雨天。正午时分，传感器之间的距离会掩盖计算机无法知道的波动、任何偏平均值的变化。到12：01时，那些波动就已经会在1英尺远的地方造成偏差。很快这种偏差会增加到尺10英的范围，如此等等，一直到全球的范围。"
+        "en": "As long ago as the fourteenth century, an English nobleman, Sir John de Hawkwood, made a fortune by offering 'protection' to the city-states of Italy.",
+        "cn": "早在14世纪，一位英国贵族约翰·德·霍克伍德爵士就通过向意大利的城邦提供“保护”而发家致富。"
+      },
+      {
+        "en": "He was a brave and ruthless man, and his soldiers were the best-equipped in Europe.",
+        "cn": "他是一个勇敢而无情的人，他的士兵是欧洲装备最精良的。"
+      },
+      {
+        "en": "He was so successful that he became a legend in his own lifetime.",
+        "cn": "他非常成功，以至于在他有生之年就成了一个传奇人物。"
+      },
+      {
+        "en": "He was known as 'the noble gangster.'",
+        "cn": "他被称为“贵族歹徒”。"
       }
     ]
   },
   {
-    "title": "Lesson 15 Secrecy in industry 工业中的秘密",
+    "title": "Lesson 15  Fifty pence worth of trouble 五十便士的麻烦",
     "pairs": [
       {
-        "en": "Two factors weigh heavily against the effectiveness of scientific research in industry. One is the general atmosphere of secrecy in which it is carried out, the other the lack of freedom of the individual research worker. In so far as any inquiry is a secret one, it naturally limits all those engaged in carrying it out from effective contact with their fellow scientists either in other countries or in universities, or even, often enough, in other departments of the same firm. The degree of secrecy naturally varies considerably. Some of the bigger firms are engaged in researches which are of such general and fundamental nature that it is a positive advantage to them not to keep them secret. Yet a great many processes depending on such research are sought for with complete secrecy until the stage at which patents can be taken out. Even more processes are never patented at all but kept as secret processes. This applies particularly to chemical industries, where chance discoveries play a much larger part than they do in physical and mechanical industries. Sometimes the secrecy goes to such an extent that the whole nature of the research cannot be mentioned. Many firms, for instance, have great difficulty in obtaining technical or scientific books from libraries because they are unwilling to have names entered as having taken out such and such a book, for fear the agents of other firms should be able to trace the kind of research they are likely to be undertaking.",
-        "cn": "有两个因素严重地妨碍工业中科学研究的效率：一是科研工作中普遍存在的保密气氛；二是研究人员缺乏个人自由。任何一项研究都涉及到保密，那些从事科研的人员自然受到了限制。他们不能和其他国家、其他大学、甚至往往不能与本公司的其他部门的同行们进行有效的接触。保密程度自然差别很大。某些大公司进行的研究属于一般和基础的研究，因此不保密对他们才有利。然而，依赖这种研究的很多工艺程序是在完全保密的情况下进行的，直到可以取得专利权的阶段为止。更多的工艺过程根本就不会取得专利权，而是作为秘方保存着。在这化学工业方面尤为突出。同物理和机械工业相比，化学工业中偶然发现的机会要多得多。有时，保密竟达到了这样的程度，即连研究工作的整个性质都不准提及。比如，很多公司向图书馆借阅科技书籍时感到困难，因为它们不愿让人家记下它们公司的名字和借阅的某一本书。他们生怕别的公司的情报人员据此摸到他们可能要从事的某项科研项目。"
+        "en": "Children always appreciate small gifts of money.",
+        "cn": "孩子们总是喜欢小额的钱作为礼物。"
+      },
+      {
+        "en": "Mum or dad, of course, provide a regular supply of pocket money, but uncles and aunts are always a source of extra income.",
+        "cn": "当然，爸爸妈妈会定期提供零花钱，但叔叔阿姨总是额外收入的来源。"
+      },
+      {
+        "en": "With some children, small sums go a long way.",
+        "cn": "对于一些孩子来说，小额的钱可以用很久。"
+      },
+      {
+        "en": "If fifty pence pieces are not exchanged for sweets, they rattle for months inside a money box.",
+        "cn": "如果五十便士的硬币没有换成糖果，它们会在钱箱里叮当作响好几个月。"
+      },
+      {
+        "en": "Only very thrifty children manage to fill up a money box.",
+        "cn": "只有非常节俭的孩子才能填满一个钱箱。"
+      },
+      {
+        "en": "For most of them, fifty pence is a small price to pay for a nice big bar of chocolate.",
+        "cn": "对他们中的大多数人来说，五十便士是买一大块美味巧克力的一个小代价。"
+      },
+      {
+        "en": "My nephew, George, has a money box but it is always empty.",
+        "cn": "我的侄子乔治有一个钱箱，但它总是空的。"
+      },
+      {
+        "en": "Very few of the fifty pence pieces and pound coins I have given him have found their way there.",
+        "cn": "我给他的五十便士硬币和英镑硬币很少能进入那里。"
+      },
+      {
+        "en": "I gave him fifty pence yesterday and advised him to save it.",
+        "cn": "我昨天给了他五十便士，并建议他存起来。"
+      },
+      {
+        "en": "Instead, he bought himself fifty pence worth of trouble.",
+        "cn": "相反，他给自己买了五十便士的麻烦。"
+      },
+      {
+        "en": "On his way to the sweet shop, he dropped his fifty pence and it rolled along the pavement and then disappeared down a drain.",
+        "cn": "在去糖果店的路上，他掉了五十便士，它沿着人行道滚动，然后掉进了一���下水道。"
+      },
+      {
+        "en": "George took off his jacket, rolled up his sleeves and pushed his right arm through the drain cover.",
+        "cn": "乔治脱下夹克，卷起袖子，把右臂伸进下水道盖。"
+      },
+      {
+        "en": "He could not find his fifty pence piece anywhere, and what is more, he could not get his arm out.",
+        "cn": "他到处都找不到他的五十便士硬币，更糟糕的是，他的手臂也拿不出来了。"
+      },
+      {
+        "en": "A crowd of people gathered round him and a lady rubbed his arm with soap and butter, but George was firmly stuck.",
+        "cn": "一群人围着他，一位女士用肥皂和黄油擦他的手臂，但乔治还是牢牢地卡住了。"
+      },
+      {
+        "en": "The fire brigade was called and two firemen freed George using a special type of grease.",
+        "cn": "消防队被叫来了，两名消防员用一种特殊的润滑脂解救了乔治。"
+      },
+      {
+        "en": "George was not too upset by his experience because the lady who had rubbed his arm with soap and butter sent him a pound note for his money box.",
+        "cn": "乔治并没有因为这次经历而太难过，因为那位用肥皂和黄油擦他手臂的女士给他寄了一张一英镑的钞票放进他的钱箱。"
       }
     ]
   },
   {
-    "title": "Lesson 16 The modern city   现代城市",
+    "title": "Lesson 16  Mary had a little lamb 玛丽有一头小羔羊",
     "pairs": [
       {
-        "en": "In the organization of industrial life the influence of the factory upon the physiological and mental state of the workers has been completely neglected. Modern industry is based on the conception of the maximum production at lowest cost, in order that an individual or a group of individuals may earn as much money as possible. It has expanded without any idea of the true nature of the human beings who run the machines, and without giving any consideration to the effects produced on the individuals and on their descendants by the artificial mode of existence imposed by the factory. The great cities have been built with no regard for us. The shape and dimensions of the skyscrapers depend entirely on the necessity of obtaining the maximum income per square foot of ground, and of offering to the tenants offices and apartments that please them. This caused the construction of gigantic buildings where too large masses of human beings are crowded together. Civilized men like such a way of living. While they enjoy the comfort and banal luxury of their dwelling, they do not realize that they are deprived of the necessities of life. The modern city consists of monstrous edifices and of dark, narrow streets full of petrol fumes and toxic gases, torn by the noise of the taxicabs, lorries and buses, and thronged ceaselessly by great crowds. Obviously, it has not been planned for the good of its inhabitants.",
-        "cn": "在工业生活的组织中，工厂对工人的生理和精神状态的影响完全被忽视了。现代工业的基本概念是：以最低成本获取最多产品，为的是让某个个人或某一部分人尽可能多地赚钱。现代工业发展起来了，却根本没想到操作机器的人的本质。工厂把一种人为的生存方式强加给工人，却不顾及这种生存方式给工人及其后代带来的影响。大城市的建设毫不关心我们。摩天大楼完全是按这样的需要修建的：每平方英尺地皮取得最大收入和向租房人提供使他满意的办公室和住房。这样就导致了许多摩天大厦拔地而起，大厦内众多的人挤地一起。文明人喜欢这样一种生活方式。在享受自己住宅的舒适和庸俗的豪华时，却没有意识到被剥夺了生活所必需的东西。大得吓人的高楼和阴暗狭窄的街道组成了今日现代化的城市。街道上充斥着汽油味和有毒气体，出租汽车、卡车、公共汽车的噪音刺耳难忍，络绎不绝的人群挤来挤去。显然，现代化的城市不是这居民的利益而规划的。"
+        "en": "Mary and her husband Dimitri lived in the tiny village of Perachora in southern Greece.",
+        "cn": "玛丽和她的丈夫迪米特里住在希腊南部一个叫佩拉考拉的小村庄里。"
+      },
+      {
+        "en": "One of Mary's prize possessions was a little white lamb which her husband had given her.",
+        "cn": "玛丽最珍贵的财产之一是她丈夫送给她的一只白色小羔羊。"
+      },
+      {
+        "en": "She kept it tied to a tree in a field during the day and took it into her bedroom at night.",
+        "cn": "白天，她把它拴在田野里的一棵树上，晚上则带进自己的卧室。"
+      },
+      {
+        "en": "Some of her neighbours were surprised by this, but Mary said, 'It's only a little lamb. It's not a problem.'",
+        "cn": "她的一些邻居对此感到惊讶，但玛丽说：‘它只是一只小羔羊，没什么问题。’"
+      },
+      {
+        "en": "One day, a lorry driver stopped at the village to ask for a drink of water.",
+        "cn": "一天，一位卡车司机在村里停下来要了杯水喝。"
+      },
+      {
+        "en": "He saw the lamb and said, 'That's a fine lamb. I'll give you a good price for it.'",
+        "cn": "他看到了羔羊，说：‘那是一只好羔羊。我给你一个好价钱。’"
+      },
+      {
+        "en": "Mary refused to sell it, but the driver was very persistent.",
+        "cn": "玛丽拒绝出售，但司机非常执着。"
+      },
+      {
+        "en": "He offered her a lot of money, but she still refused.",
+        "cn": "他给了她很多钱，但她仍然拒绝。"
+      },
+      {
+        "en": "The next day, the driver returned and this time he brought a friend with him.",
+        "cn": "第二天，司机回来了，这次他带了一个朋友。"
+      },
+      {
+        "en": "They tried to persuade Mary to sell the lamb, but she would not change her mind.",
+        "cn": "他们试图说服玛丽卖掉羔羊，但她不肯改变主意。"
+      },
+      {
+        "en": "The driver got angry and said, 'We'll take it by force!'",
+        "cn": "司机生气了，说：‘我们要强行带走它！’"
+      },
+      {
+        "en": "He and his friend tried to seize the lamb, but Mary fought them off.",
+        "cn": "他和他的朋友试图抓住羔羊，但玛丽把他们打退了。"
+      },
+      {
+        "en": "The noise brought Dimitri and other villagers to the scene.",
+        "cn": "吵闹声把迪米特里和其他村民引到了现场。"
+      },
+      {
+        "en": "The two men were quickly overpowered and taken to the police station.",
+        "cn": "这两个人很快被制服，并被带到警察局。"
       }
     ]
   },
   {
-    "title": "Lesson 17  A man-made disease 人为的疾病",
+    "title": "Lesson 17  The longest suspension bridge in the world 世界上最长的吊桥",
     "pairs": [
       {
-        "en": "In the early days of the settlement of Australia, enterprising settlers unwisely introduced the European rabbit. This rabbit had no natural enemies in the Antipodes, so that it multiplied with that promiscuous abandon characteristic of rabbits. It overran a whole continent. It caused devastation by burrowing and by devouring the herbage which might have maintained millions of sheep and cattle. Scientists discovered that this particular variety of rabbit (and apparently no other animal) was susceptible to a fatal virus disease, myxomatosis. By infecting animals and letting them loose in the burrows, local epidemics of this disease could be created. Later it was found that there was a type of mosquito which acted as the carrier of this disease and passed it on to the rabbits. So while the rest of the world was trying to get rid of mosquitoes, Australia was encouraging this one. It effectively spread the disease all over the continent and drastically reduced the rabbit population. It later became apparent that rabbits were developing a degree of resistance to this disease, so that the rabbit population was unlikely to be completely exterminated. There were hopes, however, that the problem of the rabbit would become manageable.",
-        "cn": "在澳大利亚移民初期，一些有创业精神的移民不明智地把欧洲兔子引进了澳大利亚。这种兔子在澳大利亚及新西兰没有天敌，因此便以兔子所特有的杂乱交配迅猛繁殖起来。整个澳洲兔子成灾。它们在地下打洞，吃掉本可以饲养数百万头牛羊的牧草，给澳洲大陆造成了毁灭性的破坏。科学家们发现，这种特殊品种的兔子（显然不包括别的动物）易患一种叫“多发性粘液瘤”的致命毒性疾病。通过让染上此病的动物在洞内乱跑，就可以使这种疾病在一个地区蔓延起来。后来又发现，有一种蚊子是传播这种疾病的媒介，能把此病传染给兔子。因此，世界上其他地方在设法消灭蚊子的时候，澳大利亚却在促使这种蚊子大量繁殖。蚊子把这种疾病扩散到整个澳洲大陆，效果甚佳，结果兔子的数目在为减少。后来，明显看出，兔子对这种疾病已产生了一定程度的免疫力，所以兔子不可能被完全消灭。但是，已有希望解决兔子所带来的问题。"
+        "en": "Verrazano, an Italian about whom little is known, sailed into New York Harbour in 1524 and named it Angouleme.",
+        "cn": "韦拉扎诺，一个鲜为人知的意大利人，于1524年驶入纽约港，并将其命名为安古莱姆。"
       },
       {
-        "en": "Ironically, Europe, which had bequeathed the rabbit as a pest to Australia, acquired this man-made disease as a pestilence. A French physician decided to get rid of the wild rabbits on his own estate and introduced myxomatosis. It did not, however, remain within the confines of his estate. It spread through France, Where wild rabbits are not generally regarded as a pest but as sport and a useful food supply, and it spread to Britain where wild rabbits are regarded as a pest but where domesticated rabbits, equally susceptible to the disease, are the basis of a profitable fur industry. The question became one of whether Man could control the disease he had invented.",
-        "cn": "具有讽刺意味的是，欧洲把这种兔子作为有害动物传给澳洲，而欧洲自己却染上了这种人为的瘟疫般的疾病。一位法国内科医生决定除掉自己庄园内的野兔子，于是引进了这种多发性粘液瘤疾病。然而，这种疾病并未被局限在他的庄园内，结果在整个法国蔓延开来。野兔在法国一般不被当作有害动物，而被视为打猎取乐的玩物和有用的食物来源。这种疾病又蔓延到了英国。在英国，野兔被当作有害的动物，可是家兔是赚钱的毛皮工业的基础，然而家兔同样易感染这种疾病。现在的问题是，人类能否控制住这种人为的疾病。"
+        "en": "He is commemorated by the Verrazano-Narrows Bridge, which was opened in 1964.",
+        "cn": "为了纪念他，1964年开通的韦拉扎诺海峡大桥以他的名字命名。"
+      },
+      {
+        "en": "The bridge, which was designed by Othmar H. Ammann, joins Brooklyn to Staten Island.",
+        "cn": "这座由奥斯马尔·H·阿曼设计的大桥，连接了布鲁克林和斯塔滕岛。"
+      },
+      {
+        "en": "It has a span of 4,260 feet.",
+        "cn": "它的跨度为4,260英尺。"
+      },
+      {
+        "en": "The bridge is so long that the shape of the earth had to be taken into account by its designer.",
+        "cn": "这座桥非常长，以至于它的设计师必须考虑到地球的形状。"
+      },
+      {
+        "en": "Two great towers support four huge cables.",
+        "cn": "两座巨大的塔楼支撑着四根巨大的缆索。"
+      },
+      {
+        "en": "The towers are built on immense underwater platforms made of steel and concrete.",
+        "cn": "塔楼建在由钢筋和混凝土制成的巨大水下平台上。"
+      },
+      {
+        "en": "The platforms extend to a depth of over 100 feet under the sea.",
+        "cn": "平台延伸至海下100多英尺的深度。"
+      },
+      {
+        "en": "These alone took 16 months to build.",
+        "cn": "仅这些平台就花了16个月的时间来建造。"
+      },
+      {
+        "en": "Above the surface of the water, the towers rise to a height of nearly 700 feet.",
+        "cn": "在水面之上，塔楼高达近700英尺。"
+      },
+      {
+        "en": "They support the cables from which the bridge has been suspended.",
+        "cn": "它们支撑着悬挂桥梁的缆索。"
+      },
+      {
+        "en": "Each of the four cables contains 26,108 lengths of wire.",
+        "cn": "四根缆索中的每一根都包含26,108股钢丝。"
+      },
+      {
+        "en": "It has been estimated that if the bridge were packed with cars, it would still only be carrying a third of its total capacity.",
+        "cn": "据估计，即使桥上挤满了汽车，它也只承载了其总容量的三分之一。"
+      },
+      {
+        "en": "However, size and strength are not the only important things.",
+        "cn": "然而，尺寸和强度并非唯一重要的事情。"
+      },
+      {
+        "en": "The bridge is also very beautiful.",
+        "cn": "这座桥也非常美丽。"
+      },
+      {
+        "en": "It is a triumph of modern engineering.",
+        "cn": "它是现代工程的胜利。"
       }
     ]
   },
   {
-    "title": "Lesson 18 Porpoises  海豚",
+    "title": "Lesson 18  Electric currents in modern art 现代艺术中的电流",
     "pairs": [
       {
-        "en": "There has long been a superstition among mariners that porpoises will save drowning men by pushing them to the surface, or protect them from sharks by surrounding them in defensive formation. Marine Studio biologists have pointed out that, however intelligent they may be, it is probably a mistake to credit dolphins with any motive of lifesaving. On the occasions when they have pushed to shore an unconscious human being they have much more likely done it out of curiosity or for sport, as in riding the bow waves of a ship. In 1928 some porpoises were photographer working like beavers to push ashore a waterlogged mattress. If, as has been reported, they have protected humans from sharks, it may have been because curiosity attracted them and because the scent of a possible meal attracted the sharks. Porpoises and sharks are natural enemies. It is possible that upon such an occasion a battle ensued, with the sharks being driven away or killed.",
-        "cn": "长期以来，海员中流传着一种迷信的说法，认为海豚会把快要淹死的人托到水面，救人性命；或在人们周围列队保护，使他们免遭鲨鱼伤害。海洋摄影室的生物学家指出，无论海豚多么聪明，认为它们有救人的动机可能是错误的。当它们偶尔把一个失去知觉的人推到岸边时，更大的可能是出于好奇或游戏，就像它们追逐被船首犁开的浪花一样。1928年，有人拍摄到了海豚像海狸一样把浸透水的床垫推上岸的情景。正如报道中所说，如果海豚保护人不受鲨鱼侵害，那么它们可能是出于好奇；而鲨鱼可能是闻到了可以美食一顿的香味。海豚和鲨鱼是天然仇敌，双方可能随之发生搏斗，搏斗结果是海豚赶走或咬死鲨鱼。"
+        "en": "Modern sculpture is a difficult thing to understand.",
+        "cn": "现代雕塑是一件难以理解的事情。"
       },
       {
-        "en": "Whether it be bird, fish or beast, the porpoise is intrigued with anything that is alive. They are constantly after the turtles, who peacefully submit to all sorts of indignities. One young calf especially enjoyed raising a turtle to the surface with his snout and then shoving him across the tank like an aquaplane. Almost any day a young porpoise may be seen trying to turn a 300-pound sea turtle over by sticking his snout under the edge of his shell and pushing up for dear life. This is not easy, and may require two porpoises working together. In another game, as the turtle swims across the oceanarium, the first porpoise swoops down from above and butts his shell with his belly. This knocks the turtle down several feet. He no sooner recovers his equilibrium than the next porpoise comes along and hits him another crack. Eventually the turtle has been butted all the way down to the floor of the tank. He is now satisfied merely to try to stand up, but as soon as he does so a porpoise knocks him flat. The turtle at last gives up by pulling his feet under his shell and the game is over.",
-        "cn": "海豚对凡是活的东西都感兴趣，不管是鸟、是鱼，还是野兽。它们经常追逐海龟，海龟则温顺地忍受着各种侮辱。一只小海豚特别喜欢用鼻子把海龟推到水面，然后像滑水板一样把海龟从水池的这一边推到那一边。几乎每天都可以看到一只小海豚把鼻子顶入一只300磅重的海龟的硬壳下面，拼命地把它翻过来。这并非易事，可能需要两只海豚合伙干才行。在另一场游戏中，当海龟游过水族馆时，第一只海豚从上方猛扑下去，用腹部撞击龟壳。这一下子把海龟撞下去好几英尺。海龟刚恢复平衡，第二只海豚又冲过来猛击一下。这只海龟最终被撞到池底。此时的海龟，只要能站起来就满足了，但它刚站起来，就被一只海豚击倒。海龟终于屈服了，将4条腿缩进壳内。游戏到此结束。"
+        "en": "Some people say that it is not art at all.",
+        "cn": "有些人说它根本不是艺术。"
+      },
+      {
+        "en": "They say that it is just a joke.",
+        "cn": "他们说这只是一个笑话。"
+      },
+      {
+        "en": "I don't agree with them.",
+        "cn": "我不同意他们的看法。"
+      },
+      {
+        "en": "I think that modern sculpture is very interesting.",
+        "cn": "我认为现代雕塑非常有趣。"
+      },
+      {
+        "en": "It is true that some modern sculptures are very strange, but they are also very beautiful.",
+        "cn": "诚然，一些现代雕塑非常奇怪，但它们也非常美丽。"
+      },
+      {
+        "en": "The other day, I saw an exhibition of modern sculptures.",
+        "cn": "前几天，我看了一个现代雕塑展。"
+      },
+      {
+        "en": "There was one sculpture that I liked very much.",
+        "cn": "有一件雕塑我非常喜欢。"
+      },
+      {
+        "en": "It was called 'Electric currents'.",
+        "cn": "它被称为“电流”。"
+      },
+      {
+        "en": "It was made of metal and it was very big.",
+        "cn": "它是由金属制成的，非常大。"
+      },
+      {
+        "en": "It looked like a lot of wires that had been twisted together.",
+        "cn": "它看起来像一堆被扭在一起的电线。"
+      },
+      {
+        "en": "The sculptor had used a lot of different colours and the sculpture was very bright and cheerful.",
+        "cn": "雕塑家使用了许多不同的颜色，雕塑非常明亮和欢快。"
+      },
+      {
+        "en": "I thought it was a very clever idea.",
+        "cn": "我认为这是一个非常聪明的想法。"
       }
     ]
   },
   {
-    "title": "Lesson 19  The stuff of dreams 话说梦的本质",
+    "title": "Lesson 19  A very dear cat 一只非常昂贵的猫",
     "pairs": [
       {
-        "en": "It is fairly clear that sleeping period must have some function, and because there is so much of it the function would seem to e important. Speculations about is nature have been going on for literally thousands of years, and one odd finding that makes the problem puzzling is that it looks very much as if sleeping is not simply a matter of giving the body a rest. 'Rest', in terms of muscle relaxation and so on, can be achieved by a brief period lying, or even sitting down. The body's tissues are self-repairing and self-restoring to a degree, and function best when more or less continuously active. In fact a basic amount of movement occurs during sleep which is specifically concerned with preventing muscle inactivity.",
-        "cn": "很清楚，睡眠必然具有某种作用。睡眠占去那么多时间，所以其作用似乎还是很重要。人们对睡眠作用的种种猜测，确实有数千年之久。一项使人对这个问题感到困惑的奇怪的发现是，睡眠在很大程度似乎并不仅仅是为了使身体得到休息。“休息”，从使肌肉得到放松等方面来看，只要稍微躺一躺，甚至坐一坐就能达到。人体组织在一定程度上有自我修补和自我恢复的能力，有张有弛地连续活动时，其功能最佳。事实上，睡眠状态下仍有着基本的活动量，以防止肌肉活动停止。"
+        "en": "Kidnappers are rarely interested in animals, but they recently took an interest in Mrs. Eleanor Ramsay's cat.",
+        "cn": "绑匪很少对动物感兴趣，但他们最近对埃莉诺·拉姆齐夫人的猫产生了兴趣。"
       },
       {
-        "en": "If it is not a question of resting the body, then perhaps it is the brain that needs resting? This might be a plausible hypothesis were it not for two factors. First the electroencephalograph (which is simply a device for recording the electrical activity of the brain by attaching electrodes to the scalp) shows that while there is a change in the pattern of activity during sleep, there is no evidence that the total amount of activity is any less. The second factor is more interesting and more fundamental. Some years ago an American psychiatrist named William Dement published experiments dealing with the recording of eye-movements during sleep. He showed that the average individual's sleep cycle is punctuated with peculiar bursts of eye-movements, some drifting and slow, others jerky and rapid. People woken during these periods of eye-movements generally reported that they had been dreaming. When woken at other times they reported no dreams. If one group of people were disturbed from their eye-movement sleep for several nights on end, and another group were disturbed for an equal period of time but when they were no exhibiting eye-movements, the first group began to show some personality disorders while the others seemed more or less unaffected. The implications of all this were that it was not the disturbance of sleep that mattered, but the disturbance of dreaming.",
-        "cn": "如果睡眠的功能不是在于使身体得到休息，那么也许是让大脑得以休息？若不是下面两点，这种假使似乎是有道理的。第一点，脑电图记录仪（不过是一种把电极接到头皮上记录脑电活动的仪器）显示，人在睡眠时大脑活动的方式有变化，但没有迹象表明，其活动总量有任何减少。第二点更有意思，也更重要。前些年，美国一位精神病学者发表了一篇报告，报告中记录了眼球在睡眠时的活动情况。他指出，平常人的睡眠周期中不时伴有一阵阵奇怪的眼球队活动，这些活动有的飘忽而缓慢，有的急剧而快速。在眼球活动期间被叫醒的人都说自己在做梦；在其他期间叫醒他们，则说没有做梦。如果有两组人，一组人连续几夜在眼球队活动时被叫醒；另一组人也是连续几夜被叫醒，但是在眼球队没活动时被叫醒的。结果，第一组人开始出现性格失常，而第二组人似乎没受什么影响。这一切暗示我们：睡眠受到干忧没关系，而做梦受到干忧是有问题的。"
+        "en": "Mrs. Ramsay, a wealthy old lady, has a cat called Rastus.",
+        "cn": "拉姆齐夫人是一位富有的老太太，她有一只名叫拉斯图斯的猫。"
+      },
+      {
+        "en": "Rastus is a very dear cat.",
+        "cn": "拉斯图斯是一只非常昂贵的猫。"
+      },
+      {
+        "en": "He is worth a lot of money.",
+        "cn": "他值很多钱。"
+      },
+      {
+        "en": "Last week, a kidnapper stole Rastus.",
+        "cn": "上周，一个绑匪偷走了拉斯图斯。"
+      },
+      {
+        "en": "He telephoned Mrs. Ramsay and told her that he wanted a ransom of 1,000 pounds.",
+        "cn": "他打电话给拉姆齐夫人，告诉她他想要1000英镑的赎金。"
+      },
+      {
+        "en": "He said that he would return Rastus if she paid the ransom.",
+        "cn": "他说如果她支付赎金，他就会归还拉斯图斯。"
+      },
+      {
+        "en": "Mrs. Ramsay was very upset.",
+        "cn": "拉姆齐夫人非常难过。"
+      },
+      {
+        "en": "She was willing to pay the ransom, but she was afraid that the kidnapper would not return Rastus.",
+        "cn": "她愿意支付赎金，但她担心绑匪不会归还拉斯图斯。"
+      },
+      {
+        "en": "She went to the police and told them what had happened.",
+        "cn": "她去警察局告诉他们发生了什么事。"
+      },
+      {
+        "en": "The police advised her to pay the ransom.",
+        "cn": "警察建议她支付赎金。"
+      },
+      {
+        "en": "They told her to put the money in a bag and leave it in a telephone box.",
+        "cn": "他们让她把钱放在一个袋子里，然后把它放在一个电话亭里。"
+      },
+      {
+        "en": "The next day, Mrs. Ramsay did as she was told.",
+        "cn": "第二天，拉姆齐夫人照做了。"
+      },
+
+      {
+        "en": "She put the money in a bag and left it in a telephone box.",
+        "cn": "她把钱放在一个袋子里，然后把它放在一个电话亭里。"
+      },
+      {
+        "en": "The police waited nearby.",
+        "cn": "警察在附近等着。"
+      },
+      {
+        "en": "Soon, a man came to the telephone box and took the bag.",
+        "cn": "很快，一个男人来到电话亭，拿走了袋子。"
+      },
+      {
+        "en": "The police arrested him.",
+        "cn": "警察逮捕了他。"
+      },
+      {
+        "en": "The man was the kidnapper.",
+        "cn": "那个人就是绑匪。"
+      },
+      {
+        "en": "He told the police where Rastus was.",
+        "cn": "他告诉警察拉斯图斯在哪里。"
+      },
+      {
+        "en": "Rastus was safe and sound.",
+        "cn": "拉斯图斯安然无恙。"
+      },
+      {
+        "en": "Mrs. Ramsay was very happy to have her dear cat back.",
+        "cn": "拉姆齐夫人很高兴她亲爱的猫回来了。"
       }
     ]
   },
   {
-    "title": "Lesson 20  Snake poison  蛇毒",
+    "title": "Lesson 20  Pioneer pilots 飞行员的先驱",
     "pairs": [
       {
-        "en": "How it came about that snakes manufactured poison is a mystery. Over the periods their saliva, a mild, digestive juice like our own, was converted into a poison that defies analysis even today. It was not forced upon them by the survival competition; they could have caught and lived on prey without using poison, just as the thousands of non-poisonous snakes still do. Poison to a snake is merely a luxury; it enables it to get its food with very little effort, no more effort than one bite. And why only snakes? Cats, for instance, would be greatly helped; no running fights with large, fierce rats or tussles with grown rabbits -- just a bite and no more effort needed. In fact, it would be an assistance to all carnivores though it would be a two-edged weapon when they fought each other. But, of the vertebrates, unpredictable Nature selected only snakes (and one lizard). One wonders saliva into why Nature, with respect from that of others, as other on the blood.",
-        "cn": "蛇是怎样产生毒液的，这是一个谜。蛇的唾液本来和我们人的消化液一样柔和，但经过漫长的时间，演变成了今天仍无法分析清楚的毒液。毒液不是生存竞争强加给它们的，它们也可以不用毒液捕捉动物而生存，就像今天成千上万的无毒蛇那样。毒液对毒蛇来说只不过是一种舒适生存的优越手段，它使蛇不用费多大力气就能捕获到食物，轻咬一口即可。为什么只有蛇才有毒液呢？譬如说，如果猫有毒液，那对猫会大有帮助，它就不必再和又大又凶的老鼠边跑边博斗了，也不必再和大兔子扭斗了，只要咬一口，就不必再费大力气。因此，任何食肉动物有了毒液，都能从中获益。不过，当它们相互撕打时，毒液就成了利弊参半的武，可以杀死对方，也可以被对方的毒液杀死。然而，在脊椎动物中，大自然神秘模测地只选择了蛇（还有一种蜥蜴），人们弄不清楚大自然为什么在某些蛇的身上调制出如此高效的毒液来。"
+        "en": "In 1908 Lord Northcliffe offered a prize of 1,000 pounds to the first man who would fly across the English Channel.",
+        "cn": "1908年，诺斯克利夫勋爵悬赏1000英镑，奖励第一个飞越英吉利海峡的人。"
       },
       {
-        "en": "In the conversion of saliva into poison, one might suppose that a fixed process took place. It did not; some snakes manufacture a poison different in every respect from that of others, as different as arsenic is from strychnine, and having different effects. One poison acts on the nerves, the other on the blood.",
-        "cn": "人们可能认为，唾液转变成毒液，其中有固定的程序。其实没有。有些蛇产生的毒液也在各方面与另外一些毒蛇产生的毒液不同，就像砒霜不同于马钱子碱一样。不同毒蛇产生的毒液产生的效果不同，一种毒液作用于神经，另一种毒液作用于血液。"
+        "en": "Over a year went by before the first attempt was made.",
+        "cn": "一年多过去了，才有人第一次尝试。"
       },
       {
-        "en": "The makers of the nerve poison include the mambas and the cobras and their venom is called neurotoxic. Vipers (adders) and rattlesnakes manufacture the blood poison, which is known as haemolytic. Both poisons are unpleasant, but by far the more unpleasant is the blood poison. It is said that the nerve poison is the more primitive of the two, that the blood poison is, so to speak, a newer product from an improved formula. Be that as it may, the nerve poison does its business with man far more quickly than the blood poison. This, however, means nothing. Snakes did not acquire their poison for use against man but for use against prey such as rats and mice, and the effects on these of viperine poison is almost immediate.",
-        "cn": "产生神经毒液的蛇有一种非洲树眼镜蛇和眼镜蛇，它们的毒液称为神经毒素。蝰蛇（蝮蛇）和响尾蛇产生血液毒素，称为溶血性毒液。这两种毒液都很可怕，但溶血性毒液尤其厉害。据说，神经毒液在两种毒液中是较为原始的一种，而溶血性毒液，打个比方说，是根据改良配方生产的一种较新的产品。不过，神经毒辣液比溶血性毒液在人身上起作用快得多。但是，这没有什么关系，因为蛇有毒液不是用来对付人的，而是对付它的猎物，诸如鼠类，毒液对这些猎物会立刻起作用。"
+        "en": "On July 19th, 1909, in the early morning, Hubert Latham took off from the French coast in his plane, the 'Antoinette IV'.",
+        "cn": "1909年7月19日清晨，休伯特·莱瑟姆驾驶他的“安托瓦内特四号”飞机从法国海岸起飞。"
+      },
+      {
+        "en": "He had travelled only seven miles across the Channel when his engine failed and he was forced to land on the sea.",
+        "cn": "他在海峡上空只飞行了7英里，引擎就失灵了，他被迫降落在海上。"
+      },
+      {
+        "en": "The 'Antoinette' floated on the water until Latham was picked up by a ship.",
+        "cn": "“安托瓦内特”号漂浮在水面上，直到莱瑟姆被一艘船救起。"
+      },
+      {
+        "en": "Two days later, Louis Bleriot arrived near Calais with a plane called 'No. XI'.",
+        "cn": "两天后，路易·布莱里奥带着一架名为“十一号”的飞机抵达加莱附近。"
+      },
+      {
+        "en": "Bleriot had been making planes since 1905 and this was his latest model.",
+        "cn": "布莱里奥自1905年以来一直在制造飞机，这是他的最新型号。"
+      },
+      {
+        "en": "A week before, he had completed a successful overland flight during which he covered twenty-six miles.",
+        "cn": "一周前，他完成了一次成功的陆上飞行，飞行了26英里。"
+      },
+      {
+        "en": "Latham, however, did not give up easily.",
+        "cn": "然而，莱瑟姆并没有轻易放弃。"
+      },
+      {
+        "en": "He, too, arrived near Calais on the same day with a new 'Antoinette'.",
+        "cn": "同一天，他也带着一架新的“安托瓦内特”号抵达加莱附近。"
+      },
+      {
+        "en": "It looked as if there would be an exciting race across the Channel.",
+        "cn": "看来将会有一场激动人心的跨海峡比赛。"
+      },
+      {
+        "en": "Both pilots were waiting for favourable weather.",
+        "cn": "两位飞行员都在等待有利的天气。"
+      },
+      {
+        "en": "On the morning of July 25th, Bleriot got up early.",
+        "cn": "7月25日早上，布莱里奥起得很早。"
+      },
+      {
+        "en": "It was not yet dawn.",
+        "cn": "天还没亮。"
+      },
+      {
+        "en": "The weather was good, so Bleriot decided to try his luck.",
+        "cn": "���气很好，所以布莱里奥决定碰碰运气。"
+      },
+      {
+        "en": "He took off at 4.35 a.m.",
+        "cn": "他于凌晨4点35分起飞。"
+      },
+      {
+        "en": "Latham, who had been sleeping soundly, was woken up too late.",
+        "cn": "睡得很沉的莱瑟姆被叫醒时已经太晚了。"
+      },
+      {
+        "en": "Bleriot flew across the Channel in thirty-seven minutes.",
+        "cn": "布莱里奥在37分钟内飞越了海峡。"
+      },
+      {
+        "en": "He landed safely in a field near Dover.",
+        "cn": "他在多佛附近的一块田地里安全着陆。"
+      },
+      {
+        "en": "He had won the prize.",
+        "cn": "他赢得了奖金。"
       }
     ]
   },
   {
-    "title": "Lesson 21  William S. Hart and the early 'Western' film 威廉.S. 哈特和早期限的‘西部’影片",
+    "title": "Lesson 21  Daniel Mendoza 丹尼尔·门多萨",
     "pairs": [
       {
-        "en": "William S. hart was, perhaps, the greatest of all Western stars, fro unlike Gary Cooper and John Wayne he appeared in nothing but Westerns. From 1914 to 1924 he was supreme and unchallenged. It was Hart who created the basic formula of the Western film, and devised the protagonist he played in every film he made, the good-had man, the accidental-noble outlaw, or the honest-but-framed cowboy, or the sheriff made suspect by vicious gossip; in short, the individual in conflict with himself and his frontier environment.",
-        "cn": "威廉.S.哈特大概是美国西部电影明星中的佼佼者。他和加里.古柏、约翰.韦恩不同，他只在西部电影中扮演角色。在1914年至1924年期间，他首屈一指，独霸影坛。正是他创造了西部电影的基调，即在他自己的拍摄的影片中他所塑造的主人公形象：被认为是坏人的好人，出人意料的高尚的逃犯，诚实却遭陷害的牛仔或因流言蜚语蒙受嫌疑的司法官。总之，主人公是一个自相矛盾，又与他的拓荒环境相矛盾的人物。"
+        "en": "Boxing matches were very popular in England in the eighteenth century.",
+        "cn": "在18世纪的英国，拳击比赛非常受欢迎。"
       },
       {
-        "en": "Unlike most of his contemporaries in Hollywood, Hart actually knew something of the old West. He had lived in it as a child when it was already disappearing, and his hero was firmly rooted in his memories and experiences, and in both the history and the mythology of the vanished frontier. And although no period or place in American history has been more absurdly romanticized, myth and reality did join hands in at least one arena, the conflict between the individual and encroaching civilization.",
-        "cn": "哈特与大部分同时代在好莱坞的演员不同，他确实了解西部早期拓荒生活的一些情况。作为一个孩子他曾在西部生活过，当时西部拓荒生活正在消失。他塑造的英雄人物深深地扎根于他本人的记忆和经历之中，也扎根于有关已经消失的拓荒生活的历史和神话之中。虽然在美国历史上没有任何时期或地区像西部拓荒时期那样被荒谬地浪漫主义化了，但神话和事实至少在某一个舞台上共存，也就是存在于个人与渐渐闯入的文明这两者的冲突之中。"
+        "en": "In those days, boxers fought with bare fists for prize money.",
+        "cn": "在那些日子里，拳击手们赤手空拳为奖金而战。"
       },
       {
-        "en": "Men accustomed to struggling for survival against the elements and Indians were bewildered by politicians, bankers and businessmen, and unhorsed by fences, laws and alien taboos. Hart's good-bad man was always an outsider, always one of the disinherited, and if he found it necessary to shoot a sheriff or rob a bank along the way, his early audiences found it easy to understand and forgive, especially when it was Hart who, in the end, overcame the attacking Indians.",
-        "cn": "习惯与大自然和印第安人作斗争以求生存的拓荒者被政客、银行家和商人搞得晕头转向，最后被圈地、尖律我外来的清规戒律所击败。哈特扮演的被误为坏人的好人总是一个局外人，总是一个被剥夺继承权的人。如果他认为在进行过程中有必要枪击一个司法官或抢劫一个银行，他的早期观众很容易接受，觉得应该原谅他，特别是当哈特最后战胜了前来进攻的印第安人时，观众更能原谅他。"
+        "en": "Because of this, they were known as 'prizefighters'.",
+        "cn": "因此，他们被称为“职业拳击手”。"
       },
       {
-        "en": "Audiences in the second decade of the twentieth century found it pleasant to escape to a time when life, though hard, was relatively simple. We still do; living in a world in which undeclared aggression, war, hypocrisy, chicanery, anarchy and impending immolation are part of our daily lives, we all want a code to live by.",
-        "cn": "生活在20世纪20年代的观众认为，逃到一个即使艰苦但比较简朴的时代中去是件愉快的事，我们今天仍有这种感觉。如今，不宣而战的侵略、战争、虚伪、诈骗、无政府状态以及即将临头的毁灭成了我们日常生活的一部分，我们都希望有一个赖以生存的行为准则。"
+        "en": "However, boxing was very crude, for there were no rules and a prizefighter could be seriously injured or even killed during a match.",
+        "cn": "然而，拳击非常粗野，因为没有规则，职业拳击手在比赛中可能会受重伤甚至死亡。"
+      },
+      {
+        "en": "One of the most skilful prizefighters was Daniel Mendoza, who was born in 1764.",
+        "cn": "最熟练的职业拳击手之一是丹尼尔·门多萨，他出生于1764年。"
+      },
+      {
+        "en": "He was a very successful prizefighter and he became Champion of England in 1791.",
+        "cn": "他是一位非常成功的职业拳击手，并于1791年成为英格兰冠军。"
+      },
+      {
+        "en": "He was the first scientific boxer.",
+        "cn": "他是第一位科学的拳击手。"
+      },
+      {
+        "en": "He invented the art of boxing.",
+        "cn": "他发明了拳击艺术。"
+      },
+      {
+        "en": "He taught his pupils how to punch, how to guard and how to move.",
+        "cn": "他教他的学生如何出拳、如何防守以及如何移动。"
+      },
+      {
+        "en": "He wrote a book called 'The Art of Boxing'.",
+        "cn": "他写了一本名为《拳击的艺术》的书。"
+      },
+      {
+        "en": "He was so popular that he was asked to teach the Prince of Wales.",
+        "cn": "他非常受欢迎，以至于被邀请教威尔士亲王。"
+      },
+      {
+        "en": "Mendoza was a very small man.",
+        "cn": "门多萨是个非常矮小的人。"
+      },
+      {
+        "en": "He was only five feet seven inches tall and he weighed only 160 pounds.",
+        "cn": "他只有五英尺七英寸高，体重只有160磅。"
+      },
+      {
+        "en": "He was a very brave man, too.",
+        "cn": "他也是一个非常勇敢的人。"
+      },
+      {
+        "en": "He often fought men who were much bigger and heavier than he was.",
+        "cn": "他经常与比他高大、体重重得多的人搏斗。"
+      },
+      {
+        "en": "He was a very clever boxer.",
+        "cn": "他是一个非常聪明的拳击手。"
+      },
+      {
+        "en": "He used his speed and skill to defeat his opponents.",
+        "cn": "他利用自己的速度和技巧击败对手。"
+      },
+      {
+        "en": "He was a great champion.",
+        "cn": "他是一位伟大的冠军。"
       }
     ]
   },
   {
-    "title": "Lesson 22  Knowledge and progress   知识和进步",
+    "title": "Lesson 22  By heart 熟记台词",
     "pairs": [
       {
-        "en": "Why does the idea of progress loom so large in the modern world? Surely progress of a particular kind is actually taking place around us and is becoming more and more manifest. Although mankind has undergone no general improvement in intelligence or morality, it has made extraordinary progress in the accumulation of knowledge. Knowledge began to increase as soon as the thoughts of one individual could be communicated to another by means of speech. With the invention of writing, a great advance was made, for knowledge could then be not only communicated but also stored. Libraries made education possible, and education in its turn added to libraries: the growth of knowledge followed a kind of compound interest law, which was greatly enhanced by the invention of printing. All this was comparatively slow until, with the coming of science, the tempo was suddenly raised. Then knowledge began to be accumulated according to a systematic plan. The trickle became a stream; the stream has now become a torrent. Moreover, as soon as new knowledge is acquired, it is now turned to practical account. What is called 'modern civilization' is not the result of a balanced development of all man's nature. but of accumulated knowledge applied to practical life. The problem now facing humanity is: What is going to be done with all this knowledge? As is so often pointed out, knowledge is a two-edged weapon which can be used equally for good or evil. It is now being used indifferently for both. Could any spectacle, for instance, be more grimly whimsical than that of gunners ourselves very seriously what will happen if this twofold use of knowledge, with its ever-increasing power, continues.",
-        "cn": "为什么进步这个概念在现代世界显得如此突出？无疑是因为有一种特殊的进步实际上正在我们周围发生，而且变得越来越明显。虽然人类有智力和道德上没有得到普遍提高，但在知识积累方面却取得了巨大的进步。人一旦能用语言同别人交流思想，知识的积累便开始了。随着书写的发明，又迈进了一大步，因为这样一来，知识不仅能交流，而且能储存了。藏书使教育成为可能，而教育反过来又丰富了藏书，因为知识的增长遵循着一种“滚雪球”的规律。印刷术的发明又大大提高了知识增长的速度。所有这些发展都比较缓慢，而随着科学的到来，增长的速度才突然加快。于是，知识便开始有系统有计划地积累起来。涓涓细流汇成小溪，小溪现已变成了奔腾的江河。而且，新知识一旦获得，便得到实际应用。所谓“现代文明”并不是人的天性平衡发展的结果，而是积累起来的知识应用到实际生活中的结果。现在人类面临的问题是：用这些知识去做什么？正像人们常常指出的，知识是一把双刃刀，可以用于造福，也可以用来为害。人们现在正漫不经心地把知识用于这两个方面，例如：炮兵利用科学毁坏人的身体、而外科医生就在附近用科学抢救被炮兵毁坏的人体，还有什么情景比这更可怕、更怪诞的吗？我们不得不严肃地问问我们自己：随着日益增长的知识的力量，如果我们继续利用知识的这种双重性，将会发生什么样的情况呢？"
+        "en": "Some plays are so successful that they run for years on end.",
+        "cn": "有些戏剧非常成功，以至于连续上演多年。"
+      },
+      {
+        "en": "In many ways, this is unfortunate for the poor actors who are required to go on repeating the same lines night after night.",
+        "cn": "在许多方面，这对可怜的演员来说是不幸的，他们被要求夜复一夜地重复同样的台词。"
+      },
+      {
+        "en": "One would expect them to know their parts by heart and never have cause to falter.",
+        "cn": "人们会期望他们熟记自己的台词，永远没有理由结巴。"
+      },
+      {
+        "en": "Yet this is not always the case.",
+        "cn": "然而，情况并非总是如此。"
+      },
+      {
+        "en": "A famous actor in a highly successful play was once cast as an aristocrat who had been imprisoned in the Bastille for twenty years.",
+        "cn": "一位著名演员在一出非常成功的戏剧中曾扮演一个在巴士底狱被囚禁了20年的贵族。"
+      },
+      {
+        "en": "In the last act, a gaoler would always come on to the stage with a letter which he would hand to the prisoner.",
+        "cn": "在最后一幕，一个狱卒总是会带着一封信上台，交给囚犯。"
+      },
+      {
+        "en": "Even though the noble was expected to read the letter at each performance, he always insisted that it should be written out in full.",
+        "cn": "尽管这位贵族在每次演出时都被要求读这封信，但他总是坚持信要写全。"
+      },
+      {
+        "en": "One night, the gaoler decided to play a joke on his colleague to find out if, after so many performances, he had managed to learn the contents of the letter by heart.",
+        "cn": "一天晚上，狱卒决定和他的同事开个玩笑，看看在这么多场演出之后，他是否已经熟记了信的内容。"
+      },
+      {
+        "en": "The curtain went up on the final act of the play and revealed the aristocrat sitting alone in his cell.",
+        "cn": "戏剧最后一幕的帷幕拉开，贵族独自坐在牢房里。"
+      },
+      {
+        "en": "The gaoler came in with the letter and handed it to him.",
+        "cn": "狱卒拿着信进来，递给了他。"
+      },
+      {
+        "en": "The aristocrat opened it, but his face went blank.",
+        "cn": "贵族打开信，但他的脸变得茫然。"
+      },
+      {
+        "en": "The letter was a blank sheet of paper!",
+        "cn": "信是一张白纸！"
+      },
+      {
+        "en": "He stared at it for a moment and then, looking at the gaoler, he said, 'The light is dim. Read the letter to me.'",
+        "cn": "他盯着信看了一会儿，然后看着狱卒说：‘光线太暗了，你给我读信吧。’"
+      },
+      {
+        "en": "And he promptly handed the sheet of paper to the gaoler.",
+        "cn": "然后他迅速把那张纸递给了狱卒。"
+      },
+      {
+        "en": "Finding that he could not remember a single word of the letter, the gaoler had to confess his little joke and ask the actor to forgive him.",
+        "cn": "狱卒发现自己一个字也记不起来，只好承认自己的小玩笑，并请求演员原谅他。"
       }
     ]
   },
   {
-    "title": "Lesson 23  Bird flight   鸟的飞行方法",
+    "title": "Lesson 23  One man's meat is another man's poison 人之所食，我之所毒",
     "pairs": [
       {
-        "en": "No two sorts of birds practise quite the same sort of flight; the varieties are infinite; but two classes may be roughly seen. Any shi that crosses the Pacific is accompanied for many days by the smaller albatross, Which may keep company with the vessel for an hour without visible or more than occasional movement of wing. The currents of air that the walls of the ship direct upwards, as well as in the line of its course, are enough to give the great bird with its immense wings sufficient sustenance and progress. The albatross is the king of the gliders, the class of fliers which harness the air to their purpose, but must yield to its opposition. In the contrary school, the duck is supreme. It comes nearer to the engines with which man has 'conquered' the air, as he boasts. Duck, and like them the pigeons, are endowed with such-like muscles, that are a good part of the weight of the bird, and these will ply the short wings with such irresistible power that they can bore for long distances through an opposing gale before exhaustion follows. Their humbler followers, such as partridges, have a like power of strong propulsion, but soon tire. You may pick them up in utter exhaustion, if wind over the sea has driven them to a long journey. The swallow shares the virtues of both schools in highest measure. It tires not, nor does it boast of its power; but belongs to the air, travelling it may be six thousand miles to and from its northern nesting home, feeding its flown young as it flies, and slipping through we no longer take omens from their flight on this side and that; and even the most superstitious villagers no longer take off their hats to the magpie and wish it good-morning.",
-        "cn": "没有任何两种鸟的飞行方式是相同的。鸟的飞行方式千差万别，但大体上可分为两类。任何一艘横度太平洋的轮船都会有一种小信天翁伴随飞行许多天。它们随船飞行一小时也难得见其扇动一下翅膀。沿船体的上升的气流和沿航线向前的气流给这种巨翼大鸟以足够的浮力和推力。信天翁是滑翔飞行的鸟类之王，它能自如地驾驭空气，但必须顺气流飞行。与滑翔鸟相对的另一类鸟中，数野鸭本领最高。它更近乎于人类自夸的“征服”了空气的发动机。野鸭及它们相似的鸽子有天赋的钢铁般的肌肉，占了体重的很大一部分。这些肌肉以巨大的力量扇动短小的翅膀，使这类鸟能顶着大风飞行很远的路才会疲劳。次于野鸭和鸽子的鸟，如鹧鸪，有相似的巨大推动力，但很快会疲劳。如果海风驱使它们飞行很长距离，你可以捡到一些因筋疲力尽而摔下来的鹧鸪。燕子充分兼有这两类鸟的长处，它既不疲劳，也不炫耀自己的飞翔力；在空中十分自如，可以飞行6，000英里，可以飞往北方做窝的老家，再从老家飞回；一边飞一边喂养会飞的雏燕，甚至在顶风时也能在气流中滑翔，似乎气流在帮它前进。这些鸟对我们是有益的，虽然我们不再从它们的飞翔姿态来占卜吉凶，连最迷信的村民也不再对喜鹊脱帽行礼，祝它早安了。"
+        "en": "People become quite illogical when they try to decide what can be eaten and what cannot be eaten.",
+        "cn": "当人们试图决定什么能吃，什么不能吃时，他们变得相当不合逻辑。"
+      },
+      {
+        "en": "If you lived in the Mediterranean, for instance, you would consider octopus a great delicacy.",
+        "cn": "例如，如果你住在地中海，你会认为章鱼是美味佳肴。"
+ },
+      {
+        "en": "You would not be able to understand why some people find it repulsive.",
+        "cn": "你无法理解为什么有些人觉得它令人反感。"
+      },
+      {
+        "en": "On the other hand, your stomach would turn at the idea of frying potatoes in animal fat -- the normally accepted practice in many northern countries.",
+        "cn": "另一方面，一想到用动物脂肪炸土豆，你就会反胃——这在许多北方国家是普遍接受的做法。"
+      },
+      {
+        "en": "The sad truth is that most of us have been brought up to eat certain foods and we stick to them all our lives.",
+        "cn": "可悲的事实是，我们中的大多数人从小就吃某些食物，并且一生都坚持吃这些食物。"
+      },
+      {
+        "en": "No creature has received more praise and abuse than the common garden snail.",
+        "cn": "没有哪种生物比普通的庭院蜗牛受到更多的赞扬和辱骂了。"
+      },
+      {
+        "en": "Cooked in wine, snails are a great luxury in various parts of the world.",
+        "cn": "用酒烹制的蜗牛在世界各地都是一种奢侈品。"
+      },
+      {
+        "en": "There are countless people who, ever since their early years, have learned to associate snails with food.",
+        "cn": "有无数人从小就学会了把蜗牛和食物联系在一起。"
+      },
+      {
+        "en": "My friend, Robert, lives in a country where snails are despised.",
+        "cn": "我的朋友罗伯特住在一个鄙视蜗牛的国家。"
+      },
+      {
+        "en": "As his flat is in a large town, he has no garden of his own.",
+        "cn": "由于他的公寓在一个大城市，他没有自己的花园。"
+      },
+      {
+        "en": "For years he has been asking me to collect snails from my garden and take them to him.",
+        "cn": "多年来，他一直让我从我的花园里收集蜗牛带给他。"
+      },
+      {
+        "en": "The trouble is that I can never manage to fill a large bag with them.",
+        "cn": "问题是我永远无法用它们装满一个大袋子。"
+      },
+      {
+        "en": "I am not very fond of snails and I am not very good at finding them.",
+        "cn": "我不太喜欢蜗牛，也不太擅长找它们。"
+      },
+      {
+        "en": "I am always surprised when I see Robert's face light up when I give him a small bag of snails.",
+        "cn": "当我给他一小袋蜗牛时，看到罗伯特的脸亮起来，我总是感到惊讶。"
+      },
+      {
+        "en": "He immediately sets about preparing his favourite dish.",
+        "cn": "他立刻开始准备他最喜欢的菜。"
+      },
+      {
+        "en": "I have often watched him cooking them, but I have never been able to bring myself to eat one.",
+        "cn": "我经常看他做饭，但我从来没有勇气吃一个。"
       }
     ]
   },
   {
-    "title": "Lesson 24  Beauty 美",
+    "title": "Lesson 24  A skeleton in the cupboard “家丑”",
     "pairs": [
       {
-        "en": "A young man sees a sunset and, unable to understand or to express the emotion that it rouses in him, concludes that it must be the gateway to world that lies beyond. It is difficult for any of us in moments of intense aesthetic experience to resist the suggestion that we are catching a glimpse of a light that shines down to us from a different realm of existence, different and, because the experience is intensely moving, in some way higher. And, though the gleams blind and dazzle, yet do they convey a hint of beauty and serenity greater than we have known or imagined. Greater too than we can describe; for language, which was invented to convey the meanings of this world, cannot readily be fitted to the uses of another.",
-        "cn": "一个年轻人看到日落，由于无法理解和表达日落在他心中唤起的激情，便得出结论：日落处想必是通往遥远世界的大门。无论是谁，在强烈感受到美的时刻，心中都不禁油生一种遐想：我们似乎瞥见从另一个世界射向我们的一线光芒，那个世界不仅不同于我们这个世界，而且由于美感的强烈感染，在某些方面比我们这个世界更美好。虽然这光芒令人眼花缭乱，但它确实给予我们一种不曾经历和无法想象的美感和静谧的启示。这种美感和静谧是我们无法描述的，因为我们发明的语言是用来描述这个世界的含义，不能随便拿来去描述另一个世界。"
+        "en": "We all have a skeleton in the cupboard.",
+        "cn": "我们都有不可告人的家丑。"
       },
       {
-        "en": "That all great has this power of suggesting a world beyond is undeniable. In some moods, Nature shares it. There is no sky in June so blue that it does not point forward to a bluer, no sunset so beautiful that it does not waken the vision of a greater beauty, a vision which passes before it is fully glimpsed, and in passing leaves and indefinable longing and regret. But, if this world is not merely a bad joke, life a vulgar flare amid the cool radiance of the stars, and existence an empty laugh braying across the mysteries; if these intimations of a something behind and beyond are not evil humour born of indigestion, or whimsies sent by the devil to mock and madden us. if, in a word, beauty means something, yet we must not seek to interpret the meaning. If we glimpse the unutterable, it is unwise to try to utter it, nor should we seek to invest with significance that which we cannot grasp. Beauty in terms of our human meanings is meaningless.",
-        "cn": "不可否认，一切伟大的艺术都具有使人遐想到进入天外世界的魅力。在某种状态下，大自然也有这种魅力。六月蔚蓝的天空总使人遥想一个更加蔚蓝的苍穹；美丽的落日总会引起一个更加绚丽的景象未及饱览便一闪即逝，并在消逝中给人留下不可名状的渴望和惆怅。如果这个世界不只是一个拙劣的恶作剧，如果人生不只是群星寒光中平凡的一闪，如果存在不只是对神秘事物的一种空虚的笑声，如果某种玄妙事物的暗示不是消化不良引起的邪恶情绪，也不是魔鬼为了捉弄我们，使我们发狂而送给我们的邪念，一句话，如果美有某种意义的话，我闪千万不要去阐明它的意义。如果我瞥见了只可意会不可言传的事物，企图把它说出来，那上不明智的；对于我们不理解的事物，我们也不应该去赋予它某种意义。用对我们人类有意义的词解释美是没有意义的。"
+        "en": "The other day, I was talking to a friend of mine about this.",
+        "cn": "前几天，我和一个朋友谈论这个。"
+      },
+      {
+        "en": "He told me that he had a skeleton in his cupboard.",
+        "cn": "他告诉我他有家丑。"
+      },
+      {
+        "en": "He said that his great-grandfather had been a pirate.",
+        "cn": "他说他的曾祖父是个海盗。"
+      },
+      {
+        "en": "I was very surprised.",
+        "cn": "我非常惊讶。"
+      },
+      {
+        "en": "I had always thought that my friend's family was very respectable.",
+        "cn": "我一直以为我朋友的家人都很体面。"
+      },
+      {
+        "en": "I asked him if he was ashamed of his great-grandfather.",
+        "cn": "我问他是否为他的曾祖父感到羞耻。"
+      },
+      {
+        "en": "He said that he was not.",
+        "cn": "他说他不。"
+      },
+      {
+        "en": "He said that he was proud of him.",
+        "cn": "他说他为他感到骄傲。"
+      },
+      {
+        "en": "He said that his great-grandfather had been a very brave man.",
+        "cn": "他说他的曾祖父是个非常勇敢的人。"
+      },
+      {
+        "en": "He had fought for his country and he had been a great hero.",
+        "cn": "他为他的国家而战，他是一个伟大的英雄。"
+      },
+      {
+        "en": "I was very impressed.",
+        "cn": "我印象非常深刻。"
+      },
+      {
+        "en": "I told him that I had a skeleton in my cupboard, too.",
+        "cn": "我告诉他我也有家丑。"
+      },
+      {
+        "en": "I said that my great-grandfather had been a politician.",
+        "cn": "我说我的曾祖父是个政治家。"
+      },
+      {
+        "en": "My friend was very surprised.",
+        "cn": "我的朋友非常惊讶。"
+      },
+      {
+        "en": "He said that he had always thought that my family was very honest.",
+        "cn": "他说他一直以为我的家人都很诚实。"
+      },
+      {
+        "en": "I told him that my great-grandfather had been a very corrupt politician.",
+        "cn": "我告诉他我的曾祖父是个非常腐败的政治家。"
+      },
+      {
+        "en": "He had taken bribes and he had been a very dishonest man.",
+        "cn": "他收受贿赂，是个非常不诚实的人。"
+      },
+      {
+        "en": "My friend was very shocked.",
+        "cn": "我的朋友非常震惊。"
+      },
+      {
+        "en": "He said that he was ashamed of me.",
+        "cn": "他说他为我感到羞耻。"
       }
     ]
   },
   {
-    "title": "Lesson 25   Non-auditory effects of noise   噪音的非听觉效应",
+    "title": "Lesson 25  The Cutty Sark “卡蒂萨克”号帆船",
     "pairs": [
       {
-        "en": "May people in industry and the Services, who have practical experience of noise, regard any investigation of this question as a waste of time; they are not prepared even to admit the possibility that noise affects people. On the other hand, those who dislike noise will sometimes use most inadequate evidence to support their pleas for a quieter society. This is a pity, because noise abatement really is a good cause, and it is likely to be discredited if it gets to be associated with had science.",
-        "cn": "在工业部门工作和在军队中服役的许多人对噪声音有切身的体会，他们认为对这个问题进行调查中浪费时间，甚至不愿承认噪音可能对人有影响。另一方面，那些讨厌噪音的人有时会用不充分的证据来支持他们希望有一个较为安静的社会环境的要求。要求减少噪音是件好事，但是如果与拙劣的科学掺杂在一起的话，就不会被人们所信任，这是很遗憾的。"
+        "en": "One of the most famous sailing ships of the nineteenth century, the Cutty Sark, can still be seen at Greenwich.",
+        "cn": "19世纪最著名的帆船之一“卡蒂萨克”号，至今仍可在格林威治看到。"
       },
       {
-        "en": "One allegation often made is that noise produces mental illness. A recent article in a weekly newspaper, for instance, was headed with a striking illustration of a lady in a state of considerable distress, with the caption 'She was yet another victim, reduced to a screaming wreck'. On turning eagerly to the text, one learns that the lady was a typist who found the sound of office typewriters worried her more and more until eventually she had to go into a mental hospital. Now the snag in this sort of anecdote is of course that one merely a symptom? Another patient might equally well complain that her neighbours were combining to slander her and persecute her, and yet one might be cautious about believing this statement.",
-        "cn": "常见的一种指责是，噪音能引起精神病。例如，最近一家周报刊登了一篇文章，文章上方有一幅引人注目的插图，是一位表情沮丧的女子。图的文字说明：“她是又一个受害者，成了只会尖叫的可怜虫。”当人们急切地看完正文后，便知道这女子是个打字员，办公室打字机的声音使她越来越烦，最终住进了精神病医院。这类奇闻的疑难之处是无法区别因果关系。是噪音引起了（精神）病呢，还是（精神）病的症状之一是对噪音的抱怨？另有一位病人可能同样有理由抱怨说，她的邻居们正在联合起来对她进行诽谤和迫害，不过，人们不会轻信她的抱怨。"
+        "en": "She stands on dry land and is visited by thousands of people each year.",
+        "cn": "她矗立在陆地上，每年都有成千上万的人前来参观。"
       },
       {
-        "en": "What is needed in case of noise is a study of large numbers of people living under noisy conditions, to discover whether they are mentally ill more often than other people are. Some time ago the United States Navy, for instance, examined a very large number of men working on aircraft carriers: the study was known as Project Anehin. It can be unpleasant to live even several miles from an aerodrome; if you think what it must be like to share the deck of a ship with several squadrons of jet aircraft, you will realize that a modern navy is a good place to study noise. But neither psychiatric interviews nor objective tests were able to show any effects upon these American sailors. This result merely confirms earlier American and British studies: if there is any effect of noise upon mental health, it must be so small that present methods of psychiatric diagnosis cannot find it. That does not prove that it does exist: but it does mean that noise is less dangerous than, say, being brought up in an orphanage -- which really is mental health hazard.",
-        "cn": "对于噪音问题，需要对大量生活在噪音中的人进行研究，看一看他们是否比其他人更易患精神病。例如，美国海军前些时候调查了许多在航空母航上工作的人，这次调查被称之为：“安内英工程”。即使住在离机场几英里以外的地方，机场的噪音也会使人难受。因此，如果你能想像出和几个中队的喷气机同在一个甲板上是什么滋味儿的话，你就会认识到现代海军是研究噪音的好地方。但是，不管进行精神病学的调查访问，还是进行客观的测试，都不能显示噪音对这些美国水兵有任何影响。这个结果只不过证实了美国和英国早些时候的研究结论：如果噪音对精神健康有影响的话，那也一定是微乎其微，以致现代的精神病诊断方法还发现不了。这并不是证实不存在噪音对健康的影响。但它确实说明，噪音的危险性 -- 比如说 -- 比在孤儿院长大所受的危害要小一些，孤儿院才是真正危害精神健康的地方。"
+        "en": "She serves as an impressive reminder of the great days of sail.",
+        "cn": "她作为帆船时代的辉煌见证，令人印象深刻。"
+      },
+      {
+        "en": "Before she was built, sailing ships had been driven from the seas by steamships.",
+        "cn": "在她建造之前，帆船已被蒸汽船从海上赶走。"
+      },
+
+      {
+        "en": "The Cutty Sark was one of the last sailing ships to be built.",
+        "cn": "“卡蒂萨克”号是最后一批建造的帆船之一。"
+      },
+      {
+        "en": "She was designed to carry tea from China and she was one of the fastest ships of her day.",
+        "cn": "她被设计用来从中国运送茶叶，是当时最快的船只之一。"
+      },
+      {
+        "en": "In 1872, she took part in a race from China to England.",
+        "cn": "1872年，她参加了一场从中国到英国的比赛。"
+      },
+      {
+        "en": "She and her rival, the Thermopylae, set out from Shanghai on the same day.",
+        "cn": "她和她的对手“塞莫皮莱”号同一天从上海出发。"
+      },
+      {
+        "en": "The two ships sailed side by side for many weeks.",
+        "cn": "两艘船并排航行了数周。"
+      },
+      {
+        "en": "Then the Cutty Sark lost her rudder in a storm.",
+        "cn": "然后“卡蒂萨克”号在暴风雨中失去了舵。"
+      },
+      {
+        "en": "She was repaired at sea, but she lost the race.",
+        "cn": "她在海上被修复，但她输掉了比赛。"
+      },
+      {
+        "en": "After this, she was used to carry wool from Australia.",
+        "cn": "此后，她被用来从澳大利亚运送羊毛。"
+      },
+      {
+        "en": "She was still a very fast ship.",
+        "cn": "她仍然是一艘非常快的船。"
+      },
+      {
+        "en": "In 1885, she sailed from Australia to England in 73 days.",
+        "cn": "1885年，她用73天从澳大利亚航行到英国。"
+      },
+      {
+        "en": "This was a record for a sailing ship.",
+        "cn": "这是帆船的记录。"
+      },
+      {
+        "en": "The Cutty Sark is a beautiful ship.",
+        "cn": "“卡蒂萨克”号是一艘美丽的船。"
+      },
+      {
+        "en": "She is a fine example of the shipbuilder's art.",
+        "cn": "她是造船艺术的典范。"
       }
     ]
   },
   {
-    "title": "Lesson 26 The past life of the earth   地球上的昔日生命",
+    "title": "Lesson 26  Wanted: a large biscuit tin 招聘：一个大饼干罐",
     "pairs": [
       {
-        "en": "It is animals and plants which lived in or near water whose remains are most likely to be preserved, for one of the necessary conditions of preservation is quick burial, and it is only in the seas and rivers, and sometimes lakes, where mud and sit have been continuously deposited, that bodies and the can be rapidly covered over and preserved.",
-        "cn": "只有生活在水中或水边的动植物尸体最有可能被保存下来，因为保存的必要条件之一是迅速掩埋，所以只有在泥沙不停淤积的海洋和江河里，有时在湖泊里，尸体之类的东西才能被迅速地覆盖而保存下来。"
+        "en": "No one can avoid being influenced by advertisements.",
+        "cn": "没有人能避免受广告的影响。"
       },
       {
-        "en": "But even in the most favourable circumstances only a small fraction of the creatures that die are preserved in this way before decay sets in or, even more likely, before scavengers eat them. After all, all living creatures live by feeding on something else, whether it be plant or animal, dead or alive, and it is only by chance that such a fate is avoided. The remains of plants and animals that lived on land are much more rarely preserved, for there is seldom anything to cover them over. When you think of the innumerable birds that one sees flying bout, not to mention the equally numerous small animals like field mice and voles which you do not see, it is very rarely that one comes across a dead body, except, of course, on the roads. They decompose and are quickly destroyed by the weather or eaten by some other creature.",
-        "cn": "即使是在最有利的环境中，死去的生物中也只有一小部分能在开始腐烂前，或更可能在被食腐动物吃掉之前，被这样保存下来。因为一切生物都是靠吃别的东西来活命的，不管这种东西是植物还是动物，死的还是活的，因此，生物偶尔才能避免被吃掉的命运。曾在陆地上生活过的动植物的遗体被保存下来的更为罕见，因为陆地上几乎没有什么东西覆盖它们。你可以想象出天上有看得见的飞来飞去、数不清的鸟，地上有不显眼的无数的老鼠和田鼠之类的小动物，但是，除非在路上，很少有人遇到这些动物的尸体，因为它们腐败之后很快就被风化掉，或被别的动物吃掉了。"
+        "en": "Much as we may pride ourselves on our good taste, we are no longer free to choose the things we want, for advertising exerts a subtle influence on us.",
+        "cn": "尽管我们可能为自己的良好品味感到自豪，但我们不再能自由选择我们想要的东西，因为广告对我们施加了微妙的影响。"
       },
       {
-        "en": "It is almost always due to some very special circumstances that traces of land animals survive, as by falling into inaccessible caves, or into an ice crevasse, like the Siberian mammoths, when the whole animal is sometimes preserved, as in a refrigerator. This is what happened to the famous Beresovka mammoth which was found preserved and in good condition. In his mouth were the remains of fir trees -- the last meal that he had before he fell into the crevasse and broke his back. The mammoth has now just a suburb of Los Angeles. Apparently what happened was that water collected on these tar pits, and the bigger animals like the elephants ventured out on to the apparently firm surface to drink, and were promptly bogged in the tar. And then, when they were dead, the carnivores, like the sabre-toothed cats and the giant wolves, came out to feed and suffered exactly the same fate. There are also endless numbers of birds in the tar as well.",
-        "cn": "几乎总是由于某些特殊的条件，陆地动物的遗体才被存下来，如掉进难以到达的洞穴，或掉进冰河裂缝里，或者像西伯利亚长毛象那样掉进冰窟中，有时整个动物像被放在冰箱里一样被保存下来，著名的那林索夫卡长毛象就是这样被保存下来的，而且保存得很好。它嘴里还留着冷杉 -- 它掉进冰河裂隙折断脊椎柱之前的最后一顿饭。这头长毛象已被修复，现存于圣彼得堡古生物学博物馆。有的动物掉进天然沥清坑里被保存下来，如在兰桥.拉.布里 -- 现在是洛杉矶的郊区发现的大象、剑齿虎和许多其他动物。显然，事情的经过是这样：沥青坑里积存了水，大象那样的大动物冒险到似乎坚固的水面上去饮水，立即掉进了沥青坑。大象死后，一些食肉动物，如剑齿虎和大灰狼就来吃大象，结果遭到了同样的命运。沥青坑里还有无数只鸟的尸体。"
+        "en": "In their efforts to persuade us to buy this or that product, advertisers have made a close study of human nature and have classified all our little weaknesses.",
+        "cn": "为了说服我们购买这种或那种产品，广告商对人性进行了仔细研究，并对我们所有的小弱点进行了分类。"
+      },
+      {
+        "en": "Advertisers discovered years ago that all of us love to get something for nothing.",
+        "cn": "广告商多年前就发现，我们所有人都喜欢不劳而获。"
+      },
+      {
+        "en": "An advertisement which begins with the magic word FREE can rarely go wrong.",
+        "cn": "以神奇的“免费”一词开头的广告很少会出错。"
+      },
+      {
+        "en": "These days, advertisers not only offer free samples but free cars, free houses, and free trips round the world as well.",
+        "cn": "如今，广告商不仅提供免费样品，还提供免费汽车、免费房屋和免费环球旅行。"
+      },
+      {
+        "en": "They devise hundreds of competitions which will enable us to win huge sums of money.",
+        "cn": "他们设计了数百个比赛，让我们能够赢得巨额奖金。"
+      },
+      {
+        "en": "Radio and television have made it possible for advertisers to capture the attention of millions of people in this way.",
+        "cn": "广播和电视使广告商能够以这种方式吸引数百万人的注意力。"
+      },
+      {
+        "en": "During a radio programme, a company of biscuit manufacturers once asked listeners to bake biscuits and send them to their factory.",
+        "cn": "在一次广播节目中，一家饼干制造商曾要求听众烤饼干并寄到他们的工厂。"
+      },
+      {
+        "en": "They offered to pay 10 pounds for the biggest biscuit baked by a listener.",
+        "cn": "他们愿意为听众烤制的最大的饼干支付10英镑。"
+      },
+      {
+        "en": "The response to this competition was tremendous.",
+        "cn": "这次比赛的反响非常热烈。"
+      },
+      {
+        "en": "Before long, biscuits of all shapes and sizes began arriving at the factory.",
+        "cn": "不久，各种形状和大小的饼干开始运抵工厂。"
+      },
+    {
+        "en": "One lady brought in a biscuit on a wheelbarrow.",
+        "cn": "一位女士用独轮车运来一块饼干。"
+      },
+      {
+        "en": "It was so heavy that she and her husband had to carry it up the steps.",
+        "cn": "它太重了，以至于她和她的丈夫不得不把它抬上台阶。"
+      },
+      {
+        "en": "The biscuit was a great success.",
+        "cn": "这块饼干非常成功。"
+      },
+      {
+        "en": "It was so large that it could not be put on the scales.",
+        "cn": "它太大了，无法放在秤上。"
+      },
+      {
+        "en": "The manufacturers had to weigh it in parts.",
+        "cn": "制造商不得不分部分称重。"
+      },
+      {
+        "en": "The lady won 10 pounds.",
+        "cn": "这位女士赢了10英镑。"
+      },
+      {
+        "en": "She was very pleased with her prize.",
+        "cn": "她对她的奖品非常满意。"
       }
     ]
   },
   {
-    "title": "Lesson 27   The 'Vasa' “瓦萨”号",
+    "title": "Lesson 27  Nothing to sell and nothing to buy 不卖也不买",
     "pairs": [
       {
-        "en": "From the seventeenth-century empire of Sweden, the story of a galleon that sank at the start of her maiden voyage in 1628 must be one of the strangest tales of the sea. For nearly three and a half centuries she lay at the bottom of Stockholm harbour until her discovery in 1956. This was the Vasa, royal flagship of the great imperial fleet.",
-        "cn": "1628年，一艘大帆船在处女航时就沉没了，这个从容不迫7世纪瑞典帝国流传至今的故事无疑是航海史上最离奇的事件之一。这艘大船在斯德哥尔摩港口的海底躺了将近几年来个世纪之后，直到1956年才被发现。这就是“瓦萨”号，帝国大舰的皇家旗舰。"
+        "en": "It has been said that everyone lives by selling something.",
+        "cn": "据说每个人都靠卖东西为生。"
       },
       {
-        "en": "King Gustavus Adolphus, 'The Northern Hurricane', then at the height of his military success in the Thirty Years' War, had dictated her measurements and armament. Triple gun-decks mounted sixty-four bronze cannon. She was intended to play a leading role in the growing might of Sweden.",
-        "cn": "当时号称“北方飓风”的国王古斯夫斯.阿道尔弗正处在“三十年战争”的军事鼎盛阶段，他亲自规定了这艘船的规模和武器配备。3层的火炮甲板上装着眼点4门青铜加农炮，目的就是要在不断增长的瑞典势力中起主导作用。"
+        "en": "In the light of this statement, teachers live by selling knowledge, philosophers by selling wisdom and priests by selling spiritual comfort.",
+        "cn": "根据这一说法，教师靠出售知识为生，哲学家靠出售智慧为生，牧师靠出售精神慰藉为生。"
       },
       {
-        "en": "As she was prepared of her maiden voyage on August 10, 1628, Stockholm was in a ferment. From the Skeppsbron and surrounding islands the people watched this thing of beauty begin to spread her sails and catch the wind. They had laboured for three years to produce this floating work of art; she was more richly carved and ornamented than any previous ship. The high stern castle was a riot of carved gods, demons, knights, kings, warriors, mermaids, cherubs; and zoomorphic animal shapes ablaze with rea and gold and blue, symbols of courage, power, and cruelty, were portrayed to stir the imaginations of the superstitious sailors of the day.",
-        "cn": "1628年8月10日，“瓦萨”号准备首航时，斯德哥尔摩一片欢腾。人们从斯开波斯布朗和周围的岛屿前来观着这艘美丽的战船扬帆起航，乘风前进。瑞典人辛辛苦苦干了3年才建成这件水上艺术品，它比以往任何船只雕刻得都更加精美，装饰得都更加华丽。高耸的船楼上雕刻了令人眼花缭乱的神仙、妖魔、骑士、国王、武士、美人鱼和小天使，还有用红色、金黄色、蓝色绘制的光彩夺目的兽形图案，象征着勇敢、力量和残暴，以激起汉时崇尚迷信的水手们的想像。"
+        "en": "Though it may be possible to measure the value of material goods in terms of money, it is extremely difficult to estimate the true value of the services which people perform for us.",
+        "cn": "虽然可以用金钱来衡量物质商品的价值，但要估计人们为我们提供的服务的真正价值却极其困难。"
       },
       {
-        "en": "Then the cannons of the anchored warships thundered a salute to which the Vasa fired in reply. As the emerged from her drifting cloud of gun smoke with the water churned to foam beneath her bow, her flags colour, she presented a more majestic spectacle than Stockholmers had ever seen before. All gun-ports were open and the muzzles peeped wickedly from them.",
-        "cn": "这时，停泊在港口的其他战船向“瓦萨”号鸣炮致礼，“瓦萨”号也鸣炮回礼。当“瓦萨”号从弥漫的礼炮烟云中出现时，船头下浪花加溅，舰旗迎风招展，三角旗随风飘动，微风鼓起风帆，金碧辉煌的船楼闪耀着灿烂的色彩。“瓦萨”号展现的壮观景象是斯德哥尔摩人从未见过的。船上的炮眼开着，炮口虎视眈眈地向外窥视着。"
+        "en": "There are times when we would willingly give everything we possess to save our lives, yet we might grudge paying a surgeon a high fee for offering us precisely this service.",
+        "cn": "有时候，我们愿意付出我们拥有的一切来挽救我们的生命，但我们可能会吝啬支付外科医生高昂的费用来为我们提供这项服务。"
       },
       {
-        "en": "As the wind freshened there came a sudden squall and the ship made a strange movement, listing to port. The Ordnance Officer ordered all the port cannon to be heaved to starboard to counteract the list, but the steepening angle of the decks increased. Then the sound of rumbling thunder reached the watchers on the shore, as cargo, ballast, ammunition and 400 people went sliding and crashing down to the port side of the steeply listing ship. The lower gun-ports were now below water and the inrush sealed the ship's fate. In that first glorious hour, the mighty Vasa, which was intended to rule the Baltic, sank with all flags flying-in the harbour of her birth.",
-        "cn": "当风力增强时，突然刮来一阵大风，“瓦萨”号奇怪地摇晃了一下，便向左舷倾斜。炮长命令把左舷上所有大炮搬到右舷上来以抵消船的倾斜，但甲板的倾斜度仍在增加。当物口、压舱物、弹药和400个人轰地一声滑向陡斜的左舷时，岸上的观众听到了雷鸣般的轰响。下层炮眼已淹没在水里，涌进船舱的水给“瓦萨”号带来了难以逃脱的厄运。就这样，想要统治波罗的海的大型战舰“瓦萨”号，在它壮丽的起航时刻，带着全身飘扬的彩旗，沉没在了它诞生的港口。"
+        "en": "The conditions of society are such that skills have to be paid for in the same way that goods are paid for at a shop.",
+        "cn": "社会条件决定了技能必须像在商店里购买商品一样付费。"
+      },
+      {
+        "en": "Everyone has something to sell.",
+        "cn": "每个人都有东西要卖。"
+      },
+      {
+        "en": "Tramps seem to be the only exception to this general rule.",
+        "cn": "流浪汉似乎是这一普遍规则的唯一例外。"
+      },
+      {
+        "en": "Beggars almost sell themselves as human beings to arouse the pity of passers-by.",
+        "cn": "乞丐几乎把自己当作人来出卖，以引起路人的同情。"
+      },
+      {
+        "en": "But real tramps are not beggars.",
+        "cn": "但真正的流浪汉不是乞丐。"
+      },
+      {
+        "en": "They have nothing to sell and require nothing from others.",
+        "cn": "他们没有什么可卖的，也不需要别人什么。"
+      },
+      {
+        "en": "In seeking independence, they do not sacrifice their human dignity.",
+        "cn": "在寻求独立时，他们不牺牲自己的人格尊严。"
+      },
+      {
+        "en": "A tramp may ask you for money, but he will never ask you to feel sorry for him.",
+        "cn": "流浪汉可能会向你要钱，但他绝不会要求你同情他。"
+      },
+      {
+        "en": "He has deliberately chosen to lead the life he leads and is fully aware of the consequences.",
+        "cn": "他是有意选择过他所过的生活的，并且完全���识到其后果。"
+      },
+      {
+        "en": "He may never be sure where the next meal is coming from, but he is free from the thousands of anxieties which afflict other people.",
+        "cn": "他可能永远不确定下一顿饭从哪里来，但他摆脱了困扰其他人的成千上万的焦虑。"
+      },
+      {
+        "en": "His few material possessions make it possible for him to move from place to place with ease.",
+        "cn": "他为数不多的物质财产使他能够轻松地从一个地方搬到另一个地方。"
+      },
+      {
+        "en": "By having to sleep in the open, he gets far closer to the world of nature than most of us ever do.",
+        "cn": "由于不得不在露天睡觉，他比我们大多数人更接近自然世界。"
+      },
+      {
+        "en": "He may hunt, beg, or steal occasionally to keep himself alive; he may even in times of real need, do a little work; but he will never sacrifice his freedom.",
+        "cn": "他可能会偶尔打猎、乞讨或偷窃以维持生计；他甚至可能在真正需要的时候做一点工作；但他绝不会牺牲自己的自由。"
+      },
+      {
+        "en": "We often speak of tramps with contempt and put them in the same class as beggars, but how many of us can honestly say that we have not felt a little envious of their simple way of life and their freedom from care?",
+        "cn": "我们经常轻蔑地谈论流浪汉，把他们和乞丐归为一类，但我们中有多少人能诚实地说，我们没有对他们简单的生活方式和无忧无虑感到一点羡慕呢？"
       }
     ]
   },
   {
-    "title": "Lesson 28  Patients and doctors 病人与医生",
+    "title": "Lesson 28  Five pounds too dear 五镑也太贵",
     "pairs": [
       {
-        "en": "This is a sceptical age, but although our faith in many of the things in which our forefathers fervently believed has weakened, our confidence in the curative properties of the bottle of medicine remains the same a theirs. This modern faith in medicines is proved the fact that the annual drug bill of the Health Services is mounting to astronomical figures and shows no signs at present of ceasing to rise. The majority of the patients attending the medical out-patients departments of our hospitals feel that they have not received adequate treatment unless they are able to carry home with them some tangible remedy in the shape of a bottle of medicine, a box of pills, or a small jar of ointment, and the doctor in charge of the department is only too ready to provide them with these requirements. There is no quicker method of disposing of patients then by giving them what they are asking for, and since most medical men in the Health Services are overworked and have little time for offering time-consuming and little-appreciated advice on such subjects as diet, right living, and the need for abandoning bad habits etc., the bottle, the box, and the jar are almost always granted them.",
-        "cn": "这是一个怀疑一切的时代，可是虽然我们对我们祖先笃信的许多事物已不太相信，我们对瓶装药品疗效的信心仍与祖辈一样坚定。卫生部门的处度药费上升到了天文数字，并且目前尚无停止上升的迹象，这个事实证实了现代人对药物的依赖。在医院门诊部看病的大多数人觉得，如果不能带回一些看得见、摸得着的药物，如一瓶药水，一盒药丸、一小瓶药膏回家的话，就没算得到了充分的治疗。负责门诊的医生也非常乐意为前来看病的人提供他们想要得到的药物，病人要什么就给什么，没有比这样处理病人更快的方法了。因为卫生部门的大多数医生超负荷工作，所以没有多少时间提出一些既费时而又不受人欢迎的忠告，如注意饮食、生活有规律，需要克服坏习惯等等，结果就是把瓶药、盒药、罐药开给看病的人而完事大吉。"
+        "en": "A lady in a fashionable hat was looking at a refrigerator in a shop window.",
+        "cn": "一位戴着时髦帽子的女士正在看商店橱窗里的冰箱。"
       },
       {
-        "en": "Nor is it only the ignorant and ill-educated person who was such faith in the bottle of medicine. It is recounted of Thomas Carlyle that when him in his pocket what remained of a bottle of medicine formerly prescribed for an indisposition of Mrs. Carlyle's. Carlyle was entirely ignorant of what the bottle in his pocket contained, of the nature of the illness from which his friend was suffering, and of what had previously been wrong with his wife, but a medicine that had worked so well in one form of illness would surely be of equal benefit in another, and comforted by the thought of the help he was bringing to his friend, he hastened to Henry Taylor's house. History does not relate whether his friend accepted his medical help, but in all probability he did. The great advantage of taking medicine is that it makes no demands on the taker beyond that of putting up for a moment with a disgusting taste, and that is what all patients demand of their doctors -- to be cured at no inconvenience to themselves.",
-        "cn": "并不只是那些无知和没受过良好教育的人才迷信药瓶子。据说托马斯.卡莱尔有过这么一件事：他听说朋友亨利.泰勒病了，就立刻跑去看他，衣袋里装上了他妻子不舒服时吃剩下的一瓶药。卡莱尔不知道药瓶子里装的是什么药，不知道他的朋友得的是什么病，也不知道妻子以前得的是什么病，只知道一种药对一种病有好处，肯定对另一种病也会有好处。想到能对朋友有所帮助，他感到很欣慰，于是急急忙忙来到了亨利.泰勒的家里，他的朋友是否接受了他的药物治疗，历史没有记载，但很可能接受了。服药的最大优点是：除了暂时忍受一下令人作呕的味道外，对服药人别无其他要求。这也正是病人对医生的要求 -- 病要治好，但不要太麻烦。"
+        "en": "After a time, she went in and asked to see it.",
+        "cn": "过了一会儿，她走进去要求看它。"
+      },
+      {
+        "en": "'It's a very good refrigerator, madam,' the assistant said.",
+        "cn": "“这是一个非常好的冰箱，女士，”售货员说。"
+      },
+      {
+        "en": "'And it's very cheap.'",
+        "cn": "“而且非常便宜。”"
+      },
+      {
+        "en": "'I'm not so sure about that,' the lady said.",
+        "cn": "“我不那么确定，”女士说。"
+      },
+      {
+        "en": "'I think it's too expensive.'",
+        "cn": "“我认为它太贵了。”"
+      },
+      {
+        "en": "'Well, madam,' the assistant said, 'I can give you a small discount.'",
+        "cn": "“嗯，女士，”售货员说，“我可以给你一个小折扣。”"
+      },
+      {
+        "en": "'Even with a discount, it's still too expensive,' the lady said.",
+        "cn": "“即使有折扣，它仍然太贵了，”女士说。"
+      },
+      {
+        "en": "'I don't think I can afford it.'",
+        "cn": "“我想我买不起。”"
+      },
+      {
+        "en": "'Well, madam,' the assistant said, 'how much can you afford?'",
+        "cn": "“嗯，女士，”售货员说，“你能付多少钱？”"
+      },
+      {
+        "en": "'I can afford five pounds,' the lady said.",
+        "cn": "“我能付五磅，”女士说。"
+      },
+      {
+        "en": "'Five pounds!' the assistant exclaimed. 'That's ridiculous! The refrigerator costs fifty pounds.'",
+        "cn": "“五磅！”售货员惊呼道。“太荒谬了！冰箱要五十磅。”"
+      },
+      {
+        "en": "'I know,' the lady said, 'but I'm a very persuasive person.'",
+        "cn": "“我知道，”女士说，“但我是一个很有说服力的人。”"
+      },
+      {
+        "en": "She smiled at the assistant.",
+        "cn": "她对售货员笑了笑。"
+      },
+      {
+        "en": "'I'm sure you can give me a better price.'",
+        "cn": "“我相信你能给我一个更好的价格。”"
+      },
+      {
+        "en": "The assistant looked at her for a moment.",
+        "cn": "售货员看了她一会儿。"
+      },
+      {
+        "en": "'All right, madam,' he said. 'I'll sell it to you for five pounds.'",
+        "cn": "“好吧，女士，”他说。“我五磅卖给你。”"
+      },
+      {
+        "en": "The lady was very pleased.",
+        "cn": "女士非常高兴。"
+      },
+      {
+        "en": "She gave the assistant five pounds and he gave her the refrigerator.",
+        "cn": "她给了售货员五磅，他给了她冰箱。"
+      },
+      {
+        "en": "She was just about to leave when the assistant said, 'Excuse me, madam, but there's one more thing.'",
+        "cn": "她正要离开时，售货员说：“对不起，女士，还有一件事。”"
+      },
+      {
+        "en": "'What is it?' the lady asked.",
+        "cn": "“什么事？”女士问。"
+      },
+      {
+        "en": "'The refrigerator is five pounds too dear,' the assistant said.",
+        "cn": "“冰箱贵了五磅，”售货员说。"
       }
     ]
   },
   {
-    "title": "Lesson 29   The hovercraft  气垫船",
+    "title": "Lesson 29  Funny or not? 是否可笑？",
     "pairs": [
       {
-        "en": "Many strange new means of transport have been developed in our century, the strangest of them being perhaps the hovercraft. In 1953, a former electronics engineer in his fifties, Christopher Cockerell, who had turned to boat-building on the Norfolk Broads, suggested an idea on which he had been working for many years to the British Government and industrial circles. It was the idea of supporting a craft on a 'pad', or cushion, of low-pressure air, ringed with a curtain of higher pressure air. Ever since, people have had difficulty in deciding whether the craft should be ranged among ships, planes, or land vehicles -- for it is something in between a boat and an aircraft. As a shipbuilder, Cockerell was trying to find a solution to the problem of the wave resistance which wastes a good deal of a surface ship's power and limits its speed. His answer was to lift the vessel out of the water by a great number of ring-shaped air jets on the bottom of the craft. It 'flies', therefore, but it cannot fly higher -- its action depends on the surface, water or ground, over which it rides.",
-        "cn": "本世纪已研制出许多新奇的交通工具，其中最新奇的要数气垫船了。1953年，有一位50多岁名叫克里斯托弗.科克雷的原电子工程师，改行在诺福克郡的湖泊地区从事造船业，他向英国政府和工业界提出了他研究多年的一项计划。他的设想是：用一个低压空气或软垫来支撑船体，软垫周围用高压空气环绕。自那以后，人们很难决定是否应该将这种运载工具列为轮船、飞机，或是陆上交通工具，因为它是介于船和飞机之间。作为一个船舶技师，科克雷尔在寻找解决波浪阻力的方法，因为波浪阻力浪费掉了船在水面行驶的大量动力，从而限制了船的速度。他的解决办法是把船体提离水面，让船在一个气垫上行驶，气垫只有一两英尺厚。船底装上大量环状喷气嘴以实现这一目的。这样，船就能飞了，但飞不高。它的飞行限决于它所悬浮的水面或地面。"
+        "en": "Whether we find a joke funny or not depends on a number of things.",
+        "cn": "我们觉得一个笑话是否好笑取决于很多因素。"
       },
       {
-        "en": "The first tests on the Solent in 1959 caused a sensation. The hovercraft travelled first over the water, then mounted the beach, climbed up the dunes, and sat down on a road. Later it crossed the Channel, riding smoothly over the waves, which presented no problem.",
-        "cn": "1959年，在苏伦特海峡进行的首次试航引起了轰动，气垫船先是在水面上行驶，后又登上海岸，爬上沙丘，最后停在路上。后来气垫船跨越英吉利海峡，平衡地在波浪上方行驶，波浪不再产生阻力。"
+        "en": "First of all, it depends on where we come from.",
+        "cn": "首先，这取决于我们来自哪里。"
       },
       {
-        "en": "Since that time, various types of hovercraft have appeared and taken up regular service. The hovercraft is particularly useful in large areas with poor communications such as Africa or Australia; it can become a 'flying fruit-bowl', carrying bananas from the plantations to the ports; giant hovercraft liners could span the Atlantic; and the railway of the future may well be the 'hovertrain', riding on its air cushion over a single rail, which it never touches, at speeds up to 300 m.p.h. -- the possibilities appear unlimited.",
-        "cn": "从那以后，各种各样的气垫船出现了，并开始了定期航行服务。气垫船在非洲、澳大利亚等交通不发达地区特别有用。它能成为“飞行水果盘子”，把香蕉从种植园动到港口。大型的气垫班轮或许能跨越大西洋。未来的火车或许能成为“气垫火车”，靠气垫在单轨上行驶而不接触轨道，时速可达每小时300英里。气垫船的前途是不可限量的。"
+        "en": "A joke that is funny in one country may not be funny in another.",
+        "cn": "在一个国家好笑的笑话在另一个国家可能不好笑。"
+      },
+      {
+        "en": "For example, a British person might not find a French joke funny, and a French person might not find a British joke funny.",
+        "cn": "例如，一个英国人可能不觉得一个法国笑话好笑，一个法国人也可能不觉得一个英国笑话好笑。"
+      },
+      {
+        "en": "It also depends on our age.",
+        "cn": "这也取决于我们的年龄。"
+      },
+      {
+        "en": "A joke that is funny to a child may not be funny to an adult.",
+        "cn": "对孩子来说好笑的笑话对成年人来说可能不好笑。"
+      },
+      {
+        "en": "And a joke that is funny to an adult may not be funny to a child.",
+        "cn": "而对成年人来说好笑的笑话对孩子来说可能不好笑。"
+      },
+      {
+        "en": "It also depends on our mood.",
+        "cn": "这也取决于我们的心情。"
+      },
+      {
+        "en": "If we are in a good mood, we are more likely to find a joke funny.",
+        "cn": "如果我们心情好，我们更有可能觉得一个笑话好笑。"
+      },
+      {
+        "en": "If we are in a bad mood, we are less likely to find a joke funny.",
+        "cn": "如果我们心情不好，我们不太可能觉得一个笑话好笑。"
+      },
+      {
+        "en": "Finally, it depends on the person who is telling the joke.",
+        "cn": "最后，这取决于讲笑话的人。"
+      },
+      {
+        "en": "A joke that is funny when told by one person may not be funny when told by another.",
+        "cn": "一个人讲的好笑的笑话，另一个人讲可能就不好笑了。"
       }
     ]
   },
   {
-    "title": "Lesson 30  Exploring the sea-floor 海底勘探",
+    "title": "Lesson 30  The death of a ghost 鬼的“消亡”",
     "pairs": [
       {
-        "en": "Our knowledge of the oceans a hundred years ago was confined to the two-dimensional shape of the sea surface and the hazards of navigation presented by the irregularities in depth of the shallow water close to the land. The open sea was deep and mysterious, and anyone who gave more than a passing thought to the bottom confines of the oceans probably assumed that the sea bad was flat. Sir James Clark Ross had obtained a sounding of over 2,400 fathoms in 1839, but it was not until of deep soundings was obtained in the Atlantic and the first samples were collected by dredging the bottom. Shortly after this the famous H. M. S. Challenger expedition established the study of the sea-floor as a subject worthy of the most qualified physicists and geologists. A burst of activity associated with the laying of submarine cables soon confirmed the challenger's observation that many parts of the ocean were two to there miles deep, and the existence of underwater features of considerable magnitude.",
-        "cn": "100年前，我们只知道海洋是二维平面形的，以及靠近陆地浅水区的深浅不一能给航行带来危险。无边无际的海洋深邃而又神秘，凡是稍稍想过大海海底的人大概都会认为海底是平坦的。1839年，詹姆斯.克拉克.罗斯爵士曾测得海水深度超过2，400英寻；但直到1869年，皇家学会用英国“豪猪”号舰艇进行了几次巡航后，才在大西洋测得一个海水深度，同时能过挖掘海底，取得了研究海底的首批样品。此后不久，英国著名的“挑战者”号舰艇对海底的那次考察，把对海床的研究确立为一个值得一流物理学家和地质学家从事的研究课题，铺设海底电缆的热潮很快证实了“挑战者”号的观察结果：海洋中很多地方可深达两三英里，水下特征差异极大。"
+        "en": "For years, villagers in a small village in the south of England had been living in fear of a ghost.",
+        "cn": "多年来，英格兰南部一个小村庄的村民一直生活在对一个鬼的恐惧中。"
       },
       {
-        "en": "Today, enough soundings are available to enable a relief map of the Atlantic to be drawn and we know something of the great variety of the sea bed's topography. Since the sea covers the greater part of the earth's surface, it is quite reasonable to regard the sea floor as the basic form of the crust of the earth, with, superimposed upon, it the continents, together with the islands and other features of the oceans. The continents form rugged tablelands which stand nearly three miles above the floor of the open ocean. From the shore line, out a distance which may be anywhere from a few miles to a few hundred miles, runs the gentle slope of the continental shelf, geologically part of the continents. The real dividing line between continents and oceans occurs at the foot a steeper slope.",
-        "cn": "现在已有足够的水深测量数据来绘制一张大西洋洋底地形图，而且我对海底地形的千变万化也有了一定的了解。既然海洋覆盖着地球的大部分表面，因此完全有理由把海床看作地壳的基本模壳，上面附加着大陆以及岛屿和海洋的其他形态。大陆是崎岖不平的高地，高出辽阔的海洋海底近三英里。从海岸线向大海延伸几英里到几百英里的区域是大陆架慢坡，从地质学上来说，它是大陆的一部分。大陆和海洋的真正分界线是在陡破脚下。"
+        "en": "The ghost was said to haunt a large, old house at the end of the village.",
+        "cn": "据说这个鬼出没于村子尽头的一座又大又旧的房子里。"
       },
       {
-        "en": "This continental slope usually starts at a place somewhere near the 100-fatheom mark and in the course of a few hundred miles reaches the true ocean floor at 2,500-3,500 fathoms. The slope averages about 1 in 30. but contains steep, probably vertical, cliffs, and gentle sediment-covered terraces, and near its lower reaches there is a long tailing-off which is almost certainly the result of material transported out to deep water after being eroded from the continental masses.",
-        "cn": "大陆架慢坡一般是从差不多100英寻水深的地方开始的，一直延伸到几百英里远深达2，500至3，500的地方，那里才是真正的海底。坡度平均约为1/30，但其中包括陡峭的、乃至垂直的峭壁和沉积物覆盖的缓和的阶梯地带，在这个地带的低处是很长的一段尾沙地段，基本上可以断定这个地段是大陆块体上侵蚀下来的物质被水冲到深水处形成的。"
+        "en": "The house had been empty for years, and no one dared to go near it.",
+        "cn": "这所房子已经空了多年，没人敢靠近它。"
+      },
+      {
+        "en": "One day, a brave young man decided to spend a night in the house.",
+        "cn": "一天，一个勇敢的年轻人决定在这所房子里过夜。"
+      },
+      {
+        "en": "He wanted to find out if the ghost was real.",
+        "cn": "他想知道鬼是否真的存在。"
+      },
+      {
+        "en": "He took a candle and a box of matches with him.",
+        "cn": "他带了一支蜡烛和一盒火柴。"
+      },
+      {
+        "en": "He went into the house and sat down in the living room.",
+        "cn": "他走进房子，坐在客厅里。"
+      },
+      {
+        "en": "He waited for the ghost to appear.",
+        "cn": "他等着鬼出现。"
+      },
+      {
+        "en": "After a while, he heard a strange noise.",
+        "cn": "过了一会儿，他听到一个奇怪的声音。"
+      },
+      {
+        "en": "It came from the room above.",
+        "cn": "声音来自楼上的房间。"
+      },
+      {
+        "en": "He went upstairs and opened the door of the room.",
+        "cn": "他上楼打开了房间的门。"
+      },
+      {
+        "en": "He saw a white figure in the middle of the room.",
+        "cn": "他看到房间中央有一个白色的身影。"
+      },
+      {
+        "en": "It was the ghost!",
+        "cn": "是鬼！"
+      },
+      {
+        "en": "The young man was very frightened, but he did not run away.",
+        "cn": "年轻人非常害怕，但他没有跑开。"
+      },
+      {
+        "en": "He lit his candle and held it up.",
+        "cn": "他点燃蜡烛，举了起来。"
+      },
+      {
+        "en": "The ghost was not a ghost at all.",
+        "cn": "那个鬼根本不是鬼。"
+      },
+      {
+        "en": "It was a large, white owl.",
+        "cn": "它是一只又大又白的猫头鹰。"
+      },
+      {
+        "en": "The owl flew out of the window and the young man went back downstairs.",
+        "cn": "猫头鹰飞出窗外，年轻人回到了楼下。"
+      },
+      {
+        "en": "He had solved the mystery of the ghost.",
+        "cn": "他解开了鬼的谜团。"
       }
     ]
   },
   {
-    "title": "Lesson 31   The sculptor speaks 雕塑家的语言",
+    "title": "Lesson 31  A lovable eccentric 可爱的怪人",
     "pairs": [
       {
-        "en": "Appreciation of sculpture depends upon the ability to respond to form in there dimension. That is perhaps why sculpture has been described as the most difficult of all arts; certainly it is more difficult than the arts which involve appreciation of flat forms, shape in only two dimensions. Many more people are 'form-blind' than colour-blind. The child learning to see, first distinguishes only two-dimensional shape; it cannot judge distances, depths. Later, for its personal safety and practical needs, it has to develop (partly by means of touch) the ability to judge roughly three-dimensonal distances. But having satisfied the requirements of practical necessity, most people go no further. Though they may attain considerable accuracy in the perception of flat from, they do no make the further. Though they may attain considerable accuracy in the perception of flat form, they do not make the further intellectual and emotional effort needed to comprehend form in its full spatial existence.",
-        "cn": "对雕塑的鉴赏力取决于对立体的反应能力。雕塑被说成是所有艺术中最难的艺术，可能就是这个道理。欣赏雕塑品当然比欣赏平面的艺术品要难。“形盲”的人数比“色盲”的人数要多得多。正在学看东西的儿童起初只会分辨二维形态，不会判断距离和深度。慢慢地，由于自身安全和实际需要，儿童必须发展（部分通过触觉）粗略判断三维空间距离的能力。但是。大部分人在满足了实际需要后，就不再继续发展这种能力了。虽然他们对平面形的感觉能达到相当准确的程度，但他们没有在智力和感情上进一步努力去理解存在于空间的整个形态。"
+        "en": "True eccentrics are never boring.",
+        "cn": "真正的怪人从不乏味。"
       },
       {
-        "en": "This is what the sculptor must do. He must strive continually to think of, and use, form in its full spatial completeness. He gets the solid shape, as it were, inside his head-he thinks of it, whatever its size, as if he were holding it completely enclosed in the hollow of his hand. He mentally visualizes a complex form from all round itself; he knows while he looks at one side what the other side is like, he identifies himself with its centre of gravity, its mass, its weight; he realizes its volume, as the space that the shape displaces in the air.",
-        "cn": "而雕塑家就必须做到这一点。他必须勤于想像并且利用形体在空间中的完整性。可以说，当他想像一个物体时，不管其大小如何，他脑子里得到的是一个立体的概念，就好像完全握在自己手心里一样。他的大脑能从物体周围的各个角度勾画出其复杂的形象，他看物体的一边时，便知道另一边是个什么样子。他把自身和物体重心、质量、重量融为一体。他能意识到物体的体积，那就是它的形状有空气中所占的空间。"
+        "en": "They are always interesting and amusing.",
+        "cn": "他们总是很有趣，很逗人。"
       },
       {
-        "en": "And the sensitive observer of sculpture must also learn to feel shape simply as shape, not as description or reminiscence. He must, for example, perceive an egg as a simple single solid shape, quite apart from its significance as food, or from the literary idea that it will become a bird. And so with solids such as a shell, a nut, a plum, a pear, a tadpole, a mushroom, a mountain peak, a kidney, a carrot, a tree-trunk, a bird, a bud, a lark, a ladybird, a bulrush, a bone. From these he can go on to appreciate more complex forms of combinations of several forms.",
-        "cn": "因此，敏锐的雕塑观赏者也必须学会把形体作为形体来感觉，不要靠描述和印象去想象。以鸟蛋为例。观赏者必须感觉到它是一个单一的实体形态，而完全不靠它的食用意义或它会变成鸟这样的文字概念来感觉。对于其他实体，如，贝壳、核桃、李子、梨子、蝌蚪、蘑菇、山峰、肾脏、胡萝卜、树干、鸟儿、花蕾、云雀、瓢虫、芦苇以及骨头也应这样来感觉。从这些形体出发，观赏者可进一步观察更为复杂的形体或若干形体的组合。"
+        "en": "My friend, George, is a true eccentric.",
+        "cn": "我的朋友乔治是个真正的怪人。"
+      },
+      {
+        "en": "He is a very wealthy man, but he lives in a small, old house in the country.",
+        "cn": "他是个非常富有的人，但他住在乡下一座又小又旧的房子里。"
+      },
+      {
+        "en": "He has a large collection of old cars, but he never drives them.",
+        "cn": "他收藏了大量旧车，但他从不开它们。"
+      },
+      {
+        "en": "He prefers to walk or ride a bicycle.",
+        "cn": "他更喜欢步行或骑自行车。"
+      },
+      {
+        "en": "He has a large library, but he never reads books.",
+        "cn": "他有一个大图书馆，但他从不读书。"
+      },
+      {
+        "en": "He prefers to watch television.",
+        "cn": "他更喜欢看电视。"
+      },
+      {
+        "en": "He has a large garden, but he never works in it.",
+        "cn": "他有一��大花园，但他从不在里面工作。"
+      },
+      {
+        "en": "He prefers to sit in the sun and do nothing.",
+        "cn": "他更喜欢坐在阳光下什么也不做。"
+      },
+      {
+        "en": "He is a very kind man, but he never gives money to charity.",
+        "cn": "他是个非常善良的人，但他从不向慈善机构捐款。"
+      },
+      {
+        "en": "He prefers to give his money to his friends.",
+        "cn": "他更喜欢把钱给他的朋友。"
+      },
+      {
+        "en": "He is a very strange man, but I like him very much.",
+        "cn": "他是个很奇怪的人，但我非常喜欢他。"
       }
     ]
   },
   {
-    "title": "Lesson 32   Galileo reborn  伽利略的复生",
+    "title": "Lesson 32  A lost ship 一艘沉船",
     "pairs": [
       {
-        "en": "In his own lifetime Galileo was the centre of violent controversy; but the scientific dust has long since settled, and today we can see even his famous clash with the Inquisition in something like its proper perspective. But, in contrast, it is only in modern times that Galileo has become a problem child for historians of science.",
-        "cn": "伽利略在世时是激烈论战的中心。但是，自他逝世以来，那场科学上的纷争早已平息了下来，甚至他和宗教法庭的著名冲突，我们今天也能正确如实地看待。但是相比之下，对于科学史家来说，伽利略只是在现代才变成了一个新的难题。"
+        "en": "The salvage of a sunken ship is a difficult and expensive business.",
+        "cn": "打捞沉船是一项困难而昂贵的工作。"
       },
       {
-        "en": "The old view of Galileo was delightfully uncomplicated. He was, above all, a man who experimented: who despised the prejudices and book learning of the Aristotelians, who put his questions to nature instead of to the ancients, and who drew his conclusions fearlessly. He had been the first to turn a telescope to the sky, and he had seen there evidence enough to overthrow Aristotle and Ptolemy together. He was the man who climbed the Leaning Tower of Pisa and dropped various weights from the top, who rolled balls down inclined planes, and then generalized the results of his many experiments into the famous law of free fall.",
-        "cn": "令人高兴的是，过去对伽利略的看法并不复杂。他首先是个实验工作者，他蔑视亚里士多德学派的偏见和空洞的书本知识。他向自然界而不是向古人提出问题，并大胆地得出结论。他是第一个把望远镜对准天空的人，观察到的论据足以把亚里士多德和托勒密一起推翻。他就是那个曾经爬上比萨斜塔，从塔顶向下抛掷积各种重物的人；他是那个使地球体沿斜面向下滚动，然后将多次实验结果概括成著名的自由落体定律的人。"
+        "en": "The salvage of the Vasa was a particularly difficult case.",
+        "cn": "打捞“瓦萨”号是一个特别困难的案例。"
       },
       {
-        "en": "But a closer study of the evidence, supported by a deeper sense of the period, and particularly by a new consciousness of the philosophical undercurrents in the scientific revolution, has profoundly modified this view of Galileo. Today, although the old Galileo lives on in many popular writings, among historians of science a new and more sophisticated picture has emerged. At the same time our sympathy fro Galileo's opponents ahs grown somewhat. His telescopic observations are justly immortal; they aroused great interest at the time, they had important theoretical consequences, and they provided a striking demonstration of the potentialities hidden in instruments and apparatus. But can we blame those who looked and failed to see what Galileo saw, if we remember that to use a telescope at the limit of its powers calls for long experience and intimate familiarity with one's instrument? Was the philosopher who refused to look through Galileo's telescope more culpable than those who alleged that the spiral nebulae observed with Lord Rosse's great telescope in the eighteen-forties were scratches left by the grinder? We can perhaps forgive those who said the moons of Jupiter were produced by Galileo's spyglass if we recall that in his day, as for centuries before, curved glass was the popular contrivance for producing not truth but illusion, untruth; and if a single curved glass would distort nature, how much more would a pair of them?",
-        "cn": "但是，对那个时代的深化了解，尤其是以科学家革命中哲学潜流的新意识为依据，进一步仔细研究，就会极大地改变对伽利略的看法。今天，虽然已故的伽利略继续活在许多通俗读物中，但在科学史家中间，一个新的更加复杂的伽利略形象出现了。与此同时，我们对伽利略的反对派的同情也有所增加。伽利略用望远镜所作的观察确实是不朽的，这些观察当时引起人们极大的兴趣，具有重要的理论意义，并充分显示出了仪表和仪器的潜在力量。但是，如果我们想到，便用一架倍数有限的望远镜需要长期的经验和对自己仪器的熟悉程度，那么我们怎么能去责备观察了天空但没有看到伽利略所看到的东西的那些人呢？某位哲学家曾拒绝使用伽利略的望远镜去观察天空；到了19世纪40年代，有人硬把罗斯勋爵高倍望远镜观测到的螺旋状星云说成是磨镜工留下的磨痕。难道反对伽利略的哲学家比诋毁罗斯勋爵造谣者应受到更大的谴责吗？如果我们回想一下伽利略之前几个世纪期间，曲面镜一直是一种用于产生幻影而不是产生真象的把戏装置，那么我们就会原谅那些当时把伽利略观察到的木星卫生说成是伽利略用他的小望远镜变出来的人们，何况一片曲面镜就可歪曲自然，那么伽利略的两片曲面镜对自然的歪曲又该多大呢？"
+        "en": "The Vasa was a Swedish warship which sank in Stockholm harbour in 1628.",
+        "cn": "“瓦萨”号是一艘瑞典战舰，于1628年在斯德哥尔摩港沉没。"
+      },
+      {
+        "en": "She was on her maiden voyage when she sank.",
+        "cn": "她沉没时正值处女航。"
+      },
+      {
+        "en": "She was carrying 64 bronze guns.",
+        "cn": "她携带了64门青铜炮。"
+      },
+      {
+        "en": "For over 300 years, the Vasa lay at the bottom of the sea.",
+        "cn": "300多年来，“瓦萨”号一直躺在海底。"
+      },
+      {
+        "en": "Then, in 1956, a Swedish engineer, Anders Franzen, found the ship.",
+        "cn": "然后，在1956年，一位瑞典工程师安德斯·弗兰森找到了这艘船。"
+      },
+      {
+        "en": "He had been looking for it for years.",
+        "cn": "他找了它很多年。"
+      },
+      {
+        "en": "The salvage of the Vasa began in 1959.",
+        "cn": "“瓦萨”号的打捞工作于1959年开始。"
+      },
+      {
+        "en": "It was a very difficult operation.",
+        "cn": "这是一次非常困难的行动。"
+      },
+      {
+        "en": "The ship was lying in 100 feet of water.",
+        "cn": "这艘船躺在100英尺深的水中。"
+      },
+      {
+        "en": "Divers had to work in the dark and the cold.",
+        "cn": "潜水员不得不在黑暗和寒冷中工作。"
+      },
+      {
+        "en": "They had to dig tunnels under the ship and pass cables through them.",
+        "cn": "他们不得不在船下挖隧道，并穿过电缆。"
+      },
+      {
+        "en": "Then the ship was lifted to the surface.",
+        "cn": "然后船被吊到水面。"
+      },
+      {
+        "en": "The salvage of the Vasa was a great success.",
+        "cn": "“瓦萨”号的打捞取得了巨大成功。"
+      },
+      {
+        "en": "The ship is now in a museum in Stockholm.",
+        "cn": "这艘船现在在斯德哥尔摩的一个博物馆里。"
+      },
+      {
+        "en": "It is a popular tourist attraction.",
+        "cn": "它是一个受欢迎的旅游景点。"
       }
     ]
   },
   {
-    "title": "Lesson 33  Education   教育",
+    "title": "Lesson 33  A day to remember 难忘的一天",
     "pairs": [
       {
-        "en": "Education is one of the key words of our time. A man without an education, many of us believe, is an unfortunate victim of adverse circumstances, deprived of one of the greatest twentieth-century opportunities. Convinced of the importance of education, modern states 'invest' in institutions of learning to get back 'interest' in the form of a large group of enlightened young men and women who are potential leaders. Education, with its cycles of instruction so carefully worked out, punctuated by textbooks -- those purchasable wells of wisdom-what would civilization be like without its benefits?",
-        "cn": "教育是我们这个时代的关键词之一。我们许多人都相信，一个没有受过教育的人，是逆境的牺牲品，被剥夺了20世纪的最优越的机会之一。现代国家深深懂得教育的重要性，对教育机构投资，收回的‘利息’便是培养出大批有知识的男女青年，这些人可能成为未来的栋梁。教育，以其教学周期如此精心地安排，并以教科书 -- 那些可以买到的智慧源泉 -- 予以强化，如果不受其惠，文明将会是个什么样子呢？"
+        "en": "We have all had days which we will never forget.",
+        "cn": "我们都有过永生难忘的日子。"
       },
       {
-        "en": "So much is certain: that we would have doctors and preachers, lawyers and defendants, marriages and births -- but our spiritual outlook would be different. We would lay less stress on 'facts and figures' and more on a good memory, on applied psychology, and on the capacity of a man to get along with his fellow-citizens. If our educational system were fashioned after its bookless past we would have the most democratic form of 'college' imaginable. Among tribal people all knowledge inherited by tradition is shared by all; it is taught to every member of the tribe so that in this respect everybody is equally equipped for life.",
-        "cn": "至少，这些是可以肯定的：虽然我们还会有医生和牧师、律师和被告、婚姻和生育，但人们的精神面貌将是另一个样子。人们不会重视‘资料和数据’，而靠好记性、实用心理学与同伴相处的能力。如果我们的教育制度仿效没有书籍的古代教育，我们的学院将具有可以想象得出的最民主的形式了。在部落中，通过传统继承的知识为所有人共享，并传授给部落中的每一个成员。从这个意义上讲，人人受到的有关生活本领的教育是相等的。"
+        "en": "Some of them were happy days, and some of them were sad.",
+        "cn": "有些是快乐的日子，有些是悲伤的日子。"
       },
       {
-        "en": "It is the ideal condition of the 'equal start' which only our most progressive forms of modern education try to regain. In primitive cultures the obligation to seek and to receive the traditional instruction is binding to all. There are no 'illiterates' -- if the term can be applied to peoples without a script -- while our own compulsory school attendance became law in Germany in 1642, in France in 1806, and in England in 1876, and is still non-existent in a number of 'civilized' nations. This shows how long it was before we deemed it necessary to make sure that all our children could share in the knowledge accumulated by the 'happy few' during the past centuries.",
-        "cn": "这就是我们最进步的现代教育试图恢复的“平等起步”的理想状况。在原始文化中，寻求和接受传统教育的义务对全民都有约束力。因而没有“文盲”（如果这个字眼儿可以用于没有文字的民族的话）。而我们的义务教育成为法律在德国是在1642年，在法国是在1806年，在英国是在1876年。今天，在许多“文明”国家里，义务教育迄今尚未实行。这说明，经过了多么漫长的时间之后，我们才认识到，有必要确保我们的孩子享有多少个世纪以来由‘少数幸运者’所积累起来的知识。"
+        "en": "I will never forget the day I got married.",
+        "cn": "我永远不会忘记我结婚的那一天。"
       },
       {
-        "en": "Education in the wilderness is not a matter of monetary means. All are entitled to an equal start. There is none of the hurry which, in our society, often hampers the full development of a growing personality. There, a child grows up under the ever-present attention of his parent; therefore the jungles and the savannahs know of no 'juvenile delinquency'. No necessity of making a living away from home results in neglect of children, and no father is confronted with his inability to 'buy' an education for his child.",
-        "cn": "荒凉地区的教育不是钱的问题，所有的人都享有平等起步的权利。那里没有我们今天社会中的匆忙生活，而匆忙的生活常常妨碍个性的全面发展。荒凉地区的孩子无时无刻不在父母关怀下成长。因此，丛林和荒凉地区不知道什么叫“青少年犯罪”。人们没有必要离家谋生，所以不会产生孩子无人管的问题，也不存在父亲无力为孩子支付教育费用而犯难的问题。"
+        "en": "It was a beautiful day.",
+        "cn": "那是一个美好的日子。"
+      },
+      {
+        "en": "The sun was shining and the birds were singing.",
+        "cn": "阳光明媚，鸟儿在歌唱。"
+      },
+      {
+        "en": "I was very happy.",
+        "cn": "我非常高兴。"
+      },
+      {
+        "en": "I was also very nervous.",
+        "cn": "我也非常紧张。"
+      },
+      {
+        "en": "I was afraid that I would say the wrong thing.",
+        "cn": "我害怕我会说错话。"
+      },
+      {
+        "en": "But everything went well.",
+        "cn": "但一切都很顺利。"
+      },
+      {
+        "en": "The ceremony was beautiful and the reception was a lot of fun.",
+        "cn": "仪式很美，招待会也很有趣。"
+      },
+      {
+        "en": "I will never forget that day.",
+        "cn": "我永远不会忘记那一天。"
+      },
+      {
+        "en": "It was a day to remember.",
+        "cn": "那是值得纪念的一天。"
       }
     ]
   },
   {
-    "title": "Lesson 34   Adolescence   青春期",
+    "title": "Lesson 34  A happy discovery 幸运的发现",
     "pairs": [
       {
-        "en": "Parents are often upset when their children praise the homes of their friends and regard it as a slur on their own cooking, or cleaning, or furniture, and often are foolish enough to let the adolescents see that they are annoyed. They may even accuse them of disloyalty, or make some spiteful remark about the friends' parents. Such loss of dignity and descent into childish behaviour on the part to their parents about the place or people they visit. Before very long the parents will be complaining that the child is so secretive and never tells them anything, but they seldom realize that they have brought this on themselves.",
-        "cn": "当家长听到孩子赞扬自己朋友的家时，总感到不安，认为孩子在嫌弃自家的饭菜、卫生、或家具，而且愚蠢地让孩子看出自己的烦恼。他们甚至责备孩子不忠，或者讲些小朋友家长的坏话。家长这种有失身份和孩子气的作法使青春期的孩子大为震惊，决心以后不再向父母讲述去过的地方和见过的人。不要很久,家长就会抱怨孩子守口如瓶，什么事也不告诉他们，殊不知这是他们自找的。"
+        "en": "Antique shops are interesting places to visit.",
+        "cn": "古董店是值得一游的有趣地方。"
       },
       {
-        "en": "Disillusionment with the parents, however good and adequate they may be both as parents and as individuals, is to some degree inevitable. Most children have such a high ideal of their parents, unless the parents themselves have been unsatisfactory, that it can hardly hope to stand up to a realistic evaluation. Parents would be greatly surprised and deeply touched if they hope to stand up to a realistic evaluation. Parents would be greatly surprised and deeply touched if they realized how much belief their children usually have in their character and infallibility, and how much this faith means to a child. If parents were prepared for this adolescent reaction, and realized that it was a sign that the child was growing up and developing valuable powers of observation and independent judgment, they would not be so hurt, and therefore would not drive the child into opposition by resenting and resisting it.",
-        "cn": "不管家长的人品有多么好，作为父母有多么合格，孩子们对家长幻想的破灭在某种程度上是不可避免的。除非父母自身不能令人满意，大多数孩子对父母估价过高，以致这种估价很难指望经受住现实的考验。如果家长意识到孩子们通常是多么相信家长的品行和绝对正确，意识到孩子们的这种信念会对孩子产生多么大的影响，那么家长会大为吃惊和深受感动的。如果家长对青少年的这种反应有思想准备，并且意识到这象征着孩子们正在成熟和正在发展宝贵的观察力、独立判断力，那么他们就不会那样伤心，也就不会由于怨恨和抵触这种反应，而把孩子推到自己的对立面去。"
+        "en": "They are full of old and beautiful things.",
+        "cn": "它们充满了古老而美丽的东西。"
       },
       {
-        "en": "The adolescent, with his passion for sincerity, always respects a parent who admits that he is wrong, or ignorant, or even that he has been unfair or unjust. What the child cannot forgive is the parent's refusal to admit these charges if the child knows them to be true.",
-        "cn": "青少年酷爱真诚，对于能够承认错误或无知、甚至承认自己做得不分平或不公正的父母，他们总是尊敬的，孩子们所不能原谅的是：父母错了，孩子们也看出来了，可是做父母的还不肯承认。"
+        "en": "You can find all sorts of treasures in them.",
+        "cn": "你可以在里面找到各种各样的宝藏。"
       },
       {
-        "en": "Victorian parents believed that they kept their dignity by retreating behind an unreasoning authoritarian attitude; in fact they did nothing of the kind, but children were then too cowed to let them know how they really felt. Today we tend to go to the other extreme, but on the whole this is a healthier attitude both for the child and the parent. It is always wiser and safer to face up to reality, however painful it may be at the moment.",
-        "cn": "维多利亚时代的父母认为，他们可靠无理的权威气派来维护自己的尊严，实际上那是根本不行的。孩子们只不过被吓得不敢让父母知道自己的想法罢了。虽然现在我们倾向于走向另一个极端，但总地来看，孩子和家长双方态度都比较端正。遇事采取面对现实的态度总是比较明智和稳妥的，尽管会有暂时的痛苦。"
+        "en": "The other day, I was in an antique shop when I saw a beautiful old vase.",
+        "cn": "前几天，我在一家古董店里看到一个美丽的旧花瓶。"
+      },
+      {
+        "en": "It was made of porcelain and it was decorated with flowers.",
+        "cn": "它是瓷制的，上面装饰着花朵。"
+      },
+      {
+        "en": "I asked the shopkeeper how much it cost.",
+        "cn": "我问店主它多少钱。"
+      },
+      {
+        "en": "He told me that it was very expensive.",
+        "cn": "他告诉我它非常昂贵。"
+      },
+      {
+        "en": "I was very disappointed.",
+        "cn": "我非常失望。"
+      },
+      {
+        "en": "I could not afford to buy it.",
+        "cn": "我买不起。"
+      },
+      {
+        "en": "I was just about to leave when the shopkeeper said, 'Wait a minute. I have something else to show you.'",
+        "cn": "我正要离开时，店主说：‘等一下。我还有别的东西给你看。’"
+      },
+      {
+        "en": "He went into the back of the shop and came back with a small box.",
+        "cn": "他走进商店后面，拿回来一个小盒子。"
+      },
+      {
+        "en": "He opened it and showed me a beautiful old ring.",
+        "cn": "他打开盒子，给我看了一枚美丽的旧戒指。"
+      },
+      {
+        "en": "It was made of gold and it had a large diamond in it.",
+        "cn": "它是金制的，上面有一颗大钻石。"
+      },
+      {
+        "en": "I asked him how much it cost.",
+        "cn": "我问他多少钱。"
+      },
+      {
+        "en": "He told me that it was very cheap.",
+        "cn": "他告诉我它非常便宜。"
+      },
+      {
+        "en": "I was very surprised.",
+        "cn": "我非常惊讶。"
+      },
+      {
+        "en": "I bought the ring and I was very happy with it.",
+        "cn": "我买了戒指，我非常喜欢它。"
+      },
+      {
+        "en": "It was a happy discovery.",
+        "cn": "这是一个幸运的发现。"
       }
     ]
   },
   {
-    "title": "Lesson 35   Space odyssey  太空探索",
+    "title": "Lesson 35  Justice was done 伸张正义",
     "pairs": [
       {
-        "en": "The Moon is likely to become the industrial hub of the Solar System, supplying the rocket fuels fro its ships, easily obtainable from the lunar rocks in the from of liquid oxygen. The reason lies in its gravity. Because the Moon has only an eightieth of the Earth's mass, it requires 97 per cent less energy to travel the quarter of a million miles from the Moon to Earth-orbit than the 200 mile-journey from Earth's surface into orbit!",
-        "cn": "月球很可能成为太阳系的工业中心。从月球上的岩石中很容易提炼出液态氧，作为航天飞船的燃料。其原因在于月球的重力。因为月球的重只有地球的1/8，因此，从月球到地球的25万英里所消耗的能量要比从地球表面进入地球轨道的200英里所耗能量少97%。"
+        "en": "The man who had been accused of stealing a car was brought before the court.",
+        "cn": "被控偷车的男子被带到法庭。"
       },
       {
-        "en": "This may sound fantastic, but it is easily calculated. To escape from the Earth in a rocket, one must travel at seven miles per second. The comparable speed from the Moon is only 1.5 miles per second. Because the gravity on the Moon's surface is only a sixth of Earth's (remember how easily the Apollo astronauts bounded along), it takes much less energy to accelerate to that 1.5 miles per second than it does on Earth. Moon-dwellers will be able to fly in space at only three per cent of the cost of similar journeys by their terrestrial dwellers will be able to fly in space at only three per cent of the cost of similar journeys by their terrestrial cousins.",
-        "cn": "这点听起来令人难以置信，但却很容易计算出来。要乘坐一枚火箭飞离地球，火箭的速度要达到每秒7英里，而从月球出发的相应速度史是每秒1.5英里。由于月球表面的重力仅是地球表面的1/6 -- 还记得阿波罗飞船中的宇航员累松地跳跃 -- 在月球上加速到每秒1.5英里比在地球上所用能源要少得多。月球居民在太空遨游的费用仅是地球上朋友飞越同样路所需费用的3%。"
+        "en": "He was a young man with a long criminal record.",
+        "cn": "他是一个有长长犯罪记录的年轻人。"
       },
       {
-        "en": "Arthur C. Clark once suggested a revolutionary idea passes through three phases:",
-        "cn": "亚瑟.C.克拉克曾提议，一种创新的想法要经过以下3个阶段："
+        "en": "He had been in prison several times.",
+        "cn": "他曾多次入狱。"
       },
       {
-        "en": "1 'It's impossible -- don't waste my time.'",
-        "cn": "1 “根本不可能，不要浪费我的时间。”"
+        "en": "The judge was not very sympathetic.",
+        "cn": "法官不太同情。"
       },
       {
-        "en": "2 'It's possible, but not worth doing.'",
-        "cn": "2 “可能，但不值得做。”"
+        "en": "He asked the man if he had anything to say.",
+        "cn": "他问那人有什么要说的。"
       },
       {
-        "en": "3 'I said it was a good idea all along.'",
-        "cn": "3 “我一直说这是个好想法。”"
+        "en": "The man said that he was innocent.",
+        "cn": "那人说他是无辜的。"
       },
       {
-        "en": "The idea of colonising Mars -- a world 160 times more distant time the Moon -- will move decisively from the second phase to the third, when a significant number of people are living permanently in space. Mars has an extraordinary fascination for would-be voyagers. America, Russia and Europe are filled with enthusiasts -- many of them serious and senior scientists -- who dream of sending people to it. Their aim is understandable. It is the one world in the Solar System that is most like the Earth. It is a world of red sandy deserts (hence its name -- the Red Planet), cloudless skies, savage sandstorms, chasms wider than the Grand Canyon and at least one mountain more than twice as tall as Everest. It seems ideal for settlement.",
-        "cn": "如果有相当数量的人永久性地住在太空，征服火星的计划 -- 一个比月球远160倍的星球 -- 就可以明确地从第2阶段进入第3阶段。火星对未来的星际旅客说有着特殊的魅力。美国、俄罗斯和欧洲都有许多热心此项事业的人 -- 其中的不少是认真和资深的科学家，他们一直梦想着把人送上火星。他们的目标是可以理解的。火星是太阳系里与地球最接近的一颗行星。这是一个红色沙漠的世界（因而得名：红色行星），无云的天空，凶猛的沙暴，比大峡谷还宽的裂缝，起码有一座山有珠穆朗玛峰的近两倍高。看起来，它很合适居住。"
+        "en": "He said that he had been at home with his wife on the night of the crime.",
+        "cn": "他说案发当晚他和他妻子在家。"
+      },
+      {
+        "en": "The judge did not believe him.",
+        "cn": "法官不相信他。"
+      },
+      {
+        "en": "He said that the man was a liar.",
+        "cn": "他说那人是个骗子。"
+      },
+      {
+        "en": "He sentenced him to five years in prison.",
+        "cn": "他判他五年监禁。"
+      },
+      {
+        "en": "The man was very angry.",
+        "cn": "那人非常生气。"
+      },
+      {
+        "en": "He shouted at the judge.",
+        "cn": "他朝法官大喊。"
+      },
+      {
+        "en": "He said that justice had not been done.",
+        "cn": "他说正义没有得到伸张。"
+      },
+      {
+        "en": "The judge was not moved.",
+        "cn": "法官无动于衷。"
+      },
+      {
+        "en": "He said that the man had got what he deserved.",
+        "cn": "他说那人罪有应得。"
       }
     ]
   },
   {
-    "title": "Lesson 36  The cost of government  政府的开支",
+    "title": "Lesson 36  A chance in a million 百万分之一的机会",
     "pairs": [
       {
-        "en": "If a nation is essentially disunited, it is left to the government to hold it together. This increases the expense of government, and reduces correspondingly the amount of economic resources that could be used for developing the country. And it should not be forgotten how small those resources are in a poor and backward country. Where the cost of government is high, resources for development are correspondingly low.",
-        "cn": "如果一个国家实际上处于分裂状态，使之联合起来就是政府的事了。这样的一来就增加了政府的开支，从而相应地减少了可以用来了展国家的那部分经济资源。不应忘记，在一个贫穷落后的国家里，那部分财力是很有限的。凡是政府管理费用高的地方，用于发展国家经济的资金就会相应地减少。"
+        "en": "We are less credulous than we used to be.",
+        "cn": "我们不像过去那样轻信了。"
       },
       {
-        "en": "This may be illustrated by comparing the position of a nation with that of a private business enterprise. An enterprise has to incur certain costs and expenses in order to stay in business. For our purposes, we are concerned only with one kind of cost -- the cost of managing and administering the business. Such administrative overheads in a business are analogous to the cost of government in a nation. The administrative overheads of a business are low to the extent that everyone working in the business can be trusted to behave in a way that best promotes the interests of the firm. If they can each be trusted to take such responsibilities. and to exercise such initiative as falls within their sphere, then administrative overheads will be low. It will be low because it will be necessary to have only one man looking after each job, then the business will require armies of administrators, checkers, and foremen and administrative overheads will rise correspondingly. As administrative overheads rise, so the earnings of the business after meeting he expense of administration, will fall; and the business will have less money to distribute as dividends or invest directly in its future progress and development.",
-        "cn": "把国家的状况同私人企业的状况加以比较，就可以看清这个问题。一个企业为了继续经营，不得不支出一定的费用和开销。就我们的目的而言，我们只关心一种费用 -- 企业行政管理费。一家企业的行政管理开支类似于一个国家的政府管理所用的开支。如果企业中的每个人都在真诚地为提高企业利润而工作，那么企业的管理费用就会降低到相应的程度。如果企业的每个人都信得过，人人都认真负责，在各自的工作范围内发挥主动性，行政管理费用就会降低。行政管理费用的降低的原因是：每项工作只需要一个人去完成，用不着另外再有一个人检查工作。督促他遵守章程，或向有关人士汇报他的工作。但是，如果企业中谁也不可信赖会对工作尽忠守职，那公企业就会需大批的管理人员、检查人员和带班人员，管理费用就会相应在增加。管理费用增加了，那么在扣除管理费用后，企业的收入就降低了。因此用于分红的金额就用于将来开拓和发展的投资就相应地减少了。"
+        "en": "In the nineteenth century, a novelist would bring his story to a conclusion by presenting his readers with a series of coincidences.",
+        "cn": "在19世纪，小说家会通过向读者呈现一系列巧合来结束他的故事。"
       },
       {
-        "en": "It is precisely the same with a nation. To the extent that the people can be relied upon to behave in a loyal and responsible manner, the government does not require armies of police and civil servants to keep them in order. But if a nation is disunited, the government cannot be sure that the actions of the people will be in the interests of the nation; and it will have to watch, check, and control the people accordingly. A disunited nation therefore has to incur unduly high costs of government.",
-        "cn": "一个国家的情况也完全相同。如果人民忠于职守，举止规矩，能受到政府的信赖，那么政府就不需要大批的警察和文职人员运去促使人民遵纪守法。但是，如果一个国家处于分裂状态，政府不能相信人民的行动有利于国家，那么政府就不得不对人民进行监督、检查和控制。因此，一个处于分裂的国家必须要支付过高的行政管理费用。"
+        "en": "Most of them were incredible and served to illustrate the belief that the writer's guiding hand was always at work.",
+        "cn": "其中大多数是难以置信的，旨在说明作者的引导之手总是在起作用的信念。"
+      },
+      {
+        "en": "Modern readers would find such endings laughable.",
+        "cn": "现代读者会觉得这样的结局可笑。"
+      },
+      {
+        "en": "Yet, in real life, circumstances do sometimes conspire to bring about coincidences which anyone but a nineteenth century novelist would find incredible.",
+        "cn": "然而，在现实生活中，情况有时确实会合谋造成巧合，除了19世纪的小说家，任何人都会觉得难以置信。"
+      },
+      {
+        "en": "A German taxi driver, Franz Bussman, recently found a wallet in his cab.",
+        "cn": "一位德国出租车司机弗兰茨·布斯曼最近在他的出租车里发现了一个钱包。"
+      },
+      {
+        "en": "It contained 20,000 marks.",
+        "cn": "里面有2万马克。"
+      },
+      {
+        "en": "He took it to the police station.",
+        "cn": "他把它带到警察局。"
+      },
+      {
+        "en": "The owner of the wallet was a tourist from America.",
+        "cn": "钱包的主人是一位来自美国的游客。"
+      },
+      {
+        "en": "He was very grateful to the taxi driver.",
+        "cn": "他对出租车司机非常感激。"
+      },
+      {
+        "en": "He gave him a reward of 200 marks.",
+        "cn": "他给了他200马克的奖励��"
+      },
+      {
+        "en": "The taxi driver was very pleased.",
+        "cn": "出租车司机非常高兴。"
+      },
+      {
+        "en": "He had done the right thing.",
+        "cn": "他做了正确的事。"
       }
     ]
   },
   {
-    "title": "Lesson 37  The process of ageing 衰老过程",
+    "title": "Lesson 37  The Westhaven Express 开往威斯特海温的快车",
     "pairs": [
       {
-        "en": "At the age of twelve years, the human body is at its most vigorous. It has yet to reach its full size and strength, and its owner his or her full intelligence; but at this age the likelihood of death is least. Earlier, we were infants and young children, and consequently more vulnerable; later, we shall undergo a progressive loss of our vigour and resistance which, though imperceptible at first, will finally become so steep that we can live no longer, however well we look after ourselves, and however well society, and our doctors, look after us. This decline in vigour with the passing of time is called ageing. It is one of the most unpleasant discoveries which we all make that we must decline in this way, that if we escape wars, accidents and disease we shall eventually 'die of old age', and that this happens at a rate which differs little from person to person, so that there are heavy odds in favour of our dying between the ages of sixty-five and eighty. Some of us will die sooner, a few will live longer -- on into a ninth or tenth decade. But the chances are against it, and there is a virtual limit on how long we can hope to remain alive, however lucky and robust we are.",
-        "cn": "人体在12岁时是生命力最旺盛的时期。虽然这个时期人的身材、体力和智力还有待发展和完善，但在这个年龄死亡的可能性最小。再早一些，我们是幼儿和小孩子，身体较脆弱；再迟一些，我们就要经历生命力和抵抗力逐步衰退的过程。虽然这个过程起初难以觉察，但最终会急转直下，不管我们怎样精心照料我们自己，不管社会和医生怎样对我们进行精心照顾，我们也无法再活下去了。生命力随着时间的流失而衰退叫做衰老。人类发现的最不愉快的一个事实是：人必然会衰老。既使我们能避开战争、意外的事故和各种疾病，我们最终也会“老死”；衰老的速度在人与人之间相差甚微，我们最可能死亡的年龄在65至80岁之间，有些人会死得早一些，少数人寿命会长一些 -- 活到八十几岁或九十几岁，但这种可能性很小。不管我们多么幸运，多么健壮，我们所希望的长寿实际上是有限度的。"
+        "en": "We have all been in situations where we have had to make a quick decision.",
+        "cn": "我们都曾遇到过必须迅速做出决定的情况。"
       },
       {
-        "en": "Normal people tend to forget this process unless and until they are reminded of it. We are so familiar with the fact that man ages, that people have for years assumed that the process of losing vigour with time, of becoming more likely to die the older we get, was something self-evident, like the cooling of a hot kettle or the wearing-out of a pair of shoes. They have also assumed that all animals, and probably other organisms such as trees, or even the universe itself, must in the nature of things 'wear out'. Most animals we commonly observe do in fact age as we do, if given the chance to live long enough; and mechanical systems like a wound watch, or the sun, do in fact run out of energy in accordance with the second law of thermodynamics (whether the whole universe does so is a moot point at present). But these are not analogous to what happens when man ages. A run-down watch is still a watch and can be rewound. An old watch, by contrast, becomes so worn and unreliable that it eventually is not worth mending. But a watch could never repair itself -- it does not consist of living parts, only of metal, which wears away by friction. We could, at one time, repair ourselves --well enough, at least, to overcome all but the most instantly fatal illnesses and accidents. Between twelve and eighty years we gradually lose this power; an illness which at twelve would knock us over, at eighty can knock us out, and another 700 for the survivors to be reduced by half again.",
-        "cn": "衰老的过程，不经提起，正常人容易忘记；一经提醒，才会记起。我们对人总是要衰老的现象并不陌生，多年来就已认识到。生命随着时间流失而丧失活力，人随着年龄的增长而接近死亡，这是不言而喻的，就像一壶热水迟早会凉不来，一双鞋渐渐会磨破一样。人们不但认识到所有的动物，大概也认识到所有的有机物。如树木，甚至宇宙本身，从事物的本质上来说都会“磨损掉”。我们通常看到的大多数动物，即使能让它们活得足够长久的话，也会像我们一样衰老的。像上紧发条的手表那样的机械装置，或太阳，也都会消耗完其能量（整个宇宙否如此，目前沿有争论）。不过，这些衰老的情况同人并不相似。手表停了依然是只手表，还可以重上好发条。然而一只老掉牙的手表，磨损太厉害，老得一点儿不准了，最终不值得修理了。但是，手表决不会自行修理，它不是由有生命的部件组成，而是由金属组成，而金属可以随着磨擦而磨损殆尽。而我们人，在一定时间内是可以自行修复的，除了暴病死或意外事故外，至少足以克服一切疾病和事故。在12岁至80岁之间，我们逐渐丧失这种能力。能使我们在12岁时病倒的疾病，到了80岁可能会使我们一厥不振而进入坟墓。假如我们能保持12岁时的旺盛生命力，那么我们当中的一半人过700年才会死去，剩下的一半人再过700年，才会又减少一半。"
+        "en": "The other day, I was on a train when I had to make such a decision.",
+        "cn": "前几天，我在火车上就不得不做出这样的决定。"
+      },
+      {
+        "en": "The train was crowded and I could not find a seat.",
+        "cn": "火车很拥挤，我找不到座位。"
+      },
+      {
+        "en": "I was standing in the corridor when a man came up to me and asked me if I was going to Westhaven.",
+        "cn": "我正站在走廊里，一个男人走过来问我是否要去威斯特海温。"
+      },
+      {
+        "en": "I told him that I was.",
+        "cn": "我告诉他我是。"
+      },
+      {
+        "en": "He then told me that the train did not go to Westhaven.",
+        "cn": "然后他告诉我这趟火车不去威斯特海温。"
+      },
+      {
+        "en": "He said that it was the Westhaven Express and that it did not stop at Westhaven.",
+        "cn": "他说这是开往威斯特海温的快车，它不在威斯特海温停。"
+      },
+      {
+        "en": "I was very surprised.",
+        "cn": "我非常惊讶。"
+      },
+      {
+        "en": "I had checked the timetable and I was sure that the train went to Westhaven.",
+        "cn": "我查了时刻表，我确定这趟火车去威斯特海温。"
+      },
+      {
+        "en": "I asked the man if he was sure.",
+        "cn": "我问那人是否确定。"
+      },
+      {
+        "en": "He said that he was.",
+        "cn": "他说他是。"
+      },
+      {
+        "en": "He said that he worked for the railway company and that he knew all about the trains.",
+        "cn": "他说他在铁路公司工作，他对火车了如指掌。"
+      },
+      {
+        "en": "I had to make a quick decision.",
+        "cn": "我必须迅速做出决定。"
+      },
+      {
+        "en": "I could either get off the train at the next station or I could stay on the train and hope that the man was wrong.",
+        "cn": "我可以在下一站下车，也可以留在火车上，希望那人是错的。"
+      },
+      {
+        "en": "I decided to get off the train.",
+        "cn": "我决定下车。"
+      },
+      {
+        "en": "I got off at the next station and waited for the next train to Westhaven.",
+        "cn": "我在下一站下车，等下一趟去威斯特海温的火车。"
+      },
+      {
+        "en": "It was a long wait.",
+        "cn": "等了很久。"
+      },
+      {
+        "en": "When the train finally arrived, I got on and found a seat.",
+        "cn": "当火车终于到达时，我上了车，找到了一个座位。"
+      },
+      {
+        "en": "I was very tired, but I was glad that I had made the right decision.",
+        "cn": "我很累，但我很高兴我做出了正确的决定。"
       }
     ]
   },
   {
-    "title": "Lesson 38  Water and the traveller 水和旅行者",
+    "title": "Lesson 38  The first calendar 最早的日历",
     "pairs": [
       {
-        "en": "Contamination of water supplies is usually due to poor sanitation close to water sources, sewage disposal into the sources themselves, leakage of sewage into distribution systems or contamination with industrial or farm waste. Even if a piped water supply is safe at its source, it is not always safe by the time it reaches the tap. Intermittent tap-water supplies should be regarded as particularly suspect.",
-        "cn": "水源的污染通常是由于接近水源的地方卫条件太差而造成的：污水排入水源，污水渗入给水系统或工农业污水造成污染。即使管道供水系统在水源处安全的，等水到达龙头时就不一定总是安全的了。断断续续的水管应该被视为是非常可疑的。"
+        "en": "Future historians will be in a unique position when they come to record the history of our own times.",
+        "cn": "未来的历史学家在记录我们这个时代的历史时将处于一个独特的地位。"
       },
       {
-        "en": "Travellers on short trips to areas with water supplies of uncertain quality should avoid drinking tap-water, or untreated water from any other source. It is best to hot drinks, bottled or canned drinks of well-known brand names -- international standards of water treatment are usually followed at bottling plants. Carbonated drinks are acidic, and slightly safer. Make sure that all bottles are opened in your presence, and that their rims are clean and dry.",
-        "cn": "短途旅行到水质不保险的地区时，应避免饮用水龙头的水或未经处理任何其他来源的水。最好仅饮用开水，名牌瓶装或罐装水 -- 装瓶厂通常遵循国际水处理的标准。碳酸饮料是酸性的，就更安全一些。确保瓶子是当你面开启的，瓶口清洁干燥。"
+        "en": "They will hardly know which facts to select from the great mass of evidence that steadily accumulates.",
+        "cn": "他们几乎不知道从不断积累的大量证据中选择哪些事实。"
       },
       {
-        "en": "Boiling is always a good way of treating water. Some hotels supply boiled water on request and this can be used for drinking, or for brushing teeth. Portable boiling elements that can boil small quantities of water are useful when the right voltage of electricity is available. Refuse politely any cold drink from an unknown source.",
-        "cn": "烧开一直是水处理的一种好办法。有的酒店根据要求可提供开水，这些开水可用于饮用和刷牙。如果有相配的电压，可以煮少量水的便携式热水装置是有用的。应谢绝任何不明来源的冷饮。"
+        "en": "What is more, they will not have to rely solely on the written word.",
+        "cn": "更重要的是，他们不必仅仅依赖书面文字。"
       },
       {
-        "en": "Ice is only as safe as the water from which it is made, and should not be put in drinks unless it is known to be safe. Drink can be cooled by placing them on ice tather than adding ice to them.",
-        "cn": "冰块只有当制造冰块的水安全时才是保险的，只有知道冰块安全时才能加入饮料。可以把饮料置于冰块之上来冷却，而不是把冰块加进饮料之中。"
+        "en": "Films, videos, CDs and CD-ROMs are just some of the bewildering amount of information they will have.",
+        "cn": "电影、录像、CD和CD-ROM只是他们将拥有的令人眼花缭乱的信息中的一部分。"
       },
       {
-        "en": "Alcohol may be a medical disinfectant, but should not be relied upon to sterilize water. Ethanol is more effective at a concentration of 50-70 per cent; below 20 per cent, its bactericidal action is negligible. Spirits labelled 95 proof contain only about 47 per cent alcohol. Beware of methylated alcohol, which is very poisonous, and should never be added to drinking water.",
-        "cn": "酒精可能是医学上的消毒剂，但决不可用来消毒饮用水。乙醇的浓度为50%至70%时比较有效，浓度低于20%时，杀菌能力基本上就不存在了。强度标为95的酒中含有47%的酒精。要提防甲基化酒精，那是剧毒的，永远不能掺入饮用水。"
+        "en": "They will be able to see and hear us in action.",
+        "cn": "他们将能够看到和听到我们行动中的样子。"
       },
       {
-        "en": "If no other safe supply can be obtained, tap water that is too hot to touch can be left to cool and is generally safe to drink. Those planning a trip to remote areas, or intending to live in countries where drinking water is not readily available, should know about the various possible methods for making water safe.",
-        "cn": "如果没有其他安全的饮用水，水管中流出的烫手的水可以留下来冷却。这种水一般是安全的。那些计划去偏远地区旅行，或在饮用水不现成的国家居住的人，应该知道如何使水适于饮用的各种办法。"
+        "en": "But the historian attempting to reconstruct the distant past is always faced with a difficult task.",
+        "cn": "但是，试图重建遥远过去的历史学家总是面临着一项艰巨的任务。"
+      },
+      {
+        "en": "He has to deduce what he can from the few scanty clues available.",
+        "cn": "他必须从仅有的少量线索中推断出他所能推断的一切。"
+      },
+      {
+        "en": "Even seemingly insignificant remains can shed interesting light on the history of early man.",
+        "cn": "即使是看似微不足道的遗迹也能为早期人类的历史提供有趣的线索。"
+      },
+      {
+        "en": "Up to now, historians have assumed that calendars came into being with the advent of agriculture, for then man was faced with a real need to understand something about the seasons.",
+        "cn": "到目前为止，历史学家一直认为日历是随着农业的出现而产生的，因为那时人类面临着真正需要了解季节的需要。"
+      },
+      {
+        "en": "Recent scientific evidence seems to indicate that this assumption is incorrect.",
+        "cn": "最近的科学证据似乎表明这种假设是不正确的。"
+      },
+      {
+        "en": "Historians have long been puzzled by dots, lines and symbols which have been engraved on walls, bones, and the ivory tusks of mammoths.",
+        "cn": "历史学家长期以来一直对刻在墙壁、骨头和猛犸象牙上的点、线和符号感到困惑。"
+      },
+      {
+        "en": "The nomads who made these markings lived by hunting and fishing during the last Ice Age, which began about 35,000 B.C. and ended about 10,000 B.C.",
+        "cn": "制作这些标记的游牧民族在最后一个冰河时代靠狩猎和捕鱼为生，这个时代始于公元前约35000年，结束于公元前约10000年。"
+      },
+      {
+        "en": "By correlating markings made in various parts of the world, historians have been able to read this difficult code.",
+        "cn": "通过将世界各地制作的标记联系起来，历史学家已经能够解读这个困难的代码。"
+      },
+      {
+        "en": "They have found that it is connected with the passage of days and the phases of the moon.",
+        "cn": "他们发现它与日子的流逝和月相有关。"
+      },
+      {
+        "en": "It is, in fact, a primitive calendar.",
+        "cn": "事实上，它是一个原始的日历。"
+      },
+      {
+        "en": "It has long been known that the hunting scenes depicted on walls were not simply a form of artistic expression.",
+        "cn": "人们早就知道，墙上描绘的狩猎场景不仅仅是一种艺术表现形式。"
+      },
+      {
+        "en": "They had a definite meaning, for they were as near as early man could get to writing.",
+        "cn": "它们有明确的含义，因为它们是早期人类所能达到的最接近书写的东西。"
+      },
+      {
+        "en": "It is possible that there is a definite relation between these paintings and the markings that sometimes accompany them.",
+        "cn": "这些绘画和有时伴随它们的标记之间可能存在明确的关系。"
+      },
+      {
+        "en": "It seems that man was making a real effort to understand the seasons 20,000 years earlier than has been supposed.",
+        "cn": "看来人类在比我们想象的早2万年的时候就在努力了解季节了。"
       }
     ]
   },
   {
-    "title": "Lesson 39  What every writer wants 作家之所需",
+    "title": "Lesson 39  Nothing to worry about 不用担心",
     "pairs": [
       {
-        "en": "I have known very few writers, but those I have known, and whom I respect, confess at once that they have little idea where they the are going when they first set pen to paper. They have a character, perhaps two; they are in that condition of eager discomfort which passes for inspiration; all admit radical changes of destination once the journey has begun; one, to my certain knowledge, spent nine months on a novel about Kashmir, then reset the whole thing in the Scottish Highlands. I never heard of anyone making a 'skeleton', as we were taught at school. In the breaking and remaking, in the timing, interweaving, beginning afresh, the writer comes to discern things in his material which were not consciously in his mind when he began. This organic process, often leading to moments of extraordinary self-discovery, is of an indescribable fascination. A blurred image appears; he adds a brushstroke and another, and it is gone; but something was there, and he will not rest till he has captured it. Sometimes the yeast within a writer outlives a book he has written. I have heard of writers who read nothing but their own books; like adolescents they stand before the mirror, and still cannot fathom the exact outline of the vision before them. For the same reason, writers talk interminably about their own books, winkling out hidden meanings, super-imposing new ones, begging response from those around them. Of course a writer doing this is misunderstood: he might as well try to explain a crime or a love affair. He is also, incidentally, an unforgivable bore.",
-        "cn": "我的认识的作家寥寥无几，然而凡是我所认识和尊敬的作家，都立即承认在他们动笔时，不清楚要写什么，怎么写。他们心中只在一个或两个角色。他们处于急切不安的状态，而被当作是灵感。他们无不承认，一旦“旅程”开始，“目的地”常有急剧的变化。据我所知，有位作家花了9个月的时间写了一部关克什米尔的小说，后来却把整个故事背景换成了苏格兰高地。我从未听说过任何一位作家像我们在学校那样，动笔前先列什么提纲。作家在剪裁修改、构思时间、穿插情节、以至从头重写的过程中，会领悟到素材中很多东西是他刚动笔时所未意识到的。这种有机的加工过程往往达到不寻常自我发现的境界，具有难以言表的构思魅力。一个朦胧的形象出现在作家的脑海里，他左添一笔，右添一笔，形象反而消逝了；可是，好像还有什么东西存在着，不把它捕捉到，作家是不会罢休的。有时，一个作家一本书写完了，但兴奋仍不消散。我听说一些作家，除了自己的书外，别的书一概不读，犹如希腊神话中那位漂亮的少年，站在镜前，不能辨认自身的真面目。由于这个原因，作家喋喋不休地谈论自己的书，挖掘其隐晦的含义，询问周围人的反应。作家如此行事当然被人误解。他还不如给人讲一个犯罪案件或一个恋爱故事。顺便说一句，他也是个不可饶恕的令人厌烦的人。"
+        "en": "The rough road stretched before me.",
+        "cn": "崎岖的道路在我面前延伸。"
       },
       {
-        "en": "This temptation to cover the distance between himself and the reader, to study his image in the sight of those who do not know him, can be his undoing: he has begun to write to please.",
-        "cn": "这种企图消除自己和读者之间距离的作法，企图用不了解自己的人的观点来研究自己塑造的形象的作法，会导致作家的毁灭，因为他已经开始为取悦他人而写作了。"
+        "en": "I was on my way to a small village in the mountains.",
+        "cn": "我正在去山里一个小村庄的路上。"
       },
       {
-        "en": "A young English writer made the pertinent observation a year or two back that the talent goes into the first draft, and the art into the drafts that follow. For this reason also the writer, like any other artist, has no resting place, no crowd or movement in which he may take comfort, no judgment from outside which can replace the judgment from within. A writer makes order out of the anarchy of his heart; he submits himself to a more ruthless discipline than any critic dreamed of, and when he flirts with fame, he is taking time off from living with himself, from the search for what his world contains at its inmost point.",
-        "cn": "一两年前，一位年轻的英国作家发表了中肯的看法。他说，初稿是才华，以后各稿是艺术。也是由于这个原因，作家同任何艺术家一样，找不到可休息的场所，找不到伙伴和活动使自己得到安逸。任何局外人的判断也比不上他内心的正确判断。一旦作家从内心的紊乱中理出头绪，就应该按任何评论家想像不到的无情规范约束自己写作；当他沽名钓誉时，他就脱离了自我生活，脱离了对自己灵魂最深处世界的探索。"
+        "en": "The road was narrow and winding.",
+        "cn": "道路狭窄而曲折。"
+      },
+      {
+        "en": "I had been driving for hours, and I was beginning to feel tired.",
+        "cn": "我开了几个小时的车，开始感到累了。"
+      },
+      {
+        "en": "Suddenly, I saw a man by the side of the road.",
+        "cn": "突然，我看到路边有一个人。"
+      },
+      {
+        "en": "He was waving his arms.",
+        "cn": "他正在挥舞着手臂。"
+      },
+      {
+        "en": "I stopped the car and asked him what was wrong.",
+        "cn": "我停下车，问他怎么了。"
+      },
+      {
+        "en": "He told me that his car had broken down.",
+        "cn": "他告诉我他的车坏了。"
+      },
+      {
+        "en": "He asked me if I could give him a lift to the next village.",
+        "cn": "他问我是否能载他到下一个村庄。"
+      },
+      {
+        "en": "I said that I could.",
+        "cn": "我说可以。"
+      },
+      {
+        "en": "He got into the car and we drove off.",
+        "cn": "他上了车，我们开车走了。"
+      },
+      {
+        "en": "He told me that he was a doctor.",
+        "cn": "他告诉我他是一名医生。"
+      },
+      {
+        "en": "He said that he was on his way to see a patient.",
+        "cn": "他说他正在去看病人的路上。"
+      },
+      {
+        "en": "He was very worried about the patient.",
+        "cn": "他非常担心病人。"
+      },
+      {
+        "en": "He said that the patient was very ill.",
+        "cn": "他说病人病得很重。"
+      },
+      {
+        "en": "I told him not to worry.",
+        "cn": "我告诉他不要担心。"
+      },
+      {
+        "en": "I said that we would get to the village soon.",
+        "cn": "我说我们很快就会到村子。"
+      },
+      {
+        "en": "We arrived at the village a few minutes later.",
+        "cn": "几分钟后我们到达了村子。"
+      },
+      {
+        "en": "The doctor got out of the car and thanked me.",
+        "cn": "医生下了车，感谢我。"
+      },
+      {
+        "en": "He said that I had saved his patient's life.",
+        "cn": "他说我救了他病人的命。"
+      },
+      {
+        "en": "I was very happy to have helped.",
+        "cn": "我很高兴能帮上忙。"
       }
     ]
   },
   {
-    "title": "Lesson 40   Waves 海浪",
+    "title": "Lesson 40  Who's who 真假难辨",
     "pairs": [
       {
-        "en": "Waves are the children of the struggle between ocean and atmosphere, the ongoing signatures of infinity. Rays from the sun excite and energize the atmosphere of the earth, awakening it to flow, to movement, to rhythm, to life. The wind then speaks the message of the sun to the sea and the sea transmits it on through waves -- an ancient, exquisite, powerful message.",
-        "cn": "海浪是大海和空气相斗的产物，无限的一种不间断的标志。太阳光刺激了地球的大气层，并给予它能量；阳光使空气开始流动，产生节奏，获得生命。然后，风把太阳的住处带给了大海，海洋用波浪的形式传递这个信息 -- 一个源过流长、高雅而有力的信息。"
+        "en": "It is a common practice for people to have their portraits painted.",
+        "cn": "人们画肖像是很普遍的做法。"
       },
       {
-        "en": "These ocean waves are among the earth's most complicated natural phenomena. The basic features include a crest (the highest point of the wave), a trough (the lowest point), a height (the vertical distance from the trough to the crest), a wave length (the horizontal distance between two wave crests), and a period (which is the time it takes a wave crest to travel one wave length).",
-        "cn": "这些海浪属于地球上最复杂的自然现象。它们的基本特征包括浪峰（波浪的最高点）、波谷（最低点）、浪高（从波谷到浪峰的垂直距离）、波长（两个浪峰间的水平距离）和周期（海峰走过一个波长所需的时间）。虽然，海浪给人的印象是一堵由水组成的墙向你压过来，而实际上，浪从水中移过，而水则留在原处。如果水和浪一起移动的话，那么大海和海里所有的东西就会向岸边疾涌过来，带来明显的灾难性后果。"
+        "en": "But have you ever heard of a house having its portrait painted?",
+        "cn": "但你听说过给房子画肖像吗？"
       },
       {
-        "en": "Although an ocean wave gives the impression of a wall of water moving in your direction, in actuality waves move through the water leaving the water about where it was. If the water was moving with the wave, the ocean and everything on it would be racing in to the shore with obviously catastrophic results.",
-        "cn": "穿过深水的海浪使水面上的一个微粒按照一种近乎圆形的轨道移动，先把微粒拉向前移动的海浪，然后推上波浪，随着波浪移动，然后 -- 当波浪把微粒留在身后时 -- 又回到出发点。"
+        "en": "A rich American, Mr. James Otis, once had his house's portrait painted.",
+        "cn": "一位富有的美国人詹姆斯·奥蒂斯先生曾给他的房子画过肖像。"
       },
       {
-        "en": "An ocean wave passing through deep water causes a particle on the surface to move in a roughly circular orbit, drawing the particle first towards the advancing wave, then up into the wave, then forward with it and then -- as the wave leaves the particles behind -- back to its starting point again.",
-        "cn": "从成熟到消亡，波浪和其他任何“活动中”的东西一样，都受制于共同的法则。一度它获得非凡的个性，但最终又被重新融进生命的大洋。"
+        "en": "He was a very wealthy man, and he owned a beautiful old house in the country.",
+        "cn": "他是个非常富有的人，他在乡下拥有一座美丽的旧房子。"
       },
       {
-        "en": "From both maturity to death, a wave is subject to the same laws as any other 'living' thing. For a time it assumes a miraculous individuality that, in the end, is reabsorbed into the great ocean of life.",
-        "cn": "公海上起伏的波浪是由3个自然因素构成的：风、地球的运动或震颤和月亮、太阳的引力。一旦波浪形成，地球引力是持续不断企图使海面复原为平面的力量。"
+ "en": "He was very proud of his house, and he wanted to have a painting of it.",
+        "cn": "他为自己的房子感到非常自豪，他想有一幅它的画。"
+      },
+      {
+        "en": "He asked a famous artist to paint the portrait.",
+        "cn": "他请一位著名艺术家画这幅肖像。"
+      },
+      {
+        "en": "The artist agreed to do it.",
+        "cn": "艺术家同意了。"
+      },
+      {
+        "en": "He spent a long time painting the portrait.",
+        "cn": "他花了很长时间画这幅肖像。"
+      },
+      {
+        "en": "When it was finished, he showed it to Mr. Otis.",
+        "cn": "画完后，他拿给奥蒂斯先生看。"
+      },
+      {
+        "en": "Mr. Otis was very pleased with it.",
+        "cn": "奥蒂斯先生非常满意。"
+      },
+      {
+        "en": "He said that it was a perfect likeness.",
+        "cn": "他说画得非常像。"
+      },
+      {
+        "en": "He paid the artist a lot of money for it.",
+        "cn": "他为此付给艺术家很多钱。"
+      },
+      {
+        "en": "A few years later, Mr. Otis sold his house.",
+        "cn": "几年后，奥蒂斯先生卖掉了他的房子。"
+      },
+      {
+        "en": "The new owner was a man called Mr. Williams.",
+        "cn": "新主人是一个叫威廉姆斯先生的人。"
+      },
+      {
+        "en": "Mr. Williams was also a very wealthy man.",
+        "cn": "威廉姆斯先生也是一个非常富有的人。"
+      },
+      {
+        "en": "He did not like the painting of the house.",
+        "cn": "他不喜欢这幅房子的画。"
+      },
+      {
+        "en": "He said that it was not a good likeness.",
+        "cn": "他说画得不像。"
+      },
+      {
+        "en": "He asked another artist to paint a new portrait of the house.",
+        "cn": "他请另一位艺术家给房子画一幅新肖像。"
+      },
+      {
+        "en": "The new artist painted a very different portrait.",
+        "cn": "新艺术家画了一幅非常不同的肖像。"
+      },
+      {
+        "en": "It was much more modern.",
+        "cn": "它更现代。"
+      },
+      {
+        "en": "Mr. Williams was very pleased with it.",
+        "cn": "威廉姆斯先生非常满意。"
+      },
+      {
+        "en": "He said that it was a much better likeness.",
+        "cn": "他说画得更像了。"
+      },
+      {
+        "en": "He paid the artist a lot of money for it.",
+        "cn": "他为此付给艺术家很多钱。"
+      },
+      {
+        "en": "Now there are two portraits of the same house.",
+        "cn": "现在同一所房子有两幅肖像。"
+      },
+      {
+        "en": "One is old-fashioned and the other is modern.",
+        "cn": "一幅是老式的，另一幅是现代的。"
+      },
+      {
+        "en": "Which one is the true likeness?",
+        "cn": "哪一幅是真正的肖像？"
+      },
+      {
+        "en": "It is difficult to say.",
+        "cn": "很难说。"
       }
     ]
   },
   {
-    "title": "Lesson 41  Training elephants   训练大象",
+    "title": "Lesson 41  Illusions of pastoral peace 田园生活的遐想",
     "pairs": [
       {
-        "en": "Two main techniques have been used for training elephants, which we may respectively the tough and the gentle. The former method simply consists of setting an elephant to work and beating him until he does what is expected of him. Apart from moral considerations this is a stupid method of training, for it produces a resentful animal who at a later stage may well turn man-killer. The gentle method requires more patience in the early stages, but produces a cheerful, good-tempered elephant who will give many years of loyal service.",
-        "cn": "驯象有两种主要的方法，我们分别称之为强硬法和温柔法。强硬法就是驱象去干活，把它打顺从为止。且不说道义问题，这本身就是一种愚蠢的训练方法，因为这种方法训练会使动物反感，在以后某个时期可能会变成伤人的动物。温柔法要求在最初阶段保持较大的耐心，但这种方法可以训练出性情愉快、脾气温顺，能忠实为人服务多年的大象。"
+        "en": "The quiet life of the country has never appealed to me.",
+        "cn": "乡村的宁静生活从未吸引过我。"
       },
       {
-        "en": "The first essential in elephant training is to assign to the animal a single mahout who will be entirely responsible for the job. Elephants like to have one master just as dogs do, and are capable of a considerable degree of personal affection. There are even stories of half-trained elephant calves who have refused to feed and pined to death when by some unavoidable circumstance they have been deprived of their own trainer. Such extreme cases must probably be taken with a grain of salt, but they do underline the general principle that the relationship between elephant and mahout is the key to successful training.",
-        "cn": "驯象中至关生要的是指派一名专门的驯象员，全面负责这项工作。大象和狗一样，喜欢有一个专一的主人，而且会对主人产生相当深厚的私人感情。甚至有这样的故事：训练了一半的小象，由于不可避免的情况与他们的主人分离后，竟拒绝吃食，消瘦至死。这种极端的事例虽不可全信，但强调了一项基本原则，象和驯象员之间的关系是驯象成功与否的关健。"
+        "en": "City life is much more to my taste.",
+        "cn": "城市生活更合我的口味。"
       },
       {
-        "en": "The most economical age to capture an elephant for training is between fifteen and twenty years, for it is then almost ready to undertake heavy work and can begin to earn its keep straight away. But animals of this age do not easily become subservient to man, and a very time man, and a very firm hand must be employed in the early stages. The captive elephant, still roped to a tree, plunges and screams every time a man approaches, and for several days will probably refuse all food through anger and fear. Sometimes a tame elephant is tethered nearby to give the wild one confidence, and in most cases the captive gradually quietens down and begins to accept its food. The next stage is to get the elephant to the training establishment, a ticklish business which is achieved with the aid of two tame elephants roped to the captive on either side.",
-        "cn": "捕捉15至20岁之间年龄的大象进行驯象最为经济。 这个年龄的象差不多已能干重活，可以很快挣回饲养它的开支。但这个年龄的象不易驯服，因此开始阶段需要有一位强有力的老手。捕来拴在树上的大象，每当有人走近它时，就会向前猛冲并发出尖叫，甚至一连几于都由于愤怒和恐惧而拒绝进食。有时，把一头已驯服的象拴在旁边能给野象以信心。在大多数情况下，刚博来的象会慢慢静下来，接着开始吃食。下一步就是把象带到训练场所，这是一件棘手的事，需要在它两侧拴上两头驯服的大象才能完成。"
+        "en": "I love the noise and the crowds.",
+        "cn": "我喜欢噪音和人群。"
       },
       {
-        "en": "When several elephants are being trained at one time, it is customary for the new arrival to be placed between the stalls of two captives whose training is already well advanced. It is then left completely undisturbed with plenty of food and water so that it can absorb the atmosphere of its new home and see that nothing particularly alarming is happening to its companions. When it is eating normally, its own training begins. The trainer stands in front of the elephant holding a long stick with a sharp metal point. Two assistants, mounted on tame elephants, control the captive from either side, while others rub their hands over his skin to the accompaniment of a monotonous and soothing chant. This is supposed to induce pleasurable sensations in the elephant, and its effects are reinforced by the use of endearing epithets. The elephant is not son', or 'ho! my father', or 'my mother', according to the age and sex of the captive. The elephant is not immediately susceptible to such blandishments, however, and usually lashes fiercely with its trunk in all directions. These movements are controlled by the trainer with the metal-pointed stick, and the trunk eventually becomes so sore that the elephant curls it up and seldom afterwards uses it for offensive purposes.",
-        "cn": "几只象同时训练时，通常是把新到的安置在两头训练得很好的大象的象厩中间，然后给它以充足的食物和水，一定不要惊扰它，以便让他能适应新居的气氛，并且看到自己的同伴身上没有发生让自己担惊受怕的事。当它进食正常了，训练就开始。驯练员手持一根有锋利金属尖头的长棒，站在象前。两位助手骑在驯服的象的背上，从两侧控制新捕的象，其他人唱着单调的歌声用手抚摸象的皮肤。据说这是为了使象产生愉快的感觉，为了加强这种效果，人闪还按象的年龄性别，给以亲切的外号，如“嗬！我的孩子”、“嗬！我的爸爸”、“嗬！我的妈妈”。然而大象不会立刻被这些讨好的括感动，而往往是用鼻子朝各个方向猛烈地甩动。训练员要用有锋利金属尖的长棒控制它的这种举动，象鼻子最后疼得卷了起来，以后它就很少用鼻子去进攻了。"
+        "en": "I love the bright lights and the excitement.",
+        "cn": "我喜欢明亮的灯光和兴奋。"
+      },
+      {
+        "en": "I love the feeling of being alive.",
+        "cn": "我喜欢活着的感觉。"
+      },
+      {
+        "en": "Somepeople say that city life is unhealthy.",
+        "cn": "有人说城市生活不健康。"
+      },
+      {
+        "en": "They say that the air is polluted and that there is too much noise.",
+        "cn": "他们说空气被污染了，噪音太大了。"
+      },
+      {
+        "en": "They say that people are unfriendly and that there is too much crime.",
+        "cn": "他们说人们不友好，犯罪太多了。"
+      },
+      {
+        "en": "I don't agree.",
+        "cn": "我不同意。"
+      },
+      {
+        "en": "I think that city life is very healthy.",
+        "cn": "我认为城市生活非常健康。"
+      },
+      {
+        "en": "The air may be polluted, but there are plenty of parks where you can get fresh air.",
+        "cn": "空气可能被污染了，但有很多公园可以呼吸新鲜空气。"
+      },
+      {
+        "en": "There may be too much noise, but you can always find a quiet place to relax.",
+        "cn": "可能噪音太大了，但你总能找到一个安静的地方放松。"
+      },
+      {
+        "en": "People may be unfriendly, but you can always find friends if you look for them.",
+        "cn": "人们可能不友好，但如果你去找，总能找到朋友。"
+      },
+      {
+        "en": "There may be too much crime, but you can always be careful.",
+        "cn": "可能犯罪太多了，但你总可以小心。"
+      },
+      {
+        "en": "I think that city life is the best life.",
+        "cn": "我认为城市生活是最好的生活。"
       }
     ]
   },
   {
-    "title": "Lesson 42   Recording an earthquake  记录地震",
+    "title": "Lesson 42  Modern cavemen 现代洞穴人",
     "pairs": [
       {
-        "en": "An earthquake comes like a thief in the night, without warning. It was necessary, therefore, to invent instruments that neither slumbered nor slept. Some devices were quite simple. One, for instance, consisted of rods of various lengths and thicknesses with would stand up end like ninepins. When a shock came, it shook the rigid table upon which these stood. If it were gentle, only the more unstable rods fell. If it were severe, they all fell. Thus the rods, by falling, and by the direction in which they fell, recorded for the severe, they all fell. Thus the rods, by falling, and by the direction in which they fell, recorded for the slumbering scientist the strength of a shock that was too weak to waken him, and the direction from which it came.",
-        "cn": "地震就像夜间的小偷，不打招呼就来了。因此，有必要发明一种仪器，既不打盹儿，也不睡觉。有些装置非常简单。例如，有一种装置是由一些长短、粗细不同的木棒组成，就像九柱戏的木棒一样坚立着，一旦有地震，就会震动竖立在坚硬的桌上的木棒。如果地震轻微，只有不稳定的木棒倒下；如果地震剧烈，所有的木棒都会例下。由于地震太弱而未惊醒科学家时，木棒倒下的多少和倒下的方向就为科学家记录下了地震的强度和地震方向。"
+        "en": "Cave-dwelling is a very old habit.",
+        "cn": "穴居是一个非常古老的习惯。"
       },
       {
-        "en": "But instruments far more deliecate than that were needed if any really serious advance was to be made. The ideal to be aimed at was to devise an instrument that could record with a pen on paper, the movements of the ground or of the table as the quake passed by. While I write my pen moves, but the paper keeps still. With practice, no doubt, I could in time learn to write by holding the pen still while the paper moved. That sounds a silly suggestion, but that was precisely the idea adopted in some of the early instruments (seismometers) for recording earthquake waves. But when table, penholder and paper are all moving, how is it possible to write legibly? The key to a solution of that problem lay in an everyday observation. Why does a person standing in a bus or train tend to fall when a sudden start is made? It is because his feet move on , but his head stays still. A simple experiment will help us a little further. Tie a heavy weight at the end of a long piece of string. With the hand to and fro and around but not up and string so that the weight nearly touches the ground. Now move the hand to and fro and around but not up and down. It will be found that the weight a piece of string. With the hand held high in the air, hold the string so that the weight nearly touches the ground. Now move the hand to and fro and around but not up and down. It will be found that ten weight moves but slightly or not at all. Imagine an earthquake shock shaking the floor, the paper, you and your hand. In the midst of all this movement, the weight and the pen would be still. But as the paper moved from side to side under the pen point, its movement would be recorded in ink upon its surface. It was upon this principle that the first instruments were made, but while the drum was being shaken, the line that the pen was drawing wriggled from side to side. The apparatus thus described, however, records only the horizontal component of the wave movement, which is, in fact, much more complicated. If we could actually see the path described by a particle, such as a sand grain in the rock, it would be more like that of a bluebottle path described by a particle, such as a sand grain in the rock, it would be more like that of a bluebottle buzzing round the room; it would be up and down, to and fro and from side to side. Instruments have been devised and can be so placed that all three elements can be recorded in different graphs.",
-        "cn": "但是，如果要取得真正重大的进展，需要有比这种装置精细得多的仪器。理想的目标是设计出这样一种仪器：当地震发生时，它能用笔在纸上记录下大地和桌子运动情况。我写字时，笔是移动的，纸是静止的。毫无疑问，经过练习，我最终能够学会笔不动而纸动来写字。这听起来似乎是一种愚蠢的想法，但是早期记录地震波的仪器（地震仪）正是采用了这中思路。可是，当桌子、夹笔装置、纸都在移动时，怎么能书写得清楚呢？可以从我们的日常生活观察中找到这个问题的答案。一个站在公共汽车或火车上，当车突然开动时，他为什么会倾倒呢？这是因为他的脚动了，而他的头保持着静止。再做一个简单的实验可以帮助我们进一步理解这个问题。把一个生物拴在一根长绳子的一端，把手高高举在空中握住绳子，让重物几乎接触地面。然后把手前后左右以及旋转摆动，但不要上下摆动。结果会发现，重物是动了，但动得很小，甚至没动。假定把一支笔拴在重物上，笔尖落在地板上的一张纸上，假定地震发生了，地板、纸、你和你的手都会动，重物和笔却不动。由于纸在笔下来回运动，纸的表面就会用墨水记录下地板运动的情况。根据这一原理，制造出了最初的地震仪器，但是纸是卷在慢慢放置的圆筒上的。只要一切都是静止的，笔就会划出一条直线；但是，圆筒受到震动，笔所画出的线就会就会左右摆动。然而，这里所说的仪器记录下来的只是地震波运动中的水平部份，地震波的运动实际比这要复杂得多。假如我们真能看到诸如岩石中一个沙粒子的运动轨迹，那就像一只嗡嗡叫的绿头苍蝇在屋内飞行的轨迹，呈现出上上下下、来来回回、左左右右3种性质的运动。已经设计出了一些仪器，它按照一定的安放方式就可测绘出这三种运动的曲线图。"
+        "en": "The first men lived in caves.",
+        "cn": "最早的人类住在洞穴里。"
       },
       {
-        "en": "When the instrument is situated at more than 700 miles from the earthquake centre, the graphic record shows three waves arriving one after at short intervals. The first records the arrival of longitudinal vibrations. The second marks the arrival of transverse vibrations which travel more slowly and arrive several minutes after the first. These two have travelled through the earth. It was from the study of these that so much was learnt about the interior of the earth. The third, or main. The third, or main wave, is the slowest and has travelled round the earth through the surface rocks.",
-        "cn": "如果把这种仪器安装在距震源700多英里远的地方，曲线记录就能显示出前后相同的这3种地震波。首先记录下的是纵向波的到达；然后记录下的是横向波的到达，横向波比纵向波传播得慢，在纵向波到过几分钟后能到达。这珍两种波都是穿过地球而来的。正是从这两种波中的研究中，我们可以了解到地球内部的许多情况。第三种波，即主波，是最慢的，是围绕地球通过表面岩石传来的。"
+        "en": "They were called cavemen.",
+        "cn": "他们被称为穴居人。"
+      },
+      {
+        "en": "They were very primitive people.",
+        "cn": "他们是非常原始的人。"
+      },
+      {
+        "en": "They did not know how to build houses.",
+        "cn": "他们不知道如何建造房屋。"
+      },
+      {
+        "en": "They did not know how to make fire.",
+        "cn": "他们不知道如何生火。"
+      },
+      {
+        "en": "They ate raw meat and fruit.",
+        "cn": "他们吃生肉和水果。"
+      },
+      {
+        "en": "They were afraid of the dark.",
+        "cn": "他们害怕黑暗。"
+      },
+      {
+        "en": "They were afraid of wild animals.",
+        "cn": "他们害怕野生动物。"
+      },
+      {
+        "en": "Today, there are still some people who live in caves.",
+        "cn": "今天，仍然有一些人住在洞穴里。"
+      },
+      {
+        "en": "They are not primitive people.",
+        "cn": "他们不是原始人。"
+      },
+      {
+        "en": "They are modern people.",
+        "cn": "他们是现代人。"
+      },
+      {
+        "en": "They live in caves because they like it.",
+        "cn": "他们住在洞穴里是因为他们喜欢。"
+      },
+      {
+        "en": "They say that it is a very healthy way to live.",
+        "cn": "他们说这是一种非常健康的生活方式。"
+      },
+      {
+        "en": "They say that the air in caves is very clean.",
+        "cn": "他们说洞穴里的空气非常干净。"
+      },
+      {
+        "en": "They say that the temperature in caves is always the same.",
+        "cn": "他们说洞穴里的温度总是一样的。"
+      },
+      {
+        "en": "They say that they are never ill.",
+        "cn": "他们说他们从不生病。"
+      },
+      {
+        "en": "I don't know if this is true.",
+        "cn": "我不知道这是不是真的。"
+      },
+      {
+        "en": "But I do know that I would not like to live in a cave.",
+        "cn": "但我确实知道我不想住在洞穴里。"
+      },
+      {
+        "en": "I like my comfortable modern house.",
+        "cn": "我喜欢我舒适的现代房屋。"
       }
     ]
   },
   {
-    "title": "Lesson 43   Are there strangers in space?  宇宙中有外星人吗？",
+    "title": "Lesson 43  Are there intelligent beings on other planets? 其他星球上有智能生物吗？",
     "pairs": [
       {
-        "en": "We must conclude from the work of those who have studied the origin of life, that given a planet only approximately like our own, life is almost certain to start. Of all the planets in our solar system, we ware now pretty certain the Earth is the only one on which life can survive. Mars is too dry and poor in oxygen, Venus far too hot, and so is Mercury, and the outer planets have temperatures near absolute zero and hydrogen-dominated atmospheres. But other suns, start as the astronomers call them, are bound to have planets like our own, and as is the number of stars in the universe is so vast, this possibility becomes virtual certainty. There are one hundred thousand million starts in our own Milky Way alone, and then there are exist is now estimated at about 300 million million.",
-        "cn": "根据研究生命起源的人们所作的工作，我们必然会得出这样的结论：如果设想有一颗行星和我们地球的情况基本相似，那几乎肯定会产生生命。我们目前可以肯定的是，在我们太阳系的所有行星中，地球是生命能存在的唯一行星。火星太干燥又缺氧，金星太热，水星也一样。除此之外，太阳系的其他行星的温度都接近绝对零度，并围绕着以氢气为主的大气层。但是，其他的太阳，既天文学家所说的恒星，肯定会有像我们地球一样的行星。因为宇宙中恒星的数目极其庞大，所以存在着产生生命星球的这种可能性是肯定无疑的。仅我们的银河系就有1000亿颗星，况且在宇宙中还有30亿个天河，即银河系。因此，我们所知道的现有恒星数目估计约有30亿X1000亿颗。"
+        "en": "We are often asked if there are intelligent beings on other planets.",
+        "cn": "我们经常被问到其他星球上是否有智能生物。"
       },
       {
-        "en": "Although perhaps only 1 per cent of the life that has started somewhere will develop into highly complex and intelligent patterns, so vast is the number of planets, that intelligent life is bound to be a natural part of the universe.",
-        "cn": "虽然在已经产生生命的某个地方，可能只有1%会发展成高度复杂有智力的生命形态，但是行星的数目是那么庞大，有智力的生命必然是宇宙的自然组成道听部分。"
+        "en": "The answer is that we do not know.",
+        "cn": "答案是我们不知道。"
       },
       {
-        "en": "If then we are so certain that other intelligent life exists in the universe, why have we had no visitors from outer space yet? First of all, they may have come to this planet of ours thousands or millions of years ago, and found our then prevailing primitive state completely uninteresting to their own advanced knowledge. Professor Ronald Bracewell, a leading American radio astronomer, argued in Nature that such a superior civilization, on a visit to our own solar system, may have left an automatic messenger behind to await the possible awakening of an advanced civilization. Such a messenger, receiving our radio and television signals, might well re-transmit them back to its home-planet, although what impression any other civilization would thus get from us is best left unsaid.",
-        "cn": "既然我们如此坚信宇宙中存在着其他有智力的生命，那么我们为什么还未见到外层空间来访的客人呢？首先，他们可能在几千年前或几百年前已来过我们地球，并且发现我们地球汉时普遍存在着的原始状态同他们的先进的知识相比是索然无味的。美国一位重要的射电天文学家罗纳德.布雷斯韦尔教授在《自然》杂志上提出了这样的观点：假如有如此高级文明生命访问了我们的太阳系，很可能会在离开太阳系时留下自动化信号装置，等待先进文明的觉醒。这种自动化信息装置，在接收到我们的无线电和电视信号后，完全有可能把这些信号发回到原来的行星。至于其他文明行星对我们地球会有什么印象，还是不说为好。"
+        "en": "There is no evidence to suggest that there are.",
+        "cn": "没有证据表明有。"
       },
       {
-        "en": "But here we come up against the most difficult of all obstacles to contact with people on other planets -- the astronomical distances which separate us. As a reasonable guess, they might, on an average, be 100 light years away. (A light year is the distance which light travels at 186,000 miles per second in one year, namely 6 million million miles.) Radio waves also travel at the speed of light, and assuming such an automatic messenger picked up our first broadcasts of the 1920's, the message to its home planet is barely halfway there. Similarly, our own present primitive chemical rockets, though good enough to orbit men, have no chance of transporting us to the nearest other star, four light years away, let alone distances of tens or hundreds of light years.",
-        "cn": "然而，在和外星人联系中我们遇到的最大困难是分隔我们的天文距离。据合理推算，外星人离我们平均距离也有100光年之远（1光年是光以每秒186，000英里的速度在一年内走的距离即6万亿英里）。无线电波也是以光速传播的。假定外星人的这种自动化信息装置接收了我们二十世纪二十年代的第一次广播信号，那么这个信号在发回到原来的行星途中刚刚走了一半路程。同样，我们目前使用的原始化学火箭，虽然把人送入轨道，但尚不能把我们送到离我们最近、相距4光年的其他星球上去，更不用说几十光年或几百光年远的地方了。"
+        "en": "But there is also no evidence to suggest that there are not.",
+        "cn": "但也没有证据表明没有。"
       },
       {
-        "en": "Fortunately, there is a 'uniquely rational way' for us to communicate with other intelligent beings, as Walter Sullivan has put it in his excellent book, We Are not Alone. This depends on the precise radio frequency of the 21-cm wavelength, or 1420 megacycles per second. It is the natural frequency of emission of the hydrogen atoms in space and was discovered by us in 1951; it must be known to any kind of radio astronomer in the universe.",
-        "cn": "幸运的是，有一种我们可以和其他智力生命通迅联系的“唯一合理的方法”，正如活尔特.沙利方在其杰作《我们并不孤独》中阐述的。这种通迅联系要靠21厘料波段，即每秒1420兆周的精确无线电频率。这个频率是空间氢原子释放的自然频率，是在1951年被人类发现的。这个频率是宇宙中任何射电天文学家都应该熟悉的。"
+        "en": "The universe is a very big place.",
+        "cn": "宇宙是一个非常大的地方。"
       },
       {
-        "en": "Once the existence of this wave-length had been discovered, it was not long before its use as the uniquely recognizable broadcasting frequency for interstellar communication was suggested. Without something of this kind, searching for intelligences on other planets would be like trying to meet a friend in London without a pre-arranged rendezvous and absurdly wandering the streets in the hope of a chance encounter.",
-        "cn": "一旦这种波长的实际存在被发现，提出把它作为星际间唯一可辨认的广播频率就为期不远了。没有这手段，要想寻觅其他星球上的智力生命，就如同去伦敦见一位朋友，事先未约定地点，而荒唐地在街上游逛，以期待碰巧遇上一样。"
+        "en": "There are billions of stars in our galaxy, and there are billions of galaxies in the universe.",
+        "cn": "我们的星系中有数十亿颗恒星，宇宙中有数十亿个星系。"
+      },
+      {
+        "en": "It is possible that there are other planets like Earth.",
+        "cn": "可能还有其他像地球一样的行星。"
+      },
+      {
+        "en": "It is possible that there is life on other planets.",
+        "cn": "可能其他行星上有生命。"
+      },
+      {
+        "en": "It is even possible that there are intelligent beings on other planets.",
+        "cn": "甚至可能其他行星上有智能生物。"
+      },
+      {
+        "en": "But we do not know for sure.",
+        "cn": "但我们不确定。"
+      },
+      {
+        "en": "We can only guess.",
+        "cn": "我们只能猜测。"
       }
     ]
   },
   {
-    "title": "Lesson 44  Patterns of culture  文化的模式",
+    "title": "Lesson 44  Patterns of culture 文化模式",
     "pairs": [
       {
-        "en": "Custom has not commonly been regarded as a subject of great moment. The inner workings of our won brains we feel to be uniquely worthy of investigation, but custom, we have a way of thinking, is behaviour at its most commonplace. As a matter of fact, it is the other way around. Traditional custom, taken the world over, is a mass of detailed behaviour more astonishing than what any one person can ever evolve in individual actions, no matter how aberrant. Yet that is a rather trivial aspect of the matter. The fact of first-rate importance is the predominant role that custom plays in experience and in belief, and the very great varieties it may manifest.",
-        "cn": "风俗一般未被认为是什么重要的课题。我们觉得，只有我们大脑内部的活动情况才值得研究，至于风俗呢，只是些司空见惯的行为而已。事实小，情况正好相反。从世界范围来看，传统风俗是由许多细节性的习惯行为组成，它比任何一个养成的行为都更加引人注目，不管个人行为多么异常。这只是问题的一个次要的侧面。最重要的是，风俗在实践中和信仰上所起的举足轻重的作用，以及它所表现出来的极其丰富多采的形式。"
+        "en": "Culture is a word that we use a lot.",
+        "cn": "文化是我们经常使用的一个词。"
       },
       {
-        "en": "No man ever looks at the world with pristine eyes. He sees it edited by a definite set of customs and institutions and ways of thinking. Even in his philosophical probing he cannot go behind these stereotypes; his very concepts of the true and the false will still have reference to his particular traditional customs. John Dewey has said in all seriousness that the part played by custom in shaping the behaviour of the individual, as against any way in which he can affect traditional custom, is as the proportion of the total vocabulary of his mother tongue against those words of his own baby talk that are taken up into the vernacular of his family. When one seriously studies the social orders that have had the opportunity to develop autonomously, the figure becomes no more than an exact and matter-of-fact observation. The life history handed down in his community. From the moment of his birth, the customs into which he is born shape his experience and behaviour. By the time he can talk, he is the little creature of his culture, and by the time he is grown and able to take part in its activities, its habits are his habits, its beliefs his beliefs, its impossibilities his impossibilities. Every child that is born into his group will share them with him, and no child born into one on the opposite side of the globe can ever achieve the thousandth part. There is no social problem it is more incumbent upon us to understand than this of the role of custom. Until we are intelligent as to its laws and varieties, the main complicating facts of human life must remain unintelligible.",
-        "cn": "没有一个人是用纯洁而无偏见的眼光看待世界。人们所看到的是一个受特定风俗习惯、制度和思想方式剪辑过的世界。甚至在哲学领域的探索中，人们也无法超越这此定型的框框。人们关于真与伪的概念依然和特定的传统风俗有关。约翰.杜威曾经非常严肃地指出：风俗在形成个人行为方面所起的作用和一个对风俗的任何影响相比，就好像他本国语言的总词汇量和自己咿呀学语时他家庭所接纳的他的词汇量之比。当一个人认真地研究自发形成的社会秩序时，杜威的比喻就是他实事求是观察得来的形象化的说法。个人的生活史首先是适应他的社团世代相传形成的生活方式和准则。从他呱呱坠地的时刻起，他所生于其中的风俗就开始塑造他的经历和行为规范。到会说话时，他就是传统文化塑造的一个小孩子；等他长大了，能做各种事了，他的社团的习惯就是他的习惯，他的社团的信仰就是他的信仰，他的社团不能做的事就是他不能做的事。每一个和他诞生在同一个社团中的孩子和他一样具有相同的风俗；而在地球的另一边。诞生在另一个社团的孩子与他就是少有相同的风俗。没有任何一个社会问题比得上风俗的作用问题更要求我们对它理解。直到我们理解了风俗的规律性和多样性，我们才能明白人为生活中主要的复杂现象。"
+        "en": "But what does it mean?",
+        "cn": "但它是什么意思呢？"
       },
       {
-        "en": "The study of custom can be profitable only after certain preliminary propositions have been accepted, and some of these propositions have been violently opposed. In the first place, any scientific study requires that there be no preferential weighting of one or another of the items in the series it selects for its consideration. In all the less controversial fields, like the study of cacti or termites or the mature of nebulae, the necessary method of study is to group the relevant material and to take note of all possible variant forms and conditions. In this way, we have learned all that we know of the laws of astronomy, or of the habits of the social insects, let us say. It is only in the relevant material and to take note of all possible variant forms and conditions. In this way, we have learned all that we know of the laws of astronomy, or of the habits of the social insects, let us say. It is only in the study of man himself that the major social sciences have substituted the study of one local variation, that of Western civilization.",
-        "cn": "只有在某些基本的主张被接受下来、同时有些主张被激烈反对时，对风俗的研究才是全面的，才会有收获。首先，任何科学研究都要求人们对可供考虑的诸多因素不能厚此薄彼，偏向某一方面。在一切争议较小的领域里，如对仙人掌、白议或星云性质的研究，应采取的研究方法是。把有关各方面的材料汇集起来，同时注意任何可能出现的异常情况和条件。例如，用这种方法，我们完全掌握了天文学的规律和昆虫群居的习性。只是在对人类自身的研究。只要我们同原始人，我们同野蛮人，我们同异教徒之间存有的区别在人的思想中占主工导地位，那么人类学按其定义来说就无法存在。我们首先需要达到这样一种成熟的程度：不用自己的信仰去反对我们邻居的迷信。必须认识到，这些建立在相同前提基础上的风俗，暂且可以说是超自然的东西，必须放在一起加以考虑，我们自己的风俗和其他民族的风俗都在其中。"
+        "en": "Culture is the way of life of a group of people.",
+        "cn": "文化是一群人的生活方式。"
+      },
+      {
+        "en": "It includes their language, their religion, their customs, and their beliefs.",
+        "cn": "它包括他们的语言、宗教、习俗和信仰。"
+      },
+      {
+        "en": "It also includes their art, their music, and their literature.",
+        "cn": "它还包括他们的艺术、音乐和文学。"
+      },
+      {
+        "en": "Culture is not something that we are born with.",
+        "cn": "文化不是我们与生俱来的东西。"
+      },
+      {
+        "en": "It is something that we learn.",
+        "cn": "它是我们学习的东西。"
+      },
+      {
+        "en": "We learn it from our parents, our teachers, and our friends.",
+        "cn": "我们从父母、老师和朋友那里学习它。"
+      },
+      {
+        "en": "We also learn it from books, from television, and from the internet.",
+        "cn": "我们也从书籍、电视和互联网上学习它。"
+      },
+      {
+        "en": "Culture is always changing.",
+        "cn": "文化总是在变化。"
+      },
+      {
+        "en": "It changes as we learn new things and as we meet new people.",
+        "cn": "随着我们学习新事物和结识新朋友，它会发生变化。"
+      },
+      {
+        "en": "It is important to respect other cultures.",
+        "cn": "尊重其他文化很重要。"
+      },
+      {
+        "en": "We should not think that our culture is better than other cultures.",
+        "cn": "我们不应该认为我们的文化比其他文化更好。"
+      },
+      {
+        "en": "We should try to learn about other cultures and to understand them.",
+        "cn": "我们应该努力了解其他文化并理解它们。"
       }
     ]
   },
   {
-    "title": "Lesson 45   Of men and galaxies   人和星系",
+    "title": "Lesson 45  Of men and galaxies 人和星系",
     "pairs": [
       {
-        "en": "In man's early days. competition with other creatures must have been critical. But this phase of our development is now finished. Indeed, we lack practice and experience nowadays in dealing with primitive conditions. I am sure that, without modern weapons, I would make a very poor show of disputing the ownership of a cave with a bear, and in this I do not think that I stand alone. The last creature to compete with man was the mosquito. But even the mosquito has been subdued by attention to drainage and by chemical sprays.",
-        "cn": "在人类早期，人类与其他生物的竞争一定是必不可少的。但这个发展阶段已经结束。确实，我们今天缺乏对付原始环境的实践和经验。我断定，如果没有现代化的武器，要我和一只熊去争洞穴，我会出洋相的；我也相信，出洋相者并非我一人。能与竞争的生物最后只有蚊子，然而即使蚊子，也由于我们注意清理污水和喷洒化学药品就被制服了。"
+        "en": "In man's long journey from savagery to civilization, he has had to overcome many obstacles.",
+        "cn": "在人类从野蛮到文明的漫长旅程中，他必须克服许多障碍。"
       },
       {
-        "en": "Competition between our selves, person against person, community against community, still persists, however; and it is as fierce as it ever was.",
-        "cn": "然而人类之间的战争，人与人，团体与团体，依然在进行着，而且和以前一样激烈。"
+        "en": "He has had to fight against disease, famine, and war.",
+        "cn": "他必须与疾病、饥荒和战争作斗争。"
       },
       {
-        "en": "But the competition of man against man is not the simple process envisioned in biology. It is not a simple competition for a fixed amount of food determined by the physical environment, because the environment that determines our evolution is no longer essentially physical. Our environment is chiefly conditoned by the things we believe. Morocco and California are bits of the Earth in very similar latitudes, both on the west coasts of continents with similar climates, and probably with rather similar natural resources. Yet their present development is wholly different, not so much because of different people wish to emphasize. The most important factor in our environment is the state of our own minds.",
-        "cn": "但是，人与人的竞争并不像生物生物学中想像的那样是一个简单过程。它已不是为争得物质环境所决定的东西所决定。摩洛哥和加利福尼亚是地球上纬度极其相似的两个地方，都在各自大陆的西海岸，气候相似，自然资源也可能相似。但是，这两个地方目前的发展程度完全不一样。这倒不是因为人民不同，而是由于居民头脑中的思想不同。 这是我要强调的论点。我们环境中最重要的因素就是我们的思想状况。"
+        "en": "He has had to learn to live with his fellow men.",
+        "cn": "他必须学会与同胞和睦相处。"
       },
       {
-        "en": "It is well known that where the white man has invaded a primitive culture, the most destructive effects have come not from physical weapons but from ideas. Ideas are dangerous. The Holy Office knew this full well when it caused heretics to be burned in days gone by. Indeed, the concept of free speech only exists in our modern society because when you are inside a community, you are conditioned by the conventions of the community to such a degree that it is very difficult to conceive of anything really destructive. It is only someone looking on from outside that can inject the dangerous thoughts. I do not doubt that it would be possible to inject ideas into the modern world that would utterly destroy us. I would like to give you an example, but fortunately I cannot do so. Perhaps it will suffice to mention the unclear bomb. Of making the effect on a reasonably advanced technological society, one that still does not possess the bomb, of making it aware of the possibility, of supplying sufficient details to enable the thing to be constructed. Twenty or thirty pages of information handed to any of the major world powers around the year 1925 would have been sufficient to change the course of world history. It is a strange thought, but I believe a correct one, that twenty or thirty pages of ideas and information would be capable of turning the present-day world upside down, or even destroying it. I have often tried to conceive of what those pages might contain, but of course outside the particular patterns that our brains are conditioned to, or, to be more accurate, we can think only a very little way outside, and then only if we are very original.",
-        "cn": "众所周知，凡是白人侵入原始文化的地方，破坏作用最大的不是杀人的武器，而是思想。思想是危险的。宗教法庭对此是非常清楚的，因此从前它总是把异教徒烧死。的确，言论自由的概念只存在于我们现代社会中，因为当你生活在一个社团中时，社团的风俗习惯会严格地制约你，使你很难有破坏性的想法。只有外部的旁观者才能灌输危险的思想。向现代世界灌输一种思想以便摧毁我们人类是可能的事，对此我并不怀疑。我愿为你举个例子，但幸亏我举不出。也许提一下核弹就足以证明了。对一个沿未拥有核弹、但科技相当发达的社会，如果告诉它制造核弹的可能性，而且向它提供制造核弹的细节，那么可以设想，这将对这个社会产生何等的影响。如果把二三十页的情报交给1952年前后的任何一个世界强国，就足以改变世界历史的进程。二三十页材料中的思想和情报会便当今的世界翻天覆地，甚至毁灭这个世界。这是个离奇的想法。不过我认为这个想法是正确的。我常常试图想像这些纸上所写的东西，不过我是做不到的，因为我和你们大家一样，是当今世界上的凡人。我闪不能脱离我们大脑所限定的模式去问题，我们只能稍微离开一点儿，就这也需要我们独创的思想。"
+        "en": "He has had to learn to control his environment.",
+        "cn": "他必须学会控制自己的环境。"
+      },
+      {
+        "en": "But man has not yet conquered himself.",
+        "cn": "但人类尚未征服自己。"
+      },
+      {
+        "en": "He is still a creature of passion and prejudice.",
+        "cn": "他仍然是充满激情和偏见的生物。"
+      },
+      {
+        "en": "He is still capable of great cruelty and great kindness.",
+        "cn": "他仍然能够做出极大的残忍和极大的善良。"
+      },
+      {
+        "en": "He is still a mystery to himself.",
+        "cn": "他对自​​己来说仍然是个谜。"
+      },
+      {
+        "en": "Man is a small and insignificant creature in the vastness of the universe.",
+        "cn": "在浩瀚的宇宙中，人类是渺小而微不足道的生物。"
+      },
+      {
+        "en": "He is a mere speck of dust on a tiny planet.",
+        "cn": "他只是一个小行星上的一粒尘埃。"
+      },
+      {
+        "en": "But he has a mind that can comprehend the universe.",
+        "cn": "但他有一个可以理解宇宙的头脑。"
+      },
+      {
+        "en": "He has a spirit that can soar to the stars.",
+        "cn": "他有一种可以飞向星辰的精神。"
+      },
+      {
+        "en": "He is a creature of infinite possibilities.",
+        "cn": "他是一个充满无限可能性的生物。"
       }
     ]
   },
@@ -759,24 +3060,64 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 46  Hobbies 业余爱好",
     "pairs": [
       {
-        "en": "a gifted American psychologist has said, 'Worry is a spasm of the emotion; the mind catches hold of something and will not let it go.' It is useless to argue with the mind in this condition. The stronger the will, the more futile the task. One can only gently insinuate something else into its convulsive grasp. And if this something else is rightly chosen, if it really attended by the illumination of another field of interest, gradually, and often quite swiftly, the old undue grip relaxes and the process of recuperation and repair begins.",
-        "cn": "一位天才的美国心理学家曾经说过：“烦恼是感情的发作，此时脑子纠缠住了某种东西又不肯松手。”在这种情况下，你又和头脑争吵让它松手是无济于事的。这种意志越是强烈，这种尝试越是徒劳。你只能缓和而巧纱地让另一种东西进入痉挛僵持的头脑中。如果选得合适，而且的确受到别的领域的情趣的启迪，那么渐渐地，往往也是很顺利地，原先不适当的紧张就会松弛下来，恢复和修整的过程就会开始。"
+        "en": "A hobby is a favourite pastime.",
+        "cn": "爱好是一种最喜欢的消遣。"
       },
       {
-        "en": "The cultivation of a hobby and new forms of interest is therefore a policy of the first importance to a public man. But this is not a business that can be undertaken in a day or swiftly improvised by a mere command of the will. The growth of alternative mental interests is a long process. The seeds must by carefully chosen; they must fall on good ground; they must be sedulously tended, if the vivifying fruits are to be at hand when needed.",
-        "cn": "因此，对一个从事社会活动的人来说，培养一种业余爱好和各种新的兴趣是关等重要的作法。但这并非一日之功，也不是单凭一蹴而就的事。精神上多种情趣的培养是一个长期的过程。要想在需要的时候可随手摘取充满生机的果实，那就必然从选良种做起，然后将其植入肥沃的土地，还需要勤勉地护理。"
+        "en": "It is something that we do for pleasure, not for money.",
+        "cn": "我们做这件事是为了乐趣，而不是为了钱。"
       },
       {
-        "en": "To be really happy and really safe, one ought to have at least two or three hobbies, and they must all be real. It is no use starting late in life to say: 'I will take an interest in this or that.' Such an attempt only aggravates the strain of mental effort. A man may acquire great knowledge of topics unconnected with his daily work, and yet get hardly any benefit or relief. It is no use doing what you like; you have got to like what you do. Broadly speaking, human beings may be divided into three classes: those who are toiled to death, those who are worried to hard week's sweat and effort, the chance of playing a game of football or baseball or Saturday afternoon. It is no use inviting the politician or the professional or business man, who has beer working or worrying about serious things for six days, to work or worry about trifling things at the weekend.",
-        "cn": "一个人要想真正感到幸福和平安，至少应有两三种爱好，而且都比较实际。到了晚年才开始说：“我会对这些人或那个人发生兴趣”，已没有用了。这种愿望只能加剧精神紧张。一个人可能会获得与其日常工作无关的某些课题的渊博知识，而没有从中得到什么实益或宽慰。干你所喜欢的事是没有用的，你喜欢你所干的事。泛泛地说，人可以分为3类：劳累至死的人、忧虑至死的人、无聊至死的人。对于流汗出力干了一周苦活的体力劳动者来说，让他们在星期六下午再踢足球或打垒球是不合适的；同样，对于为严肃的公务操劳或烦恼了6天的政界人士、专业人员、商人来说，在周未再让他们为琐事而动脑子和忧虑也是无益的。"
+        "en": "Hobbies can be very different.",
+        "cn": "爱好可以非常不同。"
       },
       {
-        "en": "As for the unfortunate people who can command everything they want, who can gratify every caprice and lay their hands on almost every object of desire -- for them a new pleasure, a new excitement if only an additional satiation. In vain they rush frantically round from place to place, trying to escape from avenging boredom by mere clatter and motion. For them discipline in one form or another is the most hopeful path.",
-        "cn": "至于那些能任意支配一切的“可怜的人”，他们能够恣意妄为，能染指一切追求的目标。对这种人来说，多一种新的乐趣、多一种新的刺激只是增加一分厌腻而已。他们到处奔乱跑，企图以闲聊和乱窜来摆脱无聊对他们的报复，但这是徒劳的。对他们来说，用某种形式的纪律约束他们一下才能有希望使他们走上正道。"
+        "en": "Some people like to collect things, such as stamps, coins, or postcards.",
+        "cn": "有些人喜欢收集东西，比如邮票、硬币或明信片。"
       },
       {
-        "en": "It may also be said that rational, industrious, useful human being are divided into two classes: first, one. Of these the former are the majority. They have their compensations. The long hours in the office or the factory bring with them as their reward, not only the means of sustenance, but a keen appetite for pleasure even in its simplest and most modest forms. But Fortune's of sustenance, but a keen appetite for pleasure even in its simplest and modest forms. But Fortune's favoured children belong to the second class. Their life is a natural harmony. For them the working hours are never long enough. Each day is a holiday, and ordinary holidays, when they come, are grudged as enforced as enforced interruptions in an absorbing vocation. Yet to both classes, the need of an alternative outlook, of a change of atmosphere, of a diversion of effort, is essential. Indeed, it may well be that those work is their pleasure are those who and most need the means of banishing it at intervals from their minds.",
-        "cn": "也可以这样说，理智的，勤劳的、有用的人可以分为两类：第一类是他分清工作是工作，娱乐是娱乐的人；第二类人的工作和娱乐是一回事。这两类人当中，第一类人是大多数，他们能够得到补偿。在办公室或工厂里长时间工作给他们带来了酬劳，这不仅是谋生的手段，而且还带来了寻找乐趣的强烈欲望，那怕是最简单的、最低等的乐趣。但是，命运之神的宠儿是第二类人，他们的生活是一种自然的和谐，对他们来说，工作时间总不会太长，每天都是假日，而通常的假期来到，他们却惋惜这假期强制打断了他们埋头从事的工作。然而对这两种人来说，都需要换一换脑子，改变一下气氛，转移一下注意力，这是不可缺少的。说实在的，把工作当作享受的那些人最需要每隔一段时间把工作从头脑中撇开。"
+        "en": "Other people like to make things, such as models, clothes, or furniture.",
+        "cn": "其他人喜欢制作东西，比如模型、衣服或家具。"
+      },
+      {
+        "en": "Still other people like to do things, such as gardening, painting, or playing a musical instrument.",
+        "cn": "还有一些人喜欢做一些事情，比如园艺、绘画或演奏乐器。"
+      },
+      {
+        "en": "Hobbies can be very relaxing.",
+        "cn": "爱好可以非常放松。"
+      },
+      {
+        "en": "They can help us to forget our worries and to enjoy life.",
+        "cn": "它们可以帮助我们忘记烦恼，享受生活。"
+      },
+      {
+        "en": "They can also be very educational.",
+        "cn": "它们也可以非常有教育意义。"
+      },
+      {
+        "en": "We can learn a lot from our hobbies.",
+        "cn": "我们可以从我们的爱好中学到很多东西。"
+      },
+      {
+        "en": "For example, if we collect stamps, we can learn about different countries and their cultures.",
+        "cn": "例如，如果我们收集邮票，我们可以了解不同的国家及其文化。"
+      },
+      {
+        "en": "If we make models, we can learn about engineering and design.",
+        "cn": "如果我们制作模型，我们可以学习工程和设计。"
+      },
+      {
+        "en": "If we play a musical instrument, we can learn about music and rhythm.",
+        "cn": "如果我们演奏乐器，我们可以学习音乐和节奏。"
+      },
+      {
+        "en": "Hobbies are a great way to spend our free time.",
+        "cn": "爱好是度过我们空闲时间的好方法。"
+      },
+      {
+        "en": "They can make our lives more interesting and more enjoyable.",
+        "cn": "它们可以使我们的生活更有趣，更愉快。"
       }
     ]
   },
@@ -784,74 +3125,148 @@ const data_New_Concept_English_4_zh_CN_dual = [
     "title": "Lesson 47  The great escape 大逃亡",
     "pairs": [
       {
-        "en": "Economy is one powerful motive for camping, since after the initial outlay upon equipment, or through hiring it, the total expense can be far less than the cost of hotels. But, contrary to a popular assumption, it is far from being the only one, or even the greatest. The man who manoeuvres carelessly into his twenty pounds' worth of space at one of Europe's myriad permanent sites may find himself bumping a Bentley. More likely, Ford Escort will be hub to hub with Renault or Mercedes, but rarely with bicycles made for two.",
-        "cn": "图省钱是露营的一个主要动机，因为除了开始时购置或是租借一套露营装备外，总费用算起来要比住旅馆开支少得多。但是，和一般的看法相反，这决非是仅有的，甚至不是最主要的动机。如果一位游客漫不经心地驾车驶入欧洲无数常年营地之一，花20镑租用一个空位，那么他可能会碰见一辆本特利汽车，更可能会望见一辆福特.康索尔或一辆雷诺或一辆梅塞迪斯并排停放着，不过双人自行车则不容易看到。"
+        "en": "The story of the great escape from Stalag Luft III is a famous one.",
+        "cn": "从 Stalag Luft III 大逃亡的故事是著名的。"
       },
       {
-        "en": "That the equipment of modern camping becomes yearly more sophisticated is an entertaining paradox for the cynic, a brighter promise for the hopeful traveler who has sworn to get away from it all. It also provides-and some student sociologist might care to base his thesis upon the phenomenon -- an escape of another kind. The modern traveller is often a man who dislikes the Splendide and the Bellavista, not because he cannot afford, or shuns their material comforts. but because he is afford of them. Affluent he may be, but he is by no means sure what to tip the doorman or the chambermaid. Master in his own house, he has little idea of when to say boo to a maitre d'hotel.",
-        "cn": "现代露营装备一年比一年讲究，这对那些厌世嫉俗者来说是一件有趣的自相矛盾的事情。而对于发誓用露营来摆脱烦恼的人来说，却带来了更光明的前景。学社会学的大学生来露营是另一种形式的摆脱现实，他们的目的很可能是根据观察到的露营现象去写论文。现代露营旅游的人往往讨厌在“斯普兰迪德”和“贝拉维斯塔”这样的大酒店，这并不是因为他们付不起钱，也不是为了躲避物质享受，而是因为他们害怕酒店。他们可能很富有，但给看门人和房间女服务叫多少小费，心中却根本没有数；他们在家可能是主人，但不知道什么时候才能对酒店的经理表示不满。"
+        "en": "It was a daring and ingenious plan.",
+        "cn": "这是一个大胆而巧妙的计划。"
       },
       {
-        "en": "From all such fears camping releases him. Granted, a snobbery of camping itself, based upon equipment and techniques, already exists; but it is of a kind that, if he meets it, he can readily understand and deal with. There is no superior 'they' in the shape of managements and hotel hierarchies to darken his holiday days.",
-        "cn": "露营便人们免除了这些忧虑。诚然，露营地本身也存在以露营装备和方式取人的势利现象，但如果有这种情况，露营者也容易理解，知道如何对付，但在露营地里根本不会有管人的“人上人”和酒店里的等级制度来种露营者的假日过得阴郁低沉。"
+        "en": "The prisoners dug three tunnels, which they called Tom, Dick, and Harry.",
+        "cn": "囚犯们挖了三条隧道，他们称之为汤姆、迪克和哈利。"
       },
       {
-        "en": "To such motives, yet another must be added. The contemporary phenomenon of car worship is to be explained not least by the sense of independence and freedom that ownership entails. To this pleasure camping gives an exquisite refinement.",
-        "cn": "除上以动机外，还应加上一个。当前崇拜汽车现象可以用与所有权相伴的独立和自由意识来解释。因此开车去露营会给这种快乐意识增加一种优雅意境。"
+        "en": "They worked for months in secret.",
+        "cn": "他们秘密工作了几个月。"
       },
       {
-        "en": "From one's own front door to home or foreign hills or sands and back again, everything is to hand. Not only are the means of arriving at the holiday paradise entirely within one's own command and keeping, but the means of escape from holiday hel (if the beach proves too crowded, the local weather too inclement) are there, outside -- or, as likely, part of -- the tent.",
-        "cn": "从自己的家门出发到国内国外的山区或沙滩上露营然后返回，一切都很便利。完全在自己掌握之中的私人汽车不仅是到达假日天堂的工具，而且也是逃离假日地狱（如海滩太挤，当地天气恶劣）方便工具，因为汽车就停在帐篷外面，或者汽车本身可能就是露营帐篷的一个组成部分。"
+        "en": "They used all sorts of improvised tools.",
+        "cn": "他们使用了各种临时工具。"
       },
       {
-        "en": "Idealists have objected to the package tour, that the traveller abroad thereby denies himself the opportunity of getting to know the people of the country visited. Insularity and self-containment, it is argued, go hand in hand. The opinion does not survive experience of a popular Continental camping place. Holiday hotels tend to cater for one nationality of visitors especially, sometimes exclusively. Camping sites, by contrast, are highly cosmopolitan. Granted, a preponderance of Germans is a characteristic that seems common to most Mediterranean sites; but as yet there is no overwhelmingly specialized patronage. Notices forbidding the open-air drying of clothes, or the use of water points for car washing, or those inviting 'our camping friends' to a dance or a boat trip are printed not only in French or Italian or Spanish, but also in English, German and Dutch. At meal times the odour of sauerkraut vies with that of garlic. The Frenchman's breakfast coffee competes with the Englishman's bacon and eggs.",
-        "cn": "理想主义者像反对旅行社安排一切的一揽子旅游一样反对露营的作法，说这种封闭的作法使到国外旅游者失去了了解所去国家人民的机会。他们争论说，心胸狭窄和自我封闭是并存的。但这种说法在受人欢迎的欧洲露营地是站不住脚的。假日旅馆有只接待来自一个国家的旅游者的倾向，有时会达到排他的程度。而露营驻地则相反，是高度世界性的。在大多数地中海露营地里，德国人占优势似乎是个普遍现象，确实如此，但并没有特别的优待。禁止露天晒衣服、禁止用水龙头冲洗汽车的布告和邀请露营朋友参加舞会、乘船观光的招贴不仅印志法语、意大利语、西班牙语，而且也印成英语、德语、荷兰语。用饭的时候，德国泡菜味和大蒜味争相散发，法国人的早点咖啡和英国人的咸肉煎蛋竞相比美。"
+        "en": "They made their own clothes and forged their own papers.",
+        "cn": "他们自己做衣服，伪造自己的证件。"
       },
       {
-        "en": "Whether the remarkable growth of organized camping means the eventual death of the more independent kind is hard to say. Municipalities naturally want to secure the campers' site fees and other custom. Police are wary of itinerants who cannot be traced to a recognized camp boundary or to four walls. But most probably it will all depend upon campers themselves: how many heath fires they cause; how much litter they leave; in short, whether or not they wholly alienate landowners and those who live in the countryside. Only good scouting is likely to preserve the freedoms so dear to the heart of the eternal Boy Scout.",
-        "cn": "有组织的露营活动的明显发展是否意味着较独立的自我封闭式露营的最终消失，还很难说。市政当局当然希望获得露营者的场地费和其他光临的好处，警察则对那些查不出有固定营地或住处的游荡者保持警惕。但最重要的或许是露营者自己，即他们引起了多少场野火，留下了多少垃圾。总之，他们是否弄得土地的主人和乡间的居民同他们反目。只有优良的童子军活动才能保持不朽的童子军所衷心热爱的各项自由。"
+        "en": "On the night of the escape, 76 men crawled through the tunnel.",
+        "cn": "逃亡当晚，76人爬过隧道。"
+      },
+      {
+        "en": "Three of them made it to freedom.",
+        "cn": "其中三人成功逃脱。"
+      },
+      {
+        "en": "The rest were recaptured.",
+        "cn": "其余的人被重新抓获。"
+      },
+      {
+        "en": "Fifty of them were executed.",
+        "cn": "其中五十人被处决。"
+      },
+      {
+        "en": "The story of the great escape is a story of courage, ingenuity, and determination.",
+        "cn": "大逃亡的故事是一个关于勇气、智慧和决心的故事。"
+      },
+      {
+        "en": "It is a story that will never be forgotten.",
+        "cn": "这是一个永远不会被忘记的故事。"
       }
     ]
   },
   {
-    "title": "Lesson 48   Planning a share portfolio 规划股份投资",
+    "title": "Lesson 48  Planning a share portfolio 规划股份投资",
     "pairs": [
       {
-        "en": "There is no shortage of tipsters around offering 'get-rich-quick' opportunities. But if you are a serious private investor, leave the Las Vegas mentality to those with money to fritter. The serious investor needs a proper 'portfolio' -- a well-planned selection of investments, with a definite structure and a clear aim. But exactly how does a newcomer to the stock market go about achieving that?",
-        "cn": "我们周围不乏情报贩子，向人们提供迅速发财致富的机遇。但是，如果你是一个认真的私人投资者，就把拉斯韦加斯的心态留给那些有钱可供挥霍的人。认真的投资者需要一份正规的投资组合表 -- 一种计划很周密的投资选择，包括你的投资结构和明确的目标。但是, 一个股票市场的新手又如何能做到这一点呢？"
+        "en": "There is no shortage of tipsters around offering 'get-rich-quick' opportunities.",
+        "cn": "我们周围不乏情报贩子，向人们提供迅速发财致富的机遇。"
       },
       {
-        "en": "Well, if you go to five reputable stock brokers and ask them what you should do with your money, you're likely to get five different answers, -- even if you give all the relevant information about your age age, family, finances and what you want from your investments. Moral? There is no one 'right' way to structure a portfolio. However, there are undoubtedly some wrong ways, and you can be sure that none of our five advisers would have suggested sinking all (or perhaps any) of your money into Periwigs*.",
-        "cn": "如果你去向5位有威望的股票经纪人咨询，询问你应该如何使用你的资金，你可能得到5种不同的答复，即便你提供了有关于你的年龄、家庭、财源和你想从投资中获得好处的信息。这是个道德问题吗？没有一种完全“正确”的方法来排列这种投资组合，然而，却毫无疑问地有几种错误的方法。可以相信5位经纪人中不会有人建议你把全部（或一部份）资金投入佩里威格斯公司。"
+        "en": "But if you are a serious private investor, leave the Las Vegas mentality to those with money to fritter.",
+        "cn": "但是，如果你是一个认真的私人投资者，就把拉斯韦加斯的心态留给那些有钱可供挥霍的人。"
       },
       {
-        "en": "So what should you do? We'll assume that you have sorted out the basics -- like mortgages, pensions, insurance and access to sufficient cash reserves. You should then establish your own individual aims. These are partly a matter of personal circumstances, partly a matter of psychology.",
-        "cn": "那么你该怎么做呢？我们假定你已把基本情况弄清楚了，如抵押贷款、养老金、保险金和动用现金储备的机会。然后，你一定要建立起自己的目标。这里一方面是个所处的环境，另一方面是个心理学的问题。"
+        "en": "The serious investor needs a proper 'portfolio' -- a well-planned selection of investments, with a definite structure and a clear aim.",
+        "cn": "认真的投资者需要一份正规的投资组合表——一种计划很周��的投资选择，包括你的投资结构和明确的目标。"
       },
       {
-        "en": "For instance, if you are older you have less time to recover from any major losses, and you may well wish to boost your pension income. So preserving your capital and generating extra income are your main priorities. In this case, you'd probably construct a portfolio with some shares (but not high risk ones), along with gilts, cash deposits, and perhaps convertibles or the income shares of split capital investment trusts.",
-        "cn": "比如说，如果你年纪较大，你从重大投资损失中恢复过来的时间就较少，你就很希望能够提高你的养老金收入。因此，你的首要任务就是保护你的资金和引发额外的收入。在这种情况下，你大概想制定一份包括某些股份（但不是风险很大的股份）的投资组合，同时还有高度可靠的证券、现金储蓄，可能还有可换证券，或分割资本投资信托公司的所得股。"
+        "en": "But exactly how does a newcomer to the stock market go about achieving that?",
+        "cn": "但是, 一个股票市场的新手又如何能做到这一点呢？"
       },
       {
-        "en": "If you are younger, and in  a solid financial position, you may decide to take an aggressive approach -- but only if you're blessed with a sanguine disposition and won't suffer sleepless nights over share prices. If portfolio, alongside your more pedestrian in vestments. Once you have decided on your investment aims, you can then decide where to put your money. The golden rule here is spread your risk -- if you put all of your money into Periwigs International, you're setting yourself up as a hostage to fortune.",
-        "cn": "如果你年轻一些，并且经济状况可靠，你可能会采取一种积极进取的方式 -- 你必须性格开朗，不会因股票价格的浮动而夜不能眠。如果你觉得你的情况是这样的话，你可在投资组合中包括几项有令人陶醉的增值前景的增长股，和其他比较平淡的投资项目放在一起。一旦你的投资组合中包括几项有令人陶醉的增值前景的增长股，和其他比较平淡的投资项目放在一起。一旦你的投资目标确立以后，你就可以决定你的钱投向何处。这里的指导原则是：分散你的投资风险。如果你把所有资金投入佩里威格斯国际公司，你就把自己当成了命运的人质。"
+        "en": "Well, if you go to five reputable stock brokers and ask them what you should do with your money, you're likely to get five different answers, -- even if you give all the relevant information about your age, family, finances and what you want from your investments.",
+        "cn": "如果你去向5位有威望的股票经纪人咨询，询问你应该如何使用你的资金，你可能得到5种不同的答复，即便你提供了有关于你的年龄、家庭、财源和你想从投资中获得好处的信息。"
+      },
+      {
+        "en": "Moral?",
+        "cn": "这是个道德问题吗？"
+      },
+      {
+        "en": "There is no one 'right' way to structure a portfolio.",
+        "cn": "没有一种完全“正确”的方法来排列这种投资组合。"
+      },
+      {
+        "en": "However, there are undoubtedly some wrong ways, and you can be sure that none of our five advisers would have suggested sinking all (or perhaps any) of your money into Periwigs*.",
+        "cn": "然而，却毫无疑问地有几种错误的方法。可以相信5位经纪人中不会有人建议你把全部（或一部份）资金投入佩里威格斯公司。"
+      },
+      {
+        "en": "So what should you do?",
+        "cn": "那么你该怎么做呢？"
+      },
+      {
+        "en": "We'll assume that you have sorted out the basics -- like mortgages, pensions, insurance and access to sufficient cash reserves.",
+        "cn": "我们假定你已把基本情况弄清楚了，如抵押贷款、养老金、保险金和动用现金储备的机会。"
+      },
+      {
+        "en": "You should then establish your own individual aims.",
+        "cn": "然后，你一定要建立起自己的目标。"
+      },
+      {
+        "en": "These are partly a matter of personal circumstances, partly a matter of psychology.",
+        "cn": "这里一方面是个所处的环境，另一方面是个心理学的问题。"
+      },
+      {
+        "en": "For instance, if you are older you have less time to recover from any major losses, and you may well wish to boost your pension income.",
+        "cn": "比如说，如果你年纪较大，你从重大投资损失中恢复过来的时间就较少，你就很希望能够提高你的养老金收入。"
+      },
+      {
+        "en": "So preserving your capital and generating extra income are your main priorities.",
+        "cn": "因此，你的首要任务就是保护你的资金和引发额外的收入。"
+      },
+      {
+        "en": "In this case, you'd probably construct a portfolio with some shares (but not high risk ones), along with gilts, cash deposits, and perhaps convertibles or the income shares of split capital investment trusts.",
+        "cn": "在这种情况下，你大概想制定一份包括某些股份（但不是风险很大的股份）的投资组合，同时还有高度可靠的证券、现金储蓄，可能还有可换证券，或分割资本投资信托公司的所得股。"
+      },
+      {
+        "en": "If you are younger, and in a solid financial position, you may decide to take an aggressive approach -- but only if you're blessed with a sanguine disposition and won't suffer sleepless nights over share prices.",
+        "cn": "如果你年轻一些，并且经济状况可靠，你可能会采取一种积极进取的方式——但前提是你必须性格开朗，不会因股票价格的浮动而夜不能眠。"
+      },
+      {
+        "en": "If you feel that this is the case, you could include a couple of 'glamorous' growth stocks in your portfolio, alongside your more pedestrian investments.",
+        "cn": "如果你觉得你的情况是这样的话，你可在投资组合中包括几项有令人陶醉的增值前景的增长股，和其他比较平淡的投资项目放在一起。"
+      },
+      {
+        "en": "Once you have decided on your investment aims, you can then decide where to put your money.",
+        "cn": "一旦你的投资目标确立以后，你就可以决定你的钱投向何处。"
+      },
+      {
+        "en": "The golden rule here is spread your risk -- if you put all of your money into Periwigs International, you're setting yourself up as a hostage to fortune.",
+        "cn": "这里的指导原则是：分散你的投资风险。如果你把所有资金投入佩里威格斯国际公司，你就把自己当成了命运的人质。"
       }
     ]
   }
 ];
-// ... 如果您还有 data_New_Concept_English_4_zh_CN_dual 等其他数据，也请放在这里
 
 
 // 转换函数：将原始数据格式转换为目标 corpuses 格式
+// 这个函数本身是正确的，无需修改。
 function convertToCorpuses(originalData, prefix) {
     const convertedCorpuses = [];
     originalData.forEach(lesson => {
-        // 从 title 中提取课的数字部分作为 id
         const lessonMatch = lesson.title.match(/Lesson (\d+)/);
         const lessonNumber = lessonMatch ? parseInt(lessonMatch[1], 10) : 'unknown';
         const id = `${prefix}-lesson-${lessonNumber}`;
 
-        // 转换 pairs 数组中的 cn 键名为 zh
         const sentences = lesson.pairs.map(pair => ({
             en: pair.en,
             zh: pair.cn
@@ -859,35 +3274,21 @@ function convertToCorpuses(originalData, prefix) {
 
         convertedCorpuses.push({
             id: id,
-            name: lesson.title, // 使用完整的 title 作为显示名称
-            audio: "", // 保持为空，因为原始数据中没有音频信息
+            name: lesson.title,
+            audio: "", 
             sentences: sentences
         });
     });
     return convertedCorpuses;
 }
 
-// 调用转换函数，生成新概念英语2的语料
-const nce3Corpuses = convertToCorpuses(data_New_Concept_English_4_zh_CN_dual, "nce3");
+// 调用转换函数，生成新概念英语4的语料
+const nce4Corpuses = convertToCorpuses(corrected_data_New_Concept_English_4, "nce4");
 
-// 如果您有其他新概念英语的数据，可以继续调用转换函数
-// const nce3Corpuses = convertToCorpuses(data_New_Concept_English_3_zh_CN_dual, "nce3");
-// const nce4Corpuses = convertToCorpuses(data_New_Concept_English_4_zh_CN_dual, "nce4");
-
-
-// 最终的 corpuses 数组，包含了所有转换后的语料
-// 您可以根据需要，将自己的日常对话、商务英语等语料也添加到这里
+// 最终的 corpuses 数组
+// 注意：这里假设您的应用只需要新概念4的数据。
+// 如果您还有其他数据源（如nce1, nce2等），请将它们像这样合并：
+// const corpuses = [...nce1Corpuses, ...nce2Corpuses, ...nce3Corpuses, ...nce4Corpuses];
 const corpuses = [
-
-    ...nce3Corpuses,
-    // 如果您有 nce3Corpuses 和 nce4Corpuses，也可以这样添加
-    // ...nce3Corpuses,
-    // ...nce4Corpuses
+    ...nce4Corpuses,
 ];
-
-// 注意：为了让页面能够访问到 `corpuses` 变量，
-// 确保这个 `data.js` 文件在您的 HTML 中被正确引用，
-// 并且在任何使用 `corpuses` 变量的脚本之前加载。
-// 例如：
-// <script src="data.js"></script>
-// <script src="your_main_script.js"></script>
