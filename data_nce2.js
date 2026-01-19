@@ -183,7 +183,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
     "pairs": [
       {
         "en": "Mr James Scott has a garage in Silbury and now he has just bought another garage in Pinhurst.",
-        "cn": "詹姆斯·斯科���先生在西尔伯里有一家修车厂，现在他又在平赫斯特买了一家修车厂。"
+        "cn": "詹姆斯·斯科先生在西尔伯里有一家修车厂，现在他又在平赫斯特买了一家修车厂。"
       },
       {
         "en": "Pinhurst is only five miles from Silbury, but Mr Scott cannot get a telephone for his new garage, so he has just bought twelve pigeons.",
@@ -1196,7 +1196,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "Suddenly, one of the children kicked a ball very hard and it went towards a passing boat.",
-        "cn": "突然，其中一个孩子用力踢了一个��，球飞向了一艘经过的船。"
+        "cn": "突然，其中一个孩子用力踢了一个，球飞向了一艘经过的船。"
       },
       {
         "en": "Some people on the bank called out to the man in the boat, but he did not hear them.",
@@ -1618,7 +1618,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "Mrs Rumbold was a large, unsmiling lady in a tight black dress.",
-        "cn": "伦博尔德夫人��一位身材高大、面无表情的女士，穿着一件紧身的黑色连衣裙。"
+        "cn": "伦博尔德夫人一位身材高大、面无表情的女士，穿着一件紧身的黑色连衣裙。"
       },
       {
         "en": "She did not even look up when I took my seat beside her.",
@@ -1676,7 +1676,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "After a time, we noticed a snake-charmer with two large baskets at the other side of the square, so we went to have a look at him.",
-        "cn": "过了一会儿，我们注意到广场另一边有一个耍蛇人，手里拿着两个大篮子���于是我们走过去看了看。"
+        "cn": "过了一会儿，我们注意到广场另一边有一个耍蛇人，手里拿着两个大篮子于是我们走过去看了看。"
       },
       {
         "en": "As soon as he saw us, he picked up a long pipe which was covered with coins and opened one of the baskets.",
@@ -2315,7 +2315,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "Though she hesitated for a moment, she finally went in and asked to see a dress that was in the window.",
-        "cn": "虽然她犹豫��一会儿，但最终还是走了进去，要求看看橱窗里的一件连衣裙。"
+        "cn": "虽然她犹豫一会儿，但最终还是走了进去，要求看看橱窗里的一件连衣裙。"
       },
       {
         "en": "The assistant who served her did not like the way she was dressed.",
@@ -2917,7 +2917,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
     "pairs": [
       {
         "en": "When you visit London, one of the first things you will see is Big Ben, the famous clock which can be heard all over the world on the If the Houses of Parliament had hot been burned down in 1834, the great clock would never have been erected.",
-        "cn": "当你游览伦敦时，你最先看到的景象之一就是大本���，这座著名的钟声响彻世界各地。如果国会大厦没有在 1834 年被烧毁，这座伟大的钟就不会被建造出来。"
+        "cn": "当你游览伦敦时，你最先看到的景象之一就是大本，这座著名的钟声响彻世界各地。如果国会大厦没有在 1834 年被烧毁，这座伟大的钟就不会被建造出来。"
       },
       {
         "en": "Big Ben takes its name from Sir Benjamin Hall who was responsible for the making of the clock when the new Houses of Parliament were being built.",
@@ -3292,7 +3292,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "Anyway, as Brian pointed out, it is the easiest thing in the world to give up smoking.",
-        "cn": "���之，正如布莱恩指出的那样，戒烟是世界上最容易的事情。"
+        "cn": "之，正如布莱恩指出的那样，戒烟是世界上最容易的事情。"
       },
       {
         "en": "He himself has done it lots of times!",
@@ -3370,7 +3370,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "The most wonderful piece of machinery on show was Nasmyth's steam hammer.",
-        "cn": "展出的最奇妙��机械是纳斯米斯的蒸汽锤。"
+        "cn": "展出的最奇妙机械是纳斯米斯的蒸汽锤。"
       },
       {
         "en": "Though in those days, travelling was not as easy as it is today, steam boats carried thousands of visitors across the Channel from Europe.",
@@ -3525,7 +3525,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "Though a little suspicious this time, the policeman gave him the same answer.",
-        "cn": "虽然这次警���有些怀疑，但还是给了他同样的答案。"
+        "cn": "虽然这次警有些怀疑，但还是给了他同样的答案。"
       },
       {
         "en": "The day after, Crawley went to the house once more and asked exactly the same question.",
@@ -3750,7 +3750,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "If there had not been a hard layer of rock beneath the soil, they would have completed the job in a few hours.",
-        "cn": "如果土壤下面没有坚���的岩石层，他们几个小时就能完成这项工作。"
+        "cn": "如果土壤下面没有坚的岩石层，他们几个小时就能完成这项工作。"
       },
       {
         "en": "As it is, they have been drilling for sixteen hours and they still have a long way to go.",
@@ -3951,7 +3951,7 @@ const data_New_Concept_English_2_zh_CN_dual = [
       },
       {
         "en": "The actual figure was made of copper supported by a metal framework which had been especially constructed by Eiffel.",
-        "cn": "这座雕像实际上是用铜制成的，��埃菲尔专门建造的金属框架支撑。"
+        "cn": "这座雕像实际上是用铜制成的，埃菲尔专门建造的金属框架支撑。"
       },
       {
         "en": "Before it could be transported to the United States, a site had to be found for it and a pedestal had to be built.",
