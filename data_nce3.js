@@ -3,7 +3,7 @@
 // 原始的 New Concept English 3 语料数据
 const data_New_Concept_English_3_zh_CN_dual = [
   {
-    "title": "Lesson 1  A puma at large第一课：一只四处游荡的美洲狮",
+    "title": "Lesson 1  A puma at large 一只四处游荡的美洲狮",
     "pairs": [
       {
         "en": "Pumas are large, cat-like animals which are found in America.",
@@ -60,7 +60,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 2  Thirteen equals one第二课 十三等于一",
+    "title": "Lesson 2  Thirteen equals one 十三等于一",
     "pairs": [
       {
         "en": "Our vicar is always raising money for one cause or another, but he has never managed to get enough money to have the church clock repaired.",
@@ -97,7 +97,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 3 An unknown goddess第三课：一位不知名的女神",
+    "title": "Lesson 3 An unknown goddess 一位不知名的女神",
     "pairs": [
       {
         "en": "Some time ago an interesting discovery was made by archaeologists on the Aegean adj. n. island of Kea An American team explored a temple which stands in an ancient city on the promontory of Ayia Irini The city at one time must have been prosperous for it enjoyed a high level of civilization Houses--often three storeys high--were built of stone They had large rooms with beautifully decorated walls The city was even equipped with a drainage system for a great many clay pipes were found beneath the narrow streets The temple which the archaeologists explored was used as a place of worship from the fifteenth century B.C. until Roman times.",
@@ -146,7 +146,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 4 The double life of Alfred Bloggs第四课 阿尔弗雷德·布洛格斯的双重生活",
+    "title": "Lesson 4 The double life of Alfred Bloggs 阿尔弗雷德·布洛格斯的双重生活",
     "pairs": [
       {
         "en": "These days, people who do manual work often receive far more money than clerks who work in offices.",
@@ -207,7 +207,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 5 The facts第五课 事实",
+    "title": "Lesson 5 The facts 事实",
     "pairs": [
       {
         "en": "Editors of newspapers and magazines often go to extremes to provide their readers with unimportant facts and statistics.",
@@ -260,7 +260,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 6  Smash-and-grab第六课 砸抢",
+    "title": "Lesson 6  Smash-and-grab 砸抢",
     "pairs": [
       {
         "en": "The expensive shops in a famous arcade near Piccadilly were just opening.",
@@ -329,7 +329,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 7 Mutilated ladies第七课 残害的女性",
+    "title": "Lesson 7 Mutilated ladies 残害的女性",
     "pairs": [
       {
         "en": "Children often have far more sense than their elders.",
@@ -406,7 +406,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 8  A famous monastery第八课 一座著名的修道院",
+    "title": "Lesson 8  A famous monastery 一座著名的修道院",
     "pairs": [
       {
         "en": "The Great St Bernard Pass connects Switzerland to Italy.",
@@ -471,64 +471,88 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 9第九课",
+    "title": "Lesson 9 Flying cats 飞猫",
     "pairs": [
       {
-        "en": "By now, a rocket will have set off on its 35 million mile trip to Mars and scientists must be waiting anxiously for the results.",
-        "cn": "到现在，一枚火箭已经踏上了前往火星的 3500 万英里旅程，科学家们一定正在焦急地等待结果。"
+        "en": "Cats never fail to fascinate human beings.",
+        "cn": "猫总能引起人们的极大兴趣。"
       },
       {
-        "en": "The rocket will be travelling for six months before it reaches the planet.",
-        "cn": "火箭需要飞行六个月才能到达行星。"
+        "en": "They can be friendly and affectionate towards humans, but they lead mysterious lives of their own as well.",
+        "cn": "它们可以对人友好，充满柔情。但是，它们又有自己神秘的生活方式。"
       },
       {
-        "en": "It contains a number of scientific instruments, including a television camera.",
-        "cn": "它包含许多科学仪器，包括一台电视摄像机。"
+        "en": "They never become submissive like dogs and horses.",
+        "cn": "它们从不像狗和马一样变得那么顺从。"
       },
       {
-        "en": "Any pictures that are taken will have to travel for three minutes before they reach the earth.",
-        "cn": "拍摄的任何照片都需要经过三分钟的飞行才能到达地球。"
+        "en": "As a result, humans have learned to respect feline independence.",
+        "cn": "结果是人们已经学会尊重猫的独立性。"
       },
       {
-        "en": "If the pictures are successful, they may solve a number of problems about Mars and provide information about the markings on its surface which, nearly 100 years ago, the astronomer, Schiaparelli, thought to be canals.",
-        "cn": "如果这些照片成功，它们可能会解决一些关于火星的问题，并提供有关火星表面标记的信息。近 100 年前，天文学家斯基亚帕雷利认为这些标记是运河。"
+        "en": "Most cats remain suspicious of humans all their lives.",
+        "cn": "在它们的一生中，大多数猫都对人存有戒心。"
       },
       {
-        "en": "It will be a long time before any landing on Mars can be attempted.",
-        "cn": "距离人类尝试登陆火星还有很长一段时间。"
+        "en": "One of the things that fascinates us most about cats is the popular belief that they have nine lives.",
+        "cn": "最使我们感兴趣的一件事情就是一种通俗的信念——猫有九条命。"
       },
       {
-        "en": "This will only be possible when scientists have learnt a lot more about the atmosphere that surrounds the planet.",
-        "cn": "只有当科学家们对环绕地球的大气层有了更多了解之后，这才有可能实现。"
+        "en": "Apparently, there is a good deal of truth in this idea.",
+        "cn": "显然，这种说法里面包含着许多真实性。"
       },
       {
-        "en": "If a satellite can one day be put into orbit round Mars, scientists will be able to find out a great deal.",
-        "cn": "如果有一天能将卫星送入火星轨道，科学家们将能够了解很多事情。"
+        "en": "A cat’s ability to survive falls is based on fact.",
+        "cn": "猫在跌落时能够大难不死是有事实作为依据的。"
       },
       {
-        "en": "An interesting suggestion for measuring the atmosphere around Mars has been put forward.",
-        "cn": "有人提出了一个测量火星周围大气层的有趣建议。"
+        "en": "Recently the New York Animal Medical Centre made a study of 132 cats over a period of five months.",
+        "cn": "最近，纽约动物医疗中心对 132 只猫进行了为期 5 个月的综合研究。"
       },
       {
-        "en": "A rubber ball containing a radio transmitter could be dropped from a satellite so that it would fall towards the surface of the planet.",
-        "cn": "可以将装有无线电发射器的橡胶球从卫星上扔下，使其落向行星表面。"
+        "en": "All these cats had one experience in common: they had fallen off high buildings, yet only eight of them died from shock or injuries.",
+        "cn": "所有这些猫有一个共同的经历：它们都曾从高层建筑上摔下来过，但只有其中的 8 只猫死于震荡或跌伤。"
       },
       {
-        "en": "The radio would signal the rate which the ball was slowed down and scientists would be able to calculate how dense the atmosphere is.",
-        "cn": "无线电会发出球减速的速率信号，科学家们就能计算出大气的密度。"
+        "en": "Of course, New York is the ideal place for such an interesting study, because there is no shortage of tall buildings.",
+        "cn": "当然，纽约是进行这种有趣的试验的一个理想的地方，因为那里根本不缺乏高楼大厦。"
       },
       {
-        "en": "It may even be possible to drop a capsule containing scientific instruments on to the planet's surface.",
-        "cn": "甚至有可能将装有科学仪器的舱体投放到行星表面。"
+        "en": "There are plenty of high-rise windowsills to fall from!",
+        "cn": "有的是高层的窗槛从上往下坠落。"
       },
       {
-        "en": "Only when a great deal more information has been obtained, will it be possible to plan a manned trip to Mars.",
-        "cn": "只有获得更多信息后，才有可能计划载人火星之旅。"
+        "en": "One cat, Sabrina, fell 32 storeys, yet only suffered from a broken tooth.",
+        "cn": "有一只叫萨伯瑞的猫从 32 层楼上掉下来，但只摔断一颗牙。"
+      },
+      {
+        "en": "'Cats behave like well-trained paratroopers,' a doctor said.",
+        "cn": "“猫就像训练有素的跳伞队员，” 一位医生说。"
+      },
+      {
+        "en": "It seems that the further cats fall, the less they are likely to injure themselves.",
+        "cn": "看起来，猫跌落的距离越长，它们就越不会伤害自己。"
+      },
+      {
+        "en": "In a long drop, they reach speeds of 60 miles an hour and more.",
+        "cn": "在一个长长的跌落过程中，它们可以达到每小时 60 里甚至更快的速度。"
+      },
+      {
+        "en": "At high speeds, falling cats have time to relax.",
+        "cn": "在高速下落中，猫有时间放松自己。"
+      },
+      {
+        "en": "They stretch out their legs like flying squirrels.",
+        "cn": "它们伸展四肢，就像飞行中的松鼠一样。"
+      },
+      {
+        "en": "This increases their air-resistance and reduces the shock of impact when they hit the ground.",
+        "cn": "这样就加大了空气阻力，并减少了它们着地时冲击力带来的震动。"
       }
     ]
   },
   {
-    "title": "Lesson 10 The loss of Titanic第十课 泰坦尼克号的沉没",
+    "title": "Lesson 10 The loss of Titanic 泰坦尼克号的沉没",
     "pairs": [
       {
         "en": "The great ship, Titanic, sailed for New York from Southampton on April 10th, 1912. She was carrying 1316 passengers and a crew of 89l.",
@@ -585,7 +609,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 11 Not guilty第十一课 无罪",
+    "title": "Lesson 11 Not guilty 无罪",
     "pairs": [
       {
         "en": "Going through the Customs is a tiresome business.",
@@ -638,7 +662,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 12 Life on a desert island第十二课 荒岛生活",
+    "title": "Lesson 12 Life on a desert island 荒岛生活",
     "pairs": [
       {
         "en": "Most of us have formed an unrealistic picture of life on a desert island.",
@@ -711,7 +735,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 13 It’s only me第十三课 只有我",
+    "title": "Lesson 13 It’s only me 只有我",
     "pairs": [
       {
         "en": "After her husband had gone to work, Mrs Richards sent her children to school and went upstairs to her bedroom.",
@@ -780,7 +804,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 14 A noble gangster第十四课 一个高尚的黑帮分子",
+    "title": "Lesson 14 A noble gangster 一个高尚的黑帮分子",
     "pairs": [
       {
         "en": "There was a time when the owners of shop and businesses in Chicago had to pay large sums of money to gangsters in return for' protection' If the money was not paid promptly, the gangsters would quickly put a man out of business by destroying his shop.",
@@ -825,7 +849,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 15 Fifty pence worth of trouble第十五课：五十便士的麻烦",
+    "title": "Lesson 15 Fifty pence worth of trouble 五十便士的麻烦",
     "pairs": [
       {
         "en": "Children always appreciate small gifts of money.",
@@ -894,7 +918,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 16 Mary had a little lamb第十六课 玛丽有只小羊羔",
+    "title": "Lesson 16 Mary had a little lamb 玛丽有只小羊羔",
     "pairs": [
       {
         "en": "Mary and her husband Dimitri lived in the tiny village of Perachora in southern Greece.",
@@ -967,7 +991,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 17 The longest suspension bridge in the world第十七课 世界最长的悬索桥",
+    "title": "Lesson 17 The longest suspension bridge in the world 世界最长的悬索桥",
     "pairs": [
       {
         "en": "Verrazano, an Italian about whom little is known, sailed into New York Harbour in 1524 and named it Angouleme.",
@@ -1032,7 +1056,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 18 Electric currents in modern art第18课 现代艺术中的电流",
+    "title": "Lesson 18 Electric currents in modern art 现代艺术中的电流",
     "pairs": [
       {
         "en": "Modern sculpture rarely surprises us any more.",
@@ -1109,7 +1133,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 19 A very dear cat第十九课 一只非常可爱的猫",
+    "title": "Lesson 19 A very dear cat 一只非常可爱的猫",
     "pairs": [
       {
         "en": "Kidnappers are rarely interested in Animals, but they recently took considerable interest in Mrs Eleanor Ramsay's cat.",
@@ -1182,7 +1206,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 20 Pioneer pilots第20课 先驱飞行员",
+    "title": "Lesson 20 Pioneer pilots 先驱飞行员",
     "pairs": [
       {
         "en": "In 1908 Lord Northcliffe offered a prize of &1000 to the first man who would fly across the English Channel.",
@@ -1255,7 +1279,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 21 Daniel Mendoza第21课 丹尼尔·门多萨",
+    "title": "Lesson 21 Daniel Mendoza 丹尼尔·门多萨",
     "pairs": [
       {
         "en": "Boxing matches were very popular in England two hundred years ago.",
@@ -1348,7 +1372,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 22 By heart第22课 背诵",
+    "title": "Lesson 22 By heart 背诵",
     "pairs": [
       {
         "en": "Some plays are so successful that they run for years on end.",
@@ -1433,7 +1457,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 23 One man’s meat is another man’s poison第23课 甲之蜜糖，乙之砒霜",
+    "title": "Lesson 23 One man’s meat is another man’s poison 甲之蜜糖，乙之砒霜",
     "pairs": [
       {
         "en": "People become quite illogical when they try to decide what can be eaten and what cannot be eaten.",
@@ -1518,7 +1542,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 24 A skeleton in the cupboard第24课 橱柜里的骷髅",
+    "title": "Lesson 24 A skeleton in the cupboard 橱柜里的骷髅",
     "pairs": [
       {
         "en": "We often read in novels how a seemingly respectable person or family has some terrible secret which has been concealed from strangers for years.",
@@ -1607,7 +1631,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 25 The Cutty Sark第25课 卡蒂萨克号",
+    "title": "Lesson 25 The Cutty Sark 卡蒂萨克号",
     "pairs": [
       {
         "en": "One of the most famous sailing ships of the nineteenth century, the Cutty Sark, can still be seen at Greenwich.",
@@ -1696,7 +1720,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 26 Wanted: a large biscuit tin第26课 求购：一个大饼干罐",
+    "title": "Lesson 26 Wanted: a large biscuit tin 求购：一个大饼干罐",
     "pairs": [
       {
         "en": "No one can avoid being influenced by advertisements.",
@@ -1789,7 +1813,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 27 Nothing to sell  and nothing to buy第27课：无物可卖，亦无物可买",
+    "title": "Lesson 27 Nothing to sell  and nothing to buy 无物可卖，亦无物可买",
     "pairs": [
       {
         "en": "It has been said that everyone lives by selling something.",
@@ -1858,7 +1882,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 28 Five pounds too dear第28课 五英镑太贵了",
+    "title": "Lesson 28 Five pounds too dear 五英镑太贵了",
     "pairs": [
       {
         "en": "Small boats loaded with wares sped to the great liner as she was entering the harbour.",
@@ -1939,7 +1963,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 29 Funny or not?第29课：有趣吗？",
+    "title": "Lesson 29 Funny or not? 有趣吗？",
     "pairs": [
       {
         "en": "Whether we find a joke funny or not largely depends on where we have been brought up.",
@@ -2036,7 +2060,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 30 The death of a ghost第30课 鬼魂之死",
+    "title": "Lesson 30 The death of a ghost 鬼魂之死",
     "pairs": [
       {
         "en": "For years villagers believed that Endley farm was haunted.",
@@ -2141,7 +2165,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 31 A lovable eccentric第31课 一个可爱的怪人",
+    "title": "Lesson 31 A lovable eccentric 一个可爱的怪人",
     "pairs": [
       {
         "en": "True eccentrics never deliberately set out to draw attention to themselves.",
@@ -2230,7 +2254,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 32 A lost ship第32课 一艘失踪的船",
+    "title": "Lesson 32 A lost ship 一艘失踪的船",
     "pairs": [
       {
         "en": "The salvage operation had been a complete failure.",
@@ -2311,7 +2335,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 33 A day to remember第33课 难忘的一天",
+    "title": "Lesson 33 A day to remember 难忘的一天",
     "pairs": [
       {
         "en": "We have all experienced days when everything goes wrong.",
@@ -2416,7 +2440,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 34 A happy discovery第34课 一个令人欣喜的发现",
+    "title": "Lesson 34 A happy discovery 一个令人欣喜的发现",
     "pairs": [
       {
         "en": "Antique shops exert a peculiar fascination on a great many people.",
@@ -2501,7 +2525,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 35 Justice was done第35课 正义得到了伸张",
+    "title": "Lesson 35 Justice was done 正义得到了伸张",
     "pairs": [
       {
         "en": "The word justice is usually associated with courts of law.",
@@ -2586,7 +2610,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 36 A chance in a million第36课 百万分之一的机会",
+    "title": "Lesson 36 A chance in a million 百万分之一的机会",
     "pairs": [
       {
         "en": "We are less credulous than we used to be In the nineteenth century, a novelist would bring his story to a conclusion by presenting his readers with a series of coincidences --most of them wildly improbable.",
@@ -2663,7 +2687,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 37 The Westhaven Express第37课 西港快车",
+    "title": "Lesson 37 The Westhaven Express 西港快车",
     "pairs": [
       {
         "en": "We have learnt to expect that trains will be punctual.",
@@ -2764,7 +2788,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 38 The first calendar第38课 第一个日历",
+    "title": "Lesson 38 The first calendar 第一个日历",
     "pairs": [
       {
         "en": "Future historians will be in a unique position when they come to record the history of our own times.",
@@ -2845,7 +2869,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 39 Nothing to worry about第39课 无需担心",
+    "title": "Lesson 39 Nothing to worry about 无需担心",
     "pairs": [
       {
         "en": "The rough road across the plain soon became so bad that we tried to get Bruce to drive back to the village we had come from.",
@@ -2942,7 +2966,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 40 Who’s who第40课 人物介绍",
+    "title": "Lesson 40 Who’s who 人物介绍",
     "pairs": [
       {
         "en": "It has never been explained why university students seem to enjoy practical jokes more than anyone else.",
@@ -3023,7 +3047,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 41 Illusions of Pastoral peace第41课 田园和平的幻象",
+    "title": "Lesson 41 Illusions of Pastoral peace 田园和平的幻象",
     "pairs": [
       {
         "en": "The quiet life of the country has never appealed to me.",
@@ -3136,7 +3160,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 42 Modern Cavemen第42课 现代穴居人",
+    "title": "Lesson 42 Modern Cavemen 现代穴居人",
     "pairs": [
       {
         "en": "Cave exploration, or potholing, as it has come to be known, is a relatively new sport.",
@@ -3257,7 +3281,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 43 Fully insured第43课 全额保险",
+    "title": "Lesson 43 Fully insured 全额保险",
     "pairs": [
       {
         "en": "Insurance companies are normally willing to insure anything.",
@@ -3370,7 +3394,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 44 Speed and comfort第44课 速度与舒适度",
+    "title": "Lesson 44 Speed and comfort 速度与舒适度",
     "pairs": [
       {
         "en": "People travelling long distances frequently have to decide whether they would prefer to go by land, sea, or air.",
@@ -3499,7 +3523,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 45 The power of press第45课 媒体的力量",
+    "title": "Lesson 45 The power of press 媒体的力量",
     "pairs": [
       {
         "en": "In democratic countries any efforts to restrict the freedom of the press are rightly condemned.",
@@ -3616,7 +3640,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 46 Do it yourself第46课 自己动手",
+    "title": "Lesson 46 Do it yourself 自己动手",
     "pairs": [
       {
         "en": "So great is our passion for doing things for ourselves, that we are becoming increasingly less dependent on specialized labour.",
@@ -3737,7 +3761,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 47 Through the earth’s crust第47课 穿过地壳",
+    "title": "Lesson 47 Through the earth’s crust 穿过地壳",
     "pairs": [
       {
         "en": "Satellites orbiting round the earth have provided scientists with a vast amount of information about conditions in outer space.",
@@ -3858,7 +3882,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 48 The silent village第48课 寂静的村庄",
+    "title": "Lesson 48 The silent village 寂静的村庄",
     "pairs": [
       {
         "en": "In this much-travelled world, there are still thousands of places which are inaccessible to tourists.",
@@ -3999,7 +4023,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 49 The Ideal Servant第49课 理想的仆人",
+    "title": "Lesson 49 The Ideal Servant 理想的仆人",
     "pairs": [
       {
         "en": "It is a good thing my aunt Harriet died years ago.",
@@ -4112,7 +4136,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 50 New Year Resolutions第五十课 新年决心",
+    "title": "Lesson 50 New Year Resolutions 新年决心",
     "pairs": [
       {
         "en": "The New Year is a time for resolutions.",
@@ -4229,7 +4253,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 51 Automation第51课 自动化",
+    "title": "Lesson 51 Automation 自动化",
     "pairs": [
       {
         "en": "One of the greatest advances in modern technology has been the invention of computers.",
@@ -4342,7 +4366,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 52 Mud is mud第52课 泥巴就是泥巴",
+    "title": "Lesson 52 Mud is mud 泥巴就是泥巴",
     "pairs": [
       {
         "en": "My cousin, Harry, keeps a large curiously shaped bottle on permanent display in his study.",
@@ -4463,7 +4487,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 53 In the public interest第53课 为了公众利益",
+    "title": "Lesson 53 In the public interest 为了公众利益",
     "pairs": [
       {
         "en": "The Scandinavian countries are much admired all over the world for their enlightened social policies.",
@@ -4572,7 +4596,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 54 Instinct or cleverness?第54课：直觉还是聪明才智？",
+    "title": "Lesson 54 Instinct or cleverness? 直觉还是聪明才智？",
     "pairs": [
       {
         "en": "We have been brought up to fear insects.",
@@ -4693,7 +4717,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 55 From the earth: greatings第55课 来自大地：问候",
+    "title": "Lesson 55 From the earth: greatings 来自大地：问候",
     "pairs": [
       {
         "en": "Radio astronomy has greatly increased our understanding of the universe.",
@@ -4798,7 +4822,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 56 The river beside our farm第56课 我们农场旁边的河",
+    "title": "Lesson 56 The river beside our farm 我们农场旁边的河",
     "pairs": [
       {
         "en": "The river which forms the eastern boundary of our farm has always played an important part in our lives.",
@@ -4895,7 +4919,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 57 The return of the native第57课 土著人的回归",
+    "title": "Lesson 57 The return of the native 土著人的回归",
     "pairs": [
       {
         "en": "I stopped to let the car cool off and to study the map.",
@@ -5028,7 +5052,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 58 A little spot of bother第58课 一点小麻烦",
+    "title": "Lesson 58 A little spot of bother 一点小麻烦",
     "pairs": [
       {
         "en": "The old lady was glad to be back at the block of flats where she lived.",
@@ -5113,7 +5137,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 59 Possession amassing and collecting第59课 占有、积累和收集",
+    "title": "Lesson 59 Possession amassing and collecting 占有、积累和收集",
     "pairs": [
       {
         "en": "People tend to amass possessions, some-times without being aware of doing so.",
@@ -5214,7 +5238,7 @@ const data_New_Concept_English_3_zh_CN_dual = [
     ]
   },
   {
-    "title": "Lesson 60 The importance of Punctuality第60课 守时的重要性",
+    "title": "Lesson 60 The importance of Punctuality 守时的重要性",
     "pairs": [
       {
         "en": "Punctuality is a necessary habit in all public affairs of a civilized society.",
