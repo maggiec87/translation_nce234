@@ -1,6 +1,6 @@
 # 回译新概念英语 234（translation_nce234）
 
-回译新概念英语 2/3/4 册的辅助工具与示例工程。该仓库旨在收集、处理并演示对《新概念英语》第二、三、四册文本进行回译（back-translation）处理时的脚本、前端展示与数据组织方式，方便复现与二次开发。
+回译新概念英语 2/3/4 册的辅助工具与示例工程。该仓库旨在收集、处理并演示对《新概念英语》第二、三、四册文本进行回译（back-translation）处理时[...]
 
 语言组成：JavaScript、HTML、Python（仓库主要以 JavaScript 为主，包含前端展示与若干自动化脚本，少量 Python 用于数据处理/批量脚本）。
 
@@ -59,6 +59,45 @@ pip install -r requirements.txt
 # 示例：运行回译处理脚本（依据实际脚本名调整）
 python scripts/back_translate.py --input data/original.txt --output data/back_translated.txt
 ```
+
+---
+
+## 在线演示 / 在线使用
+
+如果你希望在浏览器中直接体验本项目的交互式演示，可以：
+
+- 已有部署（替换为你的实际地址）：
+
+  示例：
+  - https://maggiec87.github.io/translation_nce234/  （请将此占位地址替换为真实部署地址）
+  - 或者你自己的域名，例如 https://demo.example.com/translation_nce234
+
+- 尚未部署？快速部署到 GitHub Pages：
+
+  1. 确保前端构建输出在 `docs/`、`public/` 或 `web/`（如果是静态文件，`public/` 或根目录也可）。
+  2. 在仓库设置（Settings → Pages）中选择要发布的分支与目录（例如 `main` 分支的 `/docs` 或 `gh-pages` 分支的根目录）。
+  3. 或使用 `gh-pages` npm 包自动发布（适用于 SPA）：
+
+     ```bash
+     npm install --save-dev gh-pages
+     # package.json 里添加：
+     # "homepage": "https://<你的用户名>.github.io/<仓库名>",
+     # "scripts": { "predeploy": "npm run build", "deploy": "gh-pages -d build" }
+     npm run deploy
+     ```
+
+  4. 部署后在 Settings → Pages 页面会显示你的站点 URL，复制到本 README 的“在线演示”部分即可。
+
+- 在线演示的使用说明（示例）：
+  - 打开在线演示页面。
+  - 在输入区域粘贴或上传原文（请确保不违反版权）。
+  - 选择回译/翻译服务配置（若有 API key，则需在服务端或 CI 中配置）。
+  - 点击“开始回译”或“运行”按钮，等待处理完成。
+  - 下载或复制回译结果进行人工校对。
+
+- 注意：若在线示例依赖第三方翻译 API（Google/DeepL 等），请务必不要在前端直接暴露 API Key。建议：
+  - 将翻译请求通过你的后端代理服务发送，后端持有并使用 API Key；或
+  - 在部署时使用受限的服务账号，并在环境变量中配置密钥。
 
 ---
 
